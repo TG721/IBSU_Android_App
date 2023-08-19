@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.element.SingleClubFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="2"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/clubName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cinema Paradiso"
+                android:textColor="@color/line"
+                android:textSize="20sp"
+                android:textIsSelectable="true"
+                android:layout_weight="1.8"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewFacebook"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/facebook" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ibsu"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_information"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/president_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true"
+                android:text="President - Tekla Dabrundashvili"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/president_number"
+                android:background="@drawable/link_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="President Number - 555999333"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/president_email"
+                android:background="@drawable/link_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="President Email - 21100166@ibsu.edu.ge"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/vice_president_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textIsSelectable="true"
+                android:text="Vice President - Nutsa Jokhadze"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/vice_president_number"
+                android:background="@drawable/link_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Vice President Number - 555111222"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/vice_president_email"
+                android:background="@drawable/link_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Vice President Email - 21300367@ibsu.edu.ge"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/clubDescriptionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/clubdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/line"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+</ScrollView>

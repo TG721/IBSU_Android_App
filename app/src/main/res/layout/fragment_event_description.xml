@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.element.EventDescriptionFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/backgrounds/scenic"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit ultrices erat non dapibus. Fusce augue risus, consequat sit amet tellus id, tincidunt venenatis felis. Pellentesque ullamcorper vel purus eget iaculis. Curabitur fermentum cursus risus. Morbi sollicitudin ante sit amet lacus porta faucibus efficitur venenatis nisl. Aliquam ornare accumsan tortor vel molestie. Nullam pharetra id mauris sit amet tincidunt. Pellentesque sodales ante id leo iaculis blandit at ultrices lorem. Aliquam eget eros purus.
+
+Sed luctus enim eget massa consequat ullamcorper. Cras accumsan porttitor leo, non dapibus arcu imperdiet ac. Suspendisse tristique bibendum ullamcorper. Nulla quis ullamcorper augue, non egestas dolor. Aliquam lorem nunc, imperdiet a urna non, pharetra dictum risus. Integer a libero magna. Nullam ut sollicitudin odio. Sed fermentum, massa ac mollis bibendum, odio nulla suscipit arcu, eu tristique nulla quam et orci. Vivamus varius ante eget consectetur lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        android:textColor="@color/line"
+        android:textSize="16sp" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

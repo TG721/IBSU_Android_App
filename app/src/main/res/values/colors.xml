@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="line">#000000</color>
+    <color name="anti_line">#FFFFFF</color>
+    <color name="settings_item">#FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ibsu">#165DA5</color>
+    <color name="anti_ibsu">#092E54</color>
+    <color name="ibsu_light">#85ABD2</color>
+    <color name="ibsu_tab">#0C3762</color>
+    <color name="business">#1D5822</color>
+    <color name="computer_and_architecture">#1E73BE</color>
+    <color name="humanities_and_social">#F4A83B</color>
+    <color name="law_and_state">#6E0000</color>
+    <color name="red_200">#fc6d62</color>
+    <color name="red_500">#eb1000</color>
+    <color name="red_700">#a11106</color>
+    <color name="yellow_200">#ede268</color>
+    <color name="yellow_500">#e3d214</color>
+    <color name="yellow_700">#b3a50c</color>
+    <color name="violet_200">#f05be6</color>
+    <color name="violet_300">#ed00dd</color>
+    <color name="violet_500">#b30ca7</color>
+    <color name="violet_700">#8c0683</color>
+    <color name="brown">#964B00</color>
+    <color name="orange_200">#ffaf7a</color>
+    <color name="orange_400">#ff8b3d</color>
+    <color name="orange_500">#ff781f</color>
+    <color name="orange_700">#ff6600</color>
+    <color name="grey_200">#c1c1c1</color>
+    <color name="grey_500">#808080</color>
+    <color name="grey_600">#5A5A5A</color>
+    <color name="grey_700">#505050</color>
+    <color name="link_blue">#0000EE</color>
+    <color name="facebook">#3b5998</color>
+    <color name="switch_track_unchecked">#c1c1c1</color>
+    <color name="switch_thumb_unchecked">#EDEAEA</color>
+    <color name="green">#0A8014</color>
+    <color name="OrangeHover">#F79429</color>
+    <color name="program_menu_btn_color">#DDDDDD</color>
+    <color name="settings_background">#C0C0C0</color>
+    <color name="slight_line">#F1F1F1</color>
+
+
+
+</resources>

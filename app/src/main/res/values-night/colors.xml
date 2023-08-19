@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ibsu">#092E54</color>
+    <color name="anti_ibsu">#165DA5</color>
+    <color name="line">#FFFFFF</color>
+    <color name="anti_line">#000000</color>
+    <color name="settings_item">#252424</color>
+    <color name="ibsu_tab">#85ABD2</color>
+    <color name="switch_thumb_unchecked">#F6F6F6</color>
+    <color name="switch_track_unchecked">#B4B3B3</color>
+    <color name="settings_background">#000000</color>
+    <color name="slight_line">#191919</color>
+</resources>

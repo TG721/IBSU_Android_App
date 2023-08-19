@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/anti_line" />
+    <item android:drawable="@drawable/ibsu_squirrel" android:gravity="center" android:width="200dp" android:height="283dp"/>
+</layer-list>

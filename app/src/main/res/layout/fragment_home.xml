@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  
+    tools:context=".ui.element.HomeFragment">
+
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        app:iss_auto_cycle="true"
+        app:iss_corner_radius="0"
+        app:iss_delay="0"
+        app:iss_period="1400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+    </com.denzcoskun.imageslider.ImageSlider>
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonPrograms"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/programs"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonSchool"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/schools"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonIRO"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/international_relations"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSchool" />
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonStudentLife"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/student_nlife"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSchool" />
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonUsefulDocuments"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/useful_ndocuments"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIRO" />
+
+    <com.ibsu.ibsu.ui.common.HoverButton
+        android:id="@+id/buttonContact"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="@color/ibsu"
+        android:text="@string/contact"
+        android:textColor="@color/white"
+        android:textSize="@dimen/home_btn_sp"
+        app:hoverTextColor="@color/OrangeHover"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStudentLife" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/upcoming_events"
+        android:textColor="@color/line"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IBSU" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:statusBarColor">@color/ibsu_light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/line</item>
+
+
+        <item name="colorSurface">@color/anti_line</item> //ტაბ ლეაიუთის ფონი და autotextlayout ჩამოსაშლელი მენიუს ფერის?
+        <item name="colorOnPrimarySurface">@color/link_blue</item>
+        <item name="colorOnPrimary">@color/ibsu_light</item> //კნოპკის ripple effect ფერი
+        <item name="colorPrimary">@color/ibsu_tab</item>
+
+        <item name="colorControlActivated">@color/ibsu_tab</item> //radio button activated color
+        <item name="colorControlNormal">@color/line</item>
+        <item name="colorPrimarySurface">@color/line</item>
+        <item name="colorOnSurfaceVariant">@color/line</item>
+
+        <item name="colorOnSurface">@color/ibsu_tab</item> //bottom ნავიგაციას რომ დააჭერ და არ აუშვებ იმის ფერის და autotextlayout ჩამოსაშლელი მენიუს სანამ დააჭერ სამკუთხედის ფერი
+        <item name="android:colorControlHighlight">@color/ibsu_light </item> //autotextlayout ჩამოსაშლელი მენიუს სამკუთხედზე და მენიუს რიგზე დაჭერა
+
+<!--        <item name="android:textColorHint">@color/grey_700</item>-->
+<!--        <item name="android:editTextColor">@color/line</item>-->
+<!--    <item name="colorSurfaceVariant">@color/yellow_700</item> //tab layout is qvemota mtliani zoli-->
+
+
+
+    </style>
+<!--    for georgian case-->
+<!--<style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="TextAppearance.AppCompat">-->
+<!--    <item name="android:textSize">16sp</item>-->
+<!--</style>-->
+    <style name="Theme.IBSU" parent="Base.Theme.IBSU" />
+
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">
+        <item name="android:windowBackground">@drawable/splash_image</item>
+        <item name="android:statusBarColor">@color/line</item>
+    </style>
+
+    <style name="CustomToolbarTextAppearance" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textSize">16sp</item> <!-- Adjust the text size as desired -->
+        <!-- Customize other attributes as needed -->
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/anti_ibsu</item>
+    </style>
+
+
+</resources>

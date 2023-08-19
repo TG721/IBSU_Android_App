@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.element.SchoolSelectionFragment">
+
+    <Button
+        android:id="@+id/schoolOfSocialSciBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginHorizontal="5dp"
+        android:backgroundTint="@color/humanities_and_social"
+        android:text="@string/education_humanities_and_social_sciences"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/SchoolOfBusinessBtn" />
+
+    <Button
+        android:id="@+id/SchoolOfLawNStateStaffBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/law_and_state"
+        android:text="@string/law_and_state_governance"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/schoolOfSocialSciBtn" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/SchoolOfBusinessBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/business"
+        android:text="@string/business"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/SchoolOfCompScienceNArchitecturefBtn" />
+
+    <Button
+        android:id="@+id/SchoolOfCompScienceNArchitecturefBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginHorizontal="5dp"
+        android:backgroundTint="@color/computer_and_architecture"
+        android:text="@string/computer_science_and_architecture"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/schoolsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/schools"
+        android:textColor="@color/line"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
+        android:layout_width="150dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schoolsTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

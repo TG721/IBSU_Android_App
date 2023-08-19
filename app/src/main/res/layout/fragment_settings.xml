@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/settings_background"
+    tools:context=".ui.element.SettingsFragment">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/switchBTMLayout"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_top_round_rectangle"
+            android:backgroundTint="@color/settings_item"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingHorizontal="5dp"
+
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/switchBtmNavTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:text="@string/show_label_only_on_selected_menu_item"
+                android:textColor="@color/line"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchBtmNav"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical"
+                app:thumbTint="@color/switch_thumb"
+                app:trackTint="@color/switch_track" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:id="@+id/seperatorLine1"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_500"
+        android:orientation="horizontal" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/darkModeLayout"
+            android:padding="10dp"            android:layout_marginHorizontal="10dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_rectangle"
+            android:backgroundTint="@color/settings_item"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingHorizontal="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/switchDarkMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.9"
+                android:gravity="center_vertical"
+                android:text="@string/dark_mode"
+                android:textColor="@color/line"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvDarkModeMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:text="Off"
+                android:textSize="@dimen/settings_text_indicator"
+                android:textColor="@color/grey_700" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:id="@+id/seperatorLine2"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_500"
+        android:orientation="horizontal" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:padding="10dp"
+            android:id="@+id/languageLayout"
+            android:layout_marginHorizontal="10dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_bottom_round_rectangle"
+            android:backgroundTint="@color/settings_item"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:paddingHorizontal="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvLanguage"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/application_language"
+                android:textColor="@color/line"
+                android:textSize="16sp"
+                android:layout_weight="1.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <TextView
+                android:id="@+id/tvLanguageMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:text="@string/en"
+                android:textSize="@dimen/settings_text_indicator"
+                android:textColor="@color/grey_700" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:id="@+id/seperatorLine3"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/settings_background"
+        android:orientation="horizontal" />
+</androidx.appcompat.widget.LinearLayoutCompat>

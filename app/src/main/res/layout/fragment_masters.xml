@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.element.MastersFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/programMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:background="@color/anti_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/menuProgramsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/ibsu"
+            android:layout_weight="1"
+            android:text="@string/programs"
+            android:textSize="@dimen/menu_button_sp"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/menuAdmissionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rounded_rectangle"
+            android:layout_weight="1"
+            android:textSize="@dimen/menu_button_sp"
+            android:text="@string/admission"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/menuExamTopicsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rectangle"
+            android:text="@string/exam_ntopics"
+            android:textSize="@dimen/menu_button_sp"
+            android:textColor="@color/black" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/menuDiscountBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rectangle"
+            android:text="@string/discount"
+            android:textSize="@dimen/menu_button_sp"
+            android:textColor="@color/black" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentMastersContainerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/programMenu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

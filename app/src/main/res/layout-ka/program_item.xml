@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/anti_line"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/programBtn"
+        android:layout_width="match_parent"
+        android:minHeight="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="7dp"
+        android:text="@string/public_administration_and_state_governance"
+        android:textColor="@color/white"
+        android:textSize="@dimen/program_text_size" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textViewCostForGeorgians"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:text="Citizens of Georgia - 4200 GEL" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textViewCostForNonGeorgians"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:text="Foreign Citizens - 9900 GEL" />-->
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ibsu.ibsu.ui.element.HomeFragment"
+        android:label="fragment_home"
+
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
+            app:destination="@id/eventDescriptionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_entertainmentFragment"
+            app:destination="@id/entertainmentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_SchoolSelectionFragment"
+            app:destination="@id/SchoolSelectionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_programsFragment"
+            app:destination="@id/programsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.ibsu.ibsu.ui.element.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/SISFragment"
+        android:name="com.ibsu.ibsu.ui.element.SISFragment"
+        android:label="fragment_s_i_s"
+        tools:layout="@layout/fragment_s_i_s" >
+        <action
+            android:id="@+id/action_SISFragment_to_schoolMenuFragment"
+            app:destination="@id/schoolMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ibsu.ibsu.ui.element.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/eventDescriptionFragment"
+        android:name="com.ibsu.ibsu.ui.element.EventDescriptionFragment"
+        android:label="fragment_event_description"
+        tools:layout="@layout/fragment_event_description" >
+        <argument
+            android:name="clickedEventInfo"
+            app:argType="com.ibsu.ibsu.data.remote.model.SliderEventItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/exchangeProgramsFragment"
+        android:name="com.ibsu.ibsu.ui.element.ExchangeProgramsFragment"
+        android:label="fragment_exchange_programs"
+        tools:layout="@layout/fragment_exchange_programs" />
+    <fragment
+        android:id="@+id/erasmusPlusFragment"
+        android:name="com.ibsu.ibsu.ui.element.ErasmusPlusFragment"
+        android:label="fragment_erasmus_plus"
+        tools:layout="@layout/fragment_erasmus_plus" />
+    <fragment
+        android:id="@+id/bilateralFragment"
+        android:name="com.ibsu.ibsu.ui.element.BilateralFragment"
+        android:label="fragment_bilateral"
+        tools:layout="@layout/fragment_bilateral" />
+    <fragment
+        android:id="@+id/onlineFragment"
+        android:name="com.ibsu.ibsu.ui.element.OnlineFragment"
+        android:label="fragment_online"
+        tools:layout="@layout/fragment_online" />
+    <fragment
+        android:id="@+id/programsFragment"
+        android:name="com.ibsu.ibsu.ui.element.ProgramsFragment"
+        android:label="fragment_programs"
+        tools:layout="@layout/fragment_programs" >
+        <argument
+            android:name="school"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuNewsFragment"
+        android:name="com.ibsu.ibsu.ui.element.MenuNewsFragment"
+        android:label="fragment_menu_news"
+        tools:layout="@layout/fragment_menu_news" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.ibsu.ibsu.ui.element.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/announcementsFragment"
+        android:name="com.ibsu.ibsu.ui.element.AnnouncementsFragment"
+        android:label="fragment_announcements"
+        tools:layout="@layout/fragment_announcements" />
+    <fragment
+        android:id="@+id/facebookPagesFragment"
+        android:name="com.ibsu.ibsu.ui.element.FacebookPagesFragment"
+        android:label="fragment_facebook_pages"
+        tools:layout="@layout/fragment_facebook_pages" />
+    <fragment
+        android:id="@+id/clubsFragment"
+        android:name="com.ibsu.ibsu.ui.element.ClubsFragment"
+        android:label="fragment_clubs"
+        tools:layout="@layout/fragment_clubs" />
+    <fragment
+        android:id="@+id/entertainmentFragment"
+        android:name="com.ibsu.ibsu.ui.element.EntertainmentFragment"
+        android:label="fragment_entertainment"
+        tools:layout="@layout/fragment_entertainment" >
+        <action
+            android:id="@+id/action_entertainmentFragment_to_singleClubFragment"
+            app:destination="@id/singleClubFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.ibsu.ibsu.ui.element.GamesFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" />
+    <fragment
+        android:id="@+id/adminStaffFragment"
+        android:name="com.ibsu.ibsu.ui.element.AdminStaffFragment"
+        android:label="fragment_admin_staff"
+        tools:layout="@layout/fragment_admin_staff" />
+    <fragment
+        android:id="@+id/bachelorsFragment"
+        android:name="com.ibsu.ibsu.ui.element.BachelorsFragment"
+        android:label="fragment_bachelors"
+        tools:layout="@layout/fragment_bachelors" />
+    <fragment
+        android:id="@+id/doctorateFragment"
+        android:name="com.ibsu.ibsu.ui.element.DoctorateFragment"
+        android:label="fragment_doctorate"
+        tools:layout="@layout/fragment_doctorate" />
+    <fragment
+        android:id="@+id/mastersFragment"
+        android:name="com.ibsu.ibsu.ui.element.MastersFragment"
+        android:label="fragment_masters"
+        tools:layout="@layout/fragment_masters" />
+    <fragment
+        android:id="@+id/singleClubFragment"
+        android:name="com.ibsu.ibsu.ui.element.SingleClubFragment"
+        android:label="fragment_single_club"
+        tools:layout="@layout/fragment_single_club" >
+        <argument
+            android:name="club"
+            app:argType="com.ibsu.ibsu.data.remote.model.ClubsItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.ibsu.ibsu.ui.element.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" />
+    <fragment
+        android:id="@+id/staffSelectionFragment"
+        android:name="com.ibsu.ibsu.ui.element.StaffSelectionFragment"
+        android:label="fragment_staff_selection"
+        tools:layout="@layout/fragment_staff_selection" >
+        <argument
+            android:name="school"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/SchoolSelectionFragment"
+        android:name="com.ibsu.ibsu.ui.element.SchoolSelectionFragment"
+        android:label="fragment_school_languages_selection"
+        tools:layout="@layout/fragment_school_selection" >
+        <action
+            android:id="@+id/action_SchoolSelectionFragment_to_schoolMenuFragment3"
+            app:destination="@id/schoolMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lecturersFragment"
+        android:name="com.ibsu.ibsu.ui.element.LecturersFragment"
+        android:label="fragment_lecturers"
+        tools:layout="@layout/fragment_lectrurers" />
+    <fragment
+        android:id="@+id/admissionFragment"
+        android:name="com.ibsu.ibsu.ui.element.MasterAdmissionFragment"
+        android:label="fragment_admission"
+        tools:layout="@layout/fragment_master_admission" />
+    <fragment
+        android:id="@+id/masterProgramFragment"
+        android:name="com.ibsu.ibsu.ui.element.MasterProgramFragment"
+        android:label="fragment_master_program"
+        tools:layout="@layout/fragment_master_program" />
+    <fragment
+        android:id="@+id/examTopicsFragment"
+        android:name="com.ibsu.ibsu.ui.element.ExamTopicsFragment"
+        android:label="fragment_exam_topics"
+        tools:layout="@layout/fragment_exam_topics" />
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.ibsu.ibsu.ui.element.SportFragment"
+        android:label="fragment_sport"
+        tools:layout="@layout/fragment_sport" />
+    <fragment
+        android:id="@+id/sportNewsFragment"
+        android:name="com.ibsu.ibsu.ui.element.SportNewsFragment"
+        android:label="fragment_sport_news"
+        tools:layout="@layout/fragment_sport_news" />
+    <fragment
+        android:id="@+id/selfGovernanceFragment"
+        android:name="com.ibsu.ibsu.ui.element.SelfGovernanceFragment"
+        android:label="fragment_self_governance"
+        tools:layout="@layout/fragment_self_governance" />
+    <fragment
+        android:id="@+id/mastersDiscountFragment"
+        android:name="com.ibsu.ibsu.ui.element.MastersDiscountFragment"
+        android:label="fragment_masters_discount"
+        tools:layout="@layout/fragment_masters_discount" />
+    <fragment
+        android:id="@+id/schoolMenuFragment"
+        android:name="com.ibsu.ibsu.ui.element.SchoolMenuFragment"
+        android:label="fragment_school_menu"
+        tools:layout="@layout/fragment_school_menu" >
+        <action
+            android:id="@+id/action_schoolMenuFragment_to_staffSelectionFragment2"
+            app:destination="@id/staffSelectionFragment" />
+        <argument
+            android:name="school"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_schoolMenuFragment_to_programsFragment"
+            app:destination="@id/programsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.ibsu.ibsu.ui.element.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/governingBoardFragment"
+        android:name="com.ibsu.ibsu.ui.element.GoverningBoardFragment"
+        android:label="fragment_governing_board"
+        tools:layout="@layout/fragment_governing_board" />
+    <fragment
+        android:id="@+id/contactInfoFragment"
+        android:name="com.ibsu.ibsu.ui.element.ContactInfoFragment"
+        android:label="fragment_contact_info"
+        tools:layout="@layout/fragment_contact_info" />
+    <fragment
+        android:id="@+id/workingHoursFragment"
+        android:name="com.ibsu.ibsu.ui.element.WorkingHoursFragment"
+        android:label="fragment_working_hours"
+        tools:layout="@layout/fragment_working_hours" />
+</navigation>
