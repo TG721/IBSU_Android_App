@@ -8,9 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ibsu.ibsu.data.remote.model.SelfGovernanceItem
+import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.FragmentSelfGovernanceBinding
-import com.ibsu.ibsu.ui.adapter.SelfGovernanceAdapter
+import com.ibsu.ibsu.ui.adapter.GovernanceAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.SelfGovernanceViewModel
 import com.ibsu.ibsu.utils.ResponseState
@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 class SelfGovernanceFragment :
     BaseFragment<FragmentSelfGovernanceBinding>(FragmentSelfGovernanceBinding::inflate) {
     private val viewModel: SelfGovernanceViewModel by viewModels()
-    private lateinit var selfGovernanceAdapter: SelfGovernanceAdapter
-    private var selfGovernanceList = mutableListOf<SelfGovernanceItem>()
+    private lateinit var governanceAdapter: GovernanceAdapter
+    private var governanceList = mutableListOf<GovernanceItem>()
     override fun setup() {
         setupRecycler()
     }
@@ -50,11 +50,11 @@ class SelfGovernanceFragment :
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
                             for (i in 0 until it.items.size) {
-                                selfGovernanceList.add(it.items.elementAt(i))
+                                governanceList.add(it.items.elementAt(i))
 
                             }
 
-                            selfGovernanceAdapter.submitList(selfGovernanceList)
+                            governanceAdapter.submitList(governanceList)
 
                         }
 
@@ -66,7 +66,7 @@ class SelfGovernanceFragment :
     }
 
     private fun setupRecycler() {
-        selfGovernanceAdapter = SelfGovernanceAdapter(requireContext())
+        governanceAdapter = GovernanceAdapter(requireContext())
         val recycler = binding.selfGovernanceRV
         var spanCount = 2
 //        if(requireContext().getCurrentLocale(requireContext()).language=="ka") spanCount = 1
@@ -79,7 +79,7 @@ class SelfGovernanceFragment :
                 return 1
             }
         }
-        recycler.adapter = selfGovernanceAdapter
+        recycler.adapter = governanceAdapter
         recycler.layoutManager = layoutManager
     }
 

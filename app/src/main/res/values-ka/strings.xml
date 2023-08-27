@@ -60,11 +60,11 @@
     <string name="more_information">მეტი ინფორმაცია</string>
     <string name="dark_mode">ბნელი რეჟიმი</string>
     <string name="application_language">აპლიკაციის ენა</string>
-    <string name="useful_ndocuments">სასარგებლო\nდოკუმენტები</string>
+    <string name="useful_ndocuments">სასარგებლო დოკუმენტები</string>
     <string name="admission">მიღების წესი</string>
     <string name="exam_ntopics">საგამოცდო\nსაკითხები</string>
     <string name="international_relations">საერთაშორისო \nურთიერთობები</string>
-    <string name="student_nlife">სტუდენტური \nცხოვრება</string>
+    <string name="student_nlife">სტუდენტური ცხოვრება</string>
     <string name="contact">კონტაქტი</string>
     <string name="choose_school">აირჩიე სკოლა</string>
     <string name="student_life">სტუდენტური ცხოვრება</string>
@@ -97,6 +97,7 @@
     <string name="name">სახელი</string>
     <string name="working_hours">სამუშაო საათები</string>
     <string name="governing_board">მმართველი საბჭო</string>
+    <string name="images">სურათები:</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

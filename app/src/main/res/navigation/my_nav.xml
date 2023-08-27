@@ -29,11 +29,6 @@
 
     </fragment>
     <fragment
-        android:id="@+id/eventsFragment"
-        android:name="com.ibsu.ibsu.ui.element.EventsFragment"
-        android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
-    <fragment
         android:id="@+id/SISFragment"
         android:name="com.ibsu.ibsu.ui.element.SISFragment"
         android:label="fragment_s_i_s"
@@ -87,21 +82,6 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/menuNewsFragment"
-        android:name="com.ibsu.ibsu.ui.element.MenuNewsFragment"
-        android:label="fragment_menu_news"
-        tools:layout="@layout/fragment_menu_news" />
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.ibsu.ibsu.ui.element.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
-    <fragment
-        android:id="@+id/announcementsFragment"
-        android:name="com.ibsu.ibsu.ui.element.AnnouncementsFragment"
-        android:label="fragment_announcements"
-        tools:layout="@layout/fragment_announcements" />
-    <fragment
         android:id="@+id/facebookPagesFragment"
         android:name="com.ibsu.ibsu.ui.element.FacebookPagesFragment"
         android:label="fragment_facebook_pages"
@@ -119,6 +99,9 @@
         <action
             android:id="@+id/action_entertainmentFragment_to_singleClubFragment"
             app:destination="@id/singleClubFragment" />
+        <action
+            android:id="@+id/action_entertainmentFragment_to_newsDescriptionFragment"
+            app:destination="@id/newsDescriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/gamesFragment"
@@ -252,4 +235,28 @@
         android:name="com.ibsu.ibsu.ui.element.WorkingHoursFragment"
         android:label="fragment_working_hours"
         tools:layout="@layout/fragment_working_hours" />
+    <fragment
+        android:id="@+id/newsDescriptionFragment"
+        android:name="com.ibsu.ibsu.NewsDescriptionFragment"
+        android:label="fragment_news_description"
+        tools:layout="@layout/fragment_news_description" >
+        <action
+            android:id="@+id/action_newsDescriptionFragment_to_newsImageFullScreenFragment"
+            app:destination="@id/newsImageFullScreenFragment" />
+        <argument
+            android:name="newsItems"
+            app:argType="com.ibsu.ibsu.data.remote.model.NewsItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsImageFullScreenFragment"
+        android:name="com.ibsu.ibsu.NewsImageFullScreenFragment"
+        android:label="fragment_news_image_full_screen"
+        tools:layout="@layout/fragment_news_image_full_screen" >
+        <argument
+            android:name="currentImagePos"
+            app:argType="integer" />
+        <argument
+            android:name="listOfImages"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

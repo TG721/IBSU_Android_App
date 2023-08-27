@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="menu_button_sp">14sp</dimen>
-    <dimen name="home_btn_sp">18sp</dimen>
+    <dimen name="home_btn_sp">20sp</dimen>
     <dimen name="settings_text_indicator">16sp</dimen>
     <dimen name="program_text_size">16sp</dimen>
 </resources>

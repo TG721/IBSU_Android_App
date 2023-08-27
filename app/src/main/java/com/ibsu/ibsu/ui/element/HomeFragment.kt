@@ -31,7 +31,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var listOfPictureURLs: List<String>
     private var isFirstResume = true
     override fun setup() {
-        setupSlider()
         setupActionBar()
         showBottomMenu()
     }
@@ -57,9 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun listeners() {
         binding.apply {
-            buttonIRO.setOnClickListener {
-
-            }
             buttonPrograms.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToProgramsFragment(null)
                 findNavController().navigate(action)
@@ -81,67 +77,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun setupSlider() {
-        //observing slider events
-        viewModel.getSliderEvents()
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.myState.collect {
-                    when (it) {
-                        is ResponseState.Loading -> {
 
-                        }
-
-                        is ResponseState.Error -> {
-                            d("error", "error is this " + it.message.toString())
-                        }
-
-                        is ResponseState.Success -> {
-                            d("beforeresultlist", "beforeeeeeee")
-                            listOfPictureURLs = it.items.map { sliderEventItem -> sliderEventItem.pictureURL.toString() }
-                            d("resultlist", listOfPictureURLs.toString())
-                            insertSlideData(listOfPictureURLs)
-                            //setup click listener
-                            binding.imageSlider.setItemClickListener(object : ItemClickListener {
-                                override fun doubleClick(position: Int) {
-
-                                }
-
-                                override fun onItemSelected(position: Int) {
-                                    val clickedEvent = it.items[position]
-                                    val action =
-                                        HomeFragmentDirections.actionHomeFragmentToEventDescriptionFragment(
-                                            clickedEventInfo = clickedEvent
-                                        )
-                                    findNavController().navigate(action)
-                                }
-                            })
-                        }
-
-                        else -> {}
-                    }
-                }
-            }
-        }
-        //nothing
-    }
-
-    private fun insertSlideData(list: List<String>) {
-        val imageSlider = binding.imageSlider
-        val slideModels = list.map { SlideModel(it, null, null) }
-        imageSlider.setImageList(slideModels, ScaleTypes.CENTER_CROP)
-    }
-
-    override fun onResume() {
-        super.onResume()
-//        if (isFirstResume) {
-//            isFirstResume = false
-//        } else {
-//            insertSlideData(listOfPictureURLs)
-//            binding.imageSlider.visibility = View.VISIBLE
-//        }
-
-    }
 
 
 }

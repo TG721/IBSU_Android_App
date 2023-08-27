@@ -60,11 +60,11 @@
     <string name="more_information">More Information</string>
     <string name="dark_mode">Dark mode</string>
     <string name="application_language">Application language</string>
-    <string name="useful_ndocuments">Useful\nDocuments</string>
+    <string name="useful_ndocuments">Useful Documents</string>
     <string name="admission">Admission</string>
     <string name="exam_ntopics">Exam\nTopics</string>
     <string name="international_relations">International \nRelations</string>
-    <string name="student_nlife">Student \nLife</string>
+    <string name="student_nlife">Student Life</string>
     <string name="contact">Contact</string>
     <string name="choose_school">Choose School</string>
     <string name="student_life">Student Life</string>
@@ -97,6 +97,7 @@
     <string name="name">Name</string>
     <string name="working_hours">Working Hours</string>
     <string name="governing_board">Governing Board</string>
+    <string name="images">Images:</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>

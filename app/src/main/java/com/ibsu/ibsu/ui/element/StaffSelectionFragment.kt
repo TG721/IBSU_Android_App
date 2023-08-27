@@ -8,7 +8,6 @@ import com.ibsu.ibsu.databinding.FragmentStaffSelectionBinding
 import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
-import com.ibsu.ibsu.ui.adapter.ViewPagerForNewsAdapter
 import com.ibsu.ibsu.ui.adapter.ViewPagerForSchoolStaffAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint

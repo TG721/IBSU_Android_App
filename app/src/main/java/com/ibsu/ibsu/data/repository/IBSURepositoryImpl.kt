@@ -11,8 +11,9 @@ import com.ibsu.ibsu.data.remote.model.Games
 import com.ibsu.ibsu.data.remote.model.Lecturers
 import com.ibsu.ibsu.data.remote.model.News
 import com.ibsu.ibsu.data.remote.model.Programs
-import com.ibsu.ibsu.data.remote.model.SelfGovernance
+import com.ibsu.ibsu.data.remote.model.Governance
 import com.ibsu.ibsu.data.remote.model.SliderEvents
+import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.domain.repository.IBSURepository
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
@@ -146,12 +147,12 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
         }
     }
 
-    override suspend fun getSelfGovernance(): Flow<ResponseState<SelfGovernance>> =
+    override suspend fun getSelfGovernance(): Flow<ResponseState<Governance>> =
         flow {
             try {
-                val response: Response<SelfGovernance> =
+                val response: Response<Governance> =
                     api.getSelfGovernance()
-                val body: SelfGovernance? = response.body()
+                val body: Governance? = response.body()
                 if (response.isSuccessful && body != null) {
                     emit(ResponseState.Success(body))
                 } else {
@@ -207,4 +208,36 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
             emit(ResponseState.Error(e.message.toString()))
         }
     }
+
+    override suspend fun getGoverningBoard(): Flow<ResponseState<Governance>> =
+        flow {
+            try {
+                val response: Response<Governance> =
+                    api.getGoverningBoard()
+                val body: Governance? = response.body()
+                if (response.isSuccessful && body != null) {
+                    emit(ResponseState.Success(body))
+                } else {
+                    emit(ResponseState.Error(response.errorBody()?.string()))
+                }
+            } catch (e: Exception) {
+                emit(ResponseState.Error(e.message.toString()))
+            }
+        }
+
+    override suspend fun getWorkingHours(): Flow<ResponseState<WorkingHours>> = flow {
+        try {
+            val response: Response<WorkingHours> =
+                api.getWorkingHours()
+            val body: WorkingHours? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
 }

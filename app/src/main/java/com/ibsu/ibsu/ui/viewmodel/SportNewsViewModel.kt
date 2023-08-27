@@ -3,8 +3,6 @@ package com.ibsu.ibsu.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibsu.ibsu.data.remote.model.News
-import com.ibsu.ibsu.data.remote.model.SelfGovernance
-import com.ibsu.ibsu.domain.usecase.GetSelfGovernanceUseCase
 import com.ibsu.ibsu.domain.usecase.GetSportNews
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel

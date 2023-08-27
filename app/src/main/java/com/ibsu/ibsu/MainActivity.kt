@@ -95,11 +95,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupActionBar() {
         // Get the color value from a resource file
-        val color = ContextCompat.getColor(applicationContext, R.color.ibsu)
+//        val color = ContextCompat.getColor(applicationContext, R.color.ibsu)
         val toolbar = binding.materialToolbar
         setSupportActionBar(toolbar)
         // Change the background color of the action bar
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
+//        supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
         supportActionBar?.setHomeAsUpIndicator(
             AppCompatResources.getDrawable(this, R.drawable.baseline_arrow_back_24)?.apply {
                 setTint(Color.WHITE)
@@ -118,11 +118,6 @@ class MainActivity : AppCompatActivity() {
 
                     R.id.homeFragment -> {
                         navController.navigate(R.id.homeFragment)
-                        true
-                    }
-
-                    R.id.newsMenuFragment -> {
-                        navController.navigate(R.id.menuNewsFragment)
                         true
                     }
 

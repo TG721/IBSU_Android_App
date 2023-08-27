@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsDescriptionFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/headlineTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:textSize="20sp"
+            android:text="IBSU-ს სამართალმცოდნეობის მესამე კურსის სტუდენტმა, ელსუნ ალიევმა ოქროს თასი და მედალი მოიპოვა."
+            android:textColor="@color/line"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="22 May"
+            android:textColor="@color/line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headlineTV" />
+
+        <TextView
+            android:id="@+id/descriptionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit ultrices erat non dapibus. Fusce augue risus, consequat sit amet tellus id, tincidunt venenatis felis. Pellentesque ullamcorper vel purus eget iaculis. Curabitur fermentum cursus risus. Morbi sollicitudin ante sit amet lacus porta faucibus efficitur venenatis nisl. Aliquam ornare accumsan tortor vel molestie. Nullam pharetra id mauris sit amet tincidunt. Pellentesque sodales ante id leo iaculis blandit at ultrices lorem. Aliquam eget eros purus.
+
+Sed luctus enim eget massa consequat ullamcorper. Cras accumsan porttitor leo, non dapibus arcu imperdiet ac. Suspendisse tristique bibendum ullamcorper. Nulla quis ullamcorper augue, non egestas dolor. Aliquam lorem nunc, imperdiet a urna non, pharetra dictum risus. Integer a libero magna. Nullam ut sollicitudin odio. Sed fermentum, massa ac mollis bibendum, odio nulla suscipit arcu, eu tristique nulla quam et orci. Vivamus varius ante eget consectetur lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            android:textColor="@color/line"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateTV" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/images"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

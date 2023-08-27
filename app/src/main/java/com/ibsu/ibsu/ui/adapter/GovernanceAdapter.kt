@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.ibsu.ibsu.data.remote.model.SelfGovernanceItem
+import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.AdminStaffPortraitItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 
-class SelfGovernanceAdapter(private val context: Context) :
-    ListAdapter<SelfGovernanceItem, SelfGovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
+class GovernanceAdapter(private val context: Context) :
+    ListAdapter<GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
     inner class StaffPortraitItemHolder(private val binding: AdminStaffPortraitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -32,11 +31,11 @@ class SelfGovernanceAdapter(private val context: Context) :
                 if (context.getCurrentLocale(context).language == "ka") {
                     adminStaffNameTV.text = source.NameGe
                     adminStaffPositionTV.text = source.governingPositionGe
-                    moreInfoTV.text = source.studyingPositionGe
+                    moreInfoTV.text = source.academicPositionGe
                 } else {
                     adminStaffNameTV.text = source.NameEn
                     adminStaffPositionTV.text = source.governingPositionEn
-                    moreInfoTV.text = source.studyingPositionEn
+                    moreInfoTV.text = source.academicPositionEn
 
                 }
             }
@@ -55,17 +54,17 @@ class SelfGovernanceAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<SelfGovernanceItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<GovernanceItem>() {
         override fun areItemsTheSame(
-            oldItem: SelfGovernanceItem,
-            newItem: SelfGovernanceItem,
+            oldItem: GovernanceItem,
+            newItem: GovernanceItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: SelfGovernanceItem,
-            newItem: SelfGovernanceItem,
+            oldItem: GovernanceItem,
+            newItem: GovernanceItem,
         ): Boolean =
             oldItem == newItem
 

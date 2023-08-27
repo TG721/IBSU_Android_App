@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,37 +13,45 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ibsu.ibsu.data.remote.model.NewsItem
 import com.ibsu.ibsu.databinding.NewsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.element.EntertainmentFragmentDirections
 
 class NewsAdapter(private val context: Context) :
     ListAdapter<NewsItem, NewsAdapter.NewsViewHolder>(ItemDiffCallback()) {
     inner class NewsViewHolder(private val binding: NewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-
+        var source : NewsItem? = null
         fun bind() {
-            val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                source = getItem(absoluteAdapterPosition)
+
                 if (context.getCurrentLocale(context).language == "ka") {
-                    newsTitleTV.text = source.headlineGe
-                    dateTV.text = source.dateGe
+                    newsTitleTV.text = source?.headlineGe
+                    dateTV.text = source?.dateGe
                 } else {
-                    newsTitleTV.text = source.headlineEn
-                    dateTV.text = source.dateEn
+                    newsTitleTV.text = source?.headlineEn
+                    dateTV.text = source?.dateEn
 
                 }
                 Glide.with(thumbnail)
-                    .load(source.thumbnail)
+                    .load(source?.thumbnail)
 //                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
                     .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
                     .into(thumbnail)
                 thumbnail.setOnClickListener {
-//                    val action =
-//                        EntertainmentFragmentDirections.actionEntertainmentFragmentToSingleClubFragment(
-//                            source
-//                        )
-//                    root.findNavController().navigate(action)
+                    navigateToDescription()
+                }
+                root.setOnClickListener {
+                    navigateToDescription()
                 }
             }
+        }
+
+        private fun navigateToDescription() {
+            val action =
+                EntertainmentFragmentDirections.actionEntertainmentFragmentToNewsDescriptionFragment(
+                    source!!
+                )
+            binding.root.findNavController().navigate(action)
         }
     }
 

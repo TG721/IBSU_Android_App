@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/statement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="@color/line"
+        android:text="Office of Rector"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/line"
+        android:drawableStart="@drawable/baseline_call_24"
+        android:text="+995 32 2595006 (115)"
+        android:gravity="center_vertical"
+        android:drawablePadding="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        />
+    <TextView
+        android:id="@+id/email"
+        android:drawableStart="@drawable/baseline_email_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/line"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:text="rectorsoffice@ibsu.edu.ge"
+        android:layout_marginBottom="20dp"
+
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
