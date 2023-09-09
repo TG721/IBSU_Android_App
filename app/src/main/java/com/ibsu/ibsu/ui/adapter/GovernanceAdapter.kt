@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class GovernanceAdapter(private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind() {
+        fun bind(position: Int) {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 Glide.with(imageView)
@@ -38,6 +39,7 @@ class GovernanceAdapter(private val context: Context) :
                     moreInfoTV.text = source.academicPositionEn
 
                 }
+
             }
 
         }
@@ -51,7 +53,7 @@ class GovernanceAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: StaffPortraitItemHolder, position: Int) {
-        holder.bind()
+        holder.bind(position)
     }
 
     private class ItemDiffCallback : DiffUtil.ItemCallback<GovernanceItem>() {

@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AdminStaffFragment(val school: String) :
+class AdminStaffFragment(val school: String, private val emailVisibility: Boolean = false) :
     BaseFragment<FragmentAdminStaffBinding>(FragmentAdminStaffBinding::inflate) {
     private val viewModel: AdminStaffViewModel by viewModels()
     private lateinit var adminStaffItemAdapter: AdminStaffItemAdapter
@@ -62,7 +62,7 @@ class AdminStaffFragment(val school: String) :
     }
 
     private fun setupRecycler() {
-        adminStaffItemAdapter = AdminStaffItemAdapter(requireContext())
+        adminStaffItemAdapter = AdminStaffItemAdapter(requireContext(), emailVisibility)
         val recycler = binding.itemsRV
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

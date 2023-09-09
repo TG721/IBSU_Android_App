@@ -1,5 +1,6 @@
 package com.ibsu.ibsu.ui.element
 
+import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -16,6 +17,9 @@ class SportFragment :
     private var fragmentContainerID: Int? = null
     private lateinit var colorStateListSelected: ColorStateList
     private lateinit var colorStateListNotSelected: ColorStateList
+
+    var animator : ValueAnimator? = null
+
     override fun setup() {
         setupContainer();
         setupMenuList();
@@ -28,6 +32,7 @@ class SportFragment :
             )
         )
     }
+
 
     private fun setupMenuList() {
         menuButtons = mutableListOf(
@@ -61,6 +66,8 @@ class SportFragment :
             fixColor(menuButtons, it.id);
         }
 
+
+
     }
 
     private fun fixColor(Buttons: MutableList<AppCompatButton>, targetID: Int) {
@@ -74,4 +81,5 @@ class SportFragment :
             }
         }
     }
+
 }

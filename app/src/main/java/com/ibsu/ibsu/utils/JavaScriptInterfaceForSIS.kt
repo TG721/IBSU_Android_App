@@ -14,7 +14,7 @@ class JavaScriptInterfaceForSIS(private val fragment: Fragment) {
         val schoolName = school.substring(10)
 
         fragment.activity?.runOnUiThread {
-            val action = SISFragmentDirections.actionSISFragmentToSchoolMenuFragment(schoolName)
+            val action = SISFragmentDirections.actionSISFragmentToSchoolMenuFragment(schoolName, true)
             NavHostFragment.findNavController(fragment).navigate(action)
         }
     }

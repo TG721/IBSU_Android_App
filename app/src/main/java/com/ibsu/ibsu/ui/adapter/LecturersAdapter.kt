@@ -21,7 +21,7 @@ import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 
 
-class LecturersAdapter(private val context: Context) :
+class LecturersAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
     ListAdapter<LecturersItem, LecturersAdapter.LecturerViewHolder>(ItemDiffCallback()) {
     inner class LecturerViewHolder(private val binding: AdminStaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -30,6 +30,10 @@ class LecturersAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                if(emailVisibility) {
+                    imageViewMail.visibility = View.VISIBLE
+                }
+
                 if (source.pictureURL != null) {
                     Glide.with(imageView)
                         .load(source.pictureURL)

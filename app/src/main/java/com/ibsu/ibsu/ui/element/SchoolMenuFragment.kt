@@ -35,7 +35,7 @@ class SchoolMenuFragment :
             }
             btnStaff.setOnClickListener {
                 val action =
-                    SchoolMenuFragmentDirections.actionSchoolMenuFragmentToStaffSelectionFragment2(args.school)
+                    SchoolMenuFragmentDirections.actionSchoolMenuFragmentToStaffSelectionFragment2(args.school, args.emailVisibility)
                 findNavController().navigate(action)
             }
             }

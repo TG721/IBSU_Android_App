@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LecturersFragment(val school: String) :
+class LecturersFragment(val school: String, private val emailVisibility: Boolean = false) :
     BaseFragment<FragmentLectrurersBinding>(FragmentLectrurersBinding::inflate) {
     private val viewModel: LecturersViewModel by viewModels()
     private lateinit var rvAdapter: LecturersAdapter
@@ -28,7 +28,7 @@ class LecturersFragment(val school: String) :
     }
 
     private fun setupRecycler() {
-        rvAdapter = LecturersAdapter(requireContext())
+        rvAdapter = LecturersAdapter(requireContext(), emailVisibility)
         val recycler = binding.itemsRV
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

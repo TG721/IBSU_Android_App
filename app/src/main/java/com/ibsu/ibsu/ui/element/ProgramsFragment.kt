@@ -6,6 +6,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentProgramsBinding
 import com.ibsu.ibsu.extensions.hideBottomNavigation
+import com.ibsu.ibsu.extensions.reduceDragSensitivity
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.ViewPagerForProgramsAdapter
@@ -31,6 +32,7 @@ class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsB
         val schoolValue = args.school
         val mainViewPagerAdapter = ViewPagerForProgramsAdapter(this, schoolValue)
         viewPager2.adapter = mainViewPagerAdapter
+        binding.viewPager.reduceDragSensitivity()
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
             tab.text = when (index) {

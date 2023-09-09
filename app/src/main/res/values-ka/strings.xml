@@ -98,6 +98,7 @@
     <string name="working_hours">სამუშაო საათები</string>
     <string name="governing_board">მმართველი საბჭო</string>
     <string name="images">სურათები:</string>
+    <string name="head_of_the_department">დეპარტამენტის უფროსი</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

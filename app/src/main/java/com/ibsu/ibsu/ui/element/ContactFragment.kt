@@ -29,7 +29,6 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(FragmentContactBind
         val mainViewPagerAdapter = ViewPagerForContactAdapter(this)
         viewPager2.adapter = mainViewPagerAdapter
 
-        binding.viewPager.reduceDragSensitivity()
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
             tab.text = when (index) {

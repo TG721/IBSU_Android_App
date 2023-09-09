@@ -26,7 +26,7 @@ class StaffSelectionFragment :
     private fun setupTabLayout() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
-        val mainViewPagerAdapter = ViewPagerForSchoolStaffAdapter(this, args.school)
+        val mainViewPagerAdapter = ViewPagerForSchoolStaffAdapter(this, args.school, args.emailVisibility)
         viewPager2.adapter = mainViewPagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->

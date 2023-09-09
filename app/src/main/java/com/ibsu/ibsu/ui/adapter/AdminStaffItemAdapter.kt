@@ -23,7 +23,7 @@ import com.ibsu.ibsu.data.remote.model.AdministrationItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 
-class AdminStaffItemAdapter(private val context: Context) :
+class AdminStaffItemAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
     ListAdapter<AdministrationItem, AdminStaffItemAdapter.StaffViewHolder>(ItemDiffCallback()) {
     inner class StaffViewHolder(private val binding: AdminStaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -32,6 +32,10 @@ class AdminStaffItemAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                if(emailVisibility) {
+                    imageViewMail.visibility = View.VISIBLE
+                }
+
                 if (source.pictureURL != null) {
                     Glide.with(imageView)
                         .load(source.pictureURL)

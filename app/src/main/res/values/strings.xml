@@ -98,6 +98,7 @@
     <string name="working_hours">Working Hours</string>
     <string name="governing_board">Governing Board</string>
     <string name="images">Images:</string>
+    <string name="head_of_the_department">Head of the department</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>
