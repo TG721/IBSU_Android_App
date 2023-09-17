@@ -5,10 +5,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
+import android.os.Handler
+import android.os.Looper
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +37,7 @@ import java.io.File
 
 @AndroidEntryPoint
 class SISFragment : Fragment() {
-    //    private var isFirstLoad = true
+        private var isFirstLoad = true
     private var binding: FragmentSISBinding? = null
 
     override fun onCreateView(
@@ -91,7 +94,124 @@ class SISFragment : Fragment() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-//                    isFirstLoad = false
+                val appSettingPrefs: SharedPreferences =
+                    requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
+
+                if(isFirstLoad){
+                    if(appSettingPrefs.getInt("languageVal", 2)==1){
+                        view?.evaluateJavascript(
+                            """
+    function changeToKA() {
+
+     
+        var elementToClick = document.getElementById('languageGeorgian');
+        
+        // Create a click event
+        var clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        
+        // Dispatch the click event on the element
+        elementToClick.dispatchEvent(clickEvent);
+}
+
+    // Call the function to change the colors when needed
+    changeToKA();
+""", null
+                        )
+                    }
+                }
+                    isFirstLoad = false
+
+                //setup dark mode
+
+                d("snnnnnnn", appSettingPrefs.getInt("darkModeVal", 2).toString())
+                if (appSettingPrefs.getInt("darkModeVal", 2) == 0) {
+//                    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+//
+//                    } else {
+                    view?.evaluateJavascript(
+                        """
+    // Function to change the background color and text color of the body and div elements
+    function changeColors() {
+      // Change the body background color to black and text color to white
+      document.body.style.background = 'black';
+   
+
+
+      // Get all div elements on the page
+      const divElements = document.querySelectorAll('div');
+
+      // Loop through each div element
+      divElements.forEach((div) => {
+        // Check if the div has the class "navbar-sis" or is a child of a div with that class
+        if (!div.classList.contains('navbar-sis') && !div.closest('.navbar-sis')) {
+          // If it doesn't have the class or is not a child, change its background color to black and text color to white
+          div.style.background = 'black';
+          div.style.color = 'white';
+        }
+      });
+      
+    }
+
+    // Call the function to change the colors when needed
+    changeColors();
+""", null
+                    )
+
+                    if (!url!!.contains("requests")) {
+
+                        view?.evaluateJavascript(
+                            """
+            function changeColors2() {
+        
+        
+            // Get all td elements on the page
+            var tdElements = document.querySelectorAll('td');
+            // Loop through each td element and change its background color
+            tdElements.forEach(function (td) {
+                td.style.background = '#203f01';
+            });
+        
+            // Get all th elements on the page
+            var thElements = document.querySelectorAll('th');
+        
+            // Loop through each th element and change its background color
+            thElements.forEach(function (th) {
+                th.style.backgroundColor = '#20672d';
+            });
+        
+            }
+        
+            // Call the function to change the colors when needed
+            changeColors2();
+                """, null
+                        )
+                    } else {
+                        view?.evaluateJavascript(
+                            """
+    function changeColors2() {
+
+
+    // Get all td elements on the page
+    var tdElements = document.querySelectorAll('td');
+    // Loop through each td element and change its background color
+    tdElements.forEach(function (td) {
+        td.style.color = 'black';
+    });
+
+
+    }
+
+    // Call the function to change the colors when needed
+    changeColors2();
+""", null
+                        )
+                    }
+                }
+
 
                 // Enable Cookies
                 CookieManager.getInstance().flush()
@@ -209,8 +329,11 @@ class SISFragment : Fragment() {
                             "}" +
                             "})()"
                 )
-                binding?.progressBar?.visibility = View.GONE
-                binding?.overlay?.visibility = View.GONE
+                // Delay hiding ProgressBar and overlay
+                Handler(Looper.getMainLooper()).postDelayed({
+                    binding?.progressBar?.visibility = View.GONE
+                    binding?.overlay?.visibility = View.GONE
+                }, 400) // Delay for 400 milliseconds (0.4 seconds)
             }
         }
 
@@ -218,7 +341,8 @@ class SISFragment : Fragment() {
             val request = DownloadManager.Request(Uri.parse(url))
             request.setMimeType(mimeType)
             request.setDescription("Downloading file...")
-            Toast.makeText(requireContext(), getString(R.string.downloading), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.downloading), Toast.LENGTH_SHORT)
+                .show()
             request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
 
             val downloadManager =
@@ -241,10 +365,14 @@ class SISFragment : Fragment() {
                                 val localFilePath = cursor.getString(columnIndexFileName)
                                 val file = File(localFilePath)
                                 // Handle the downloaded file (e.g., open it, share it, etc.)
-                                val snackbar = Snackbar.make(binding?.root!!, getString(R.string.downloaded), Snackbar.LENGTH_LONG)
+                                val snackbar = Snackbar.make(
+                                    binding?.root!!,
+                                    getString(R.string.downloaded),
+                                    Snackbar.LENGTH_LONG
+                                )
                                 snackbar.setAction(getString(R.string.go_to_downloads)) {
                                     // Handle button click here
-                                    startActivity( Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
+                                    startActivity(Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
                                 }
                                 snackbar.show()
                             } else {
@@ -264,6 +392,7 @@ class SISFragment : Fragment() {
         }
 
         webView?.loadUrl(webURL)
+
     }
 
     companion object {
