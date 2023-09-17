@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
 import com.ibsu.ibsu.data.remote.model.Games
-import com.ibsu.ibsu.domain.usecase.GetGameRoomLocation
+import com.ibsu.ibsu.domain.usecase.GetGameRoomLocationUseCase
 import com.ibsu.ibsu.domain.usecase.GetGamesUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val getGamesUseCase: GetGamesUseCase,
-    private val getGameRoomLocation: GetGameRoomLocation,
+    private val getGameRoomLocation: GetGameRoomLocationUseCase,
 ) : ViewModel() {
     private val _myState =
         MutableStateFlow<ResponseState<Games>>(ResponseState.Empty()) //mutable state flow

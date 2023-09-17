@@ -2,7 +2,9 @@ package com.ibsu.ibsu.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
@@ -10,6 +12,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,7 +36,12 @@ class AdminStaffItemAdapter(private val context: Context, private val emailVisib
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 if(emailVisibility) {
-                    imageViewMail.visibility = View.VISIBLE
+                    if(source.email!=null)
+                        imageViewMail.visibility = View.VISIBLE
+                }
+
+                imageViewMail.setOnClickListener {
+                    openEmail(source.email!!)
                 }
 
                 if (source.pictureURL != null) {
@@ -129,7 +137,18 @@ class AdminStaffItemAdapter(private val context: Context, private val emailVisib
                 }
             }
         }
-
+        private fun openEmail(email: String) {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            }
+            val packageManager = context.packageManager
+            if (intent.resolveActivity(packageManager) != null) {
+                context.startActivity(intent)
+            } else {
+                Toast.makeText(context, "No email app found.", Toast.LENGTH_SHORT).show()
+            }
+        }
         fun replaceFirstCommaWithNewLine(text: String): String {
             val indexOfComma = text.indexOf(", ")
              if (indexOfComma != -1) {

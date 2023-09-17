@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <TextView
         android:id="@+id/statement"
         android:layout_width="match_parent"
@@ -13,21 +13,41 @@
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="5dp"
         android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/number"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/line"
-        android:drawableStart="@drawable/baseline_call_24"
-        android:text="+995 32 2595006 (115)"
-        android:gravity="center_vertical"
-        android:drawablePadding="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="5dp"
-        />
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/number"
+            android:background="@drawable/contact_link_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/line"
+            android:drawableStart="@drawable/baseline_call_24"
+            android:drawableTint="@color/line"
+            android:text="+995 32 2595006"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="5dp"
+            />
+        <TextView
+            android:id="@+id/extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/line"
+            android:text="(115)"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="5dp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/email"
+        android:background="@drawable/contact_link_bg"
         android:drawableStart="@drawable/baseline_email_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

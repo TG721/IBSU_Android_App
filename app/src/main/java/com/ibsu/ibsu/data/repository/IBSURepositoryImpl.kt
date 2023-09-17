@@ -2,8 +2,10 @@ package com.ibsu.ibsu.data.repository
 
 import android.util.Log.d
 import com.ibsu.ibsu.data.remote.IBSUApi
+import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
+import com.ibsu.ibsu.data.remote.model.ContactInfo
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -240,4 +242,33 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
         }
     }
 
+    override suspend fun getContactInfo(): Flow<ResponseState<ContactInfo>> = flow {
+        try {
+            val response: Response<ContactInfo> =
+                api.getContactInfo()
+            val body: ContactInfo? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getAddress(): Flow<ResponseState<Address>> = flow {
+        try {
+            val response: Response<Address> =
+                api.getAddress()
+            val body: Address? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
 }

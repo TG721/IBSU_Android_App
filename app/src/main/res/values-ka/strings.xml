@@ -99,6 +99,10 @@
     <string name="governing_board">მმართველი საბჭო</string>
     <string name="images">სურათები:</string>
     <string name="head_of_the_department">დეპარტამენტის უფროსი</string>
+    <string name="program">ძირითადი სპეციალობა</string>
+    <string name="downloading">იწერება</string>
+    <string name="downloaded">გადმოწერა დასრულებულია</string>
+    <string name="go_to_downloads">გადმოწერებეში გადასვლა</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

@@ -46,6 +46,8 @@ class NewsDescriptionFragment : BaseFragment<FragmentNewsDescriptionBinding>(
             binding.headlineTV.text = args.newsItems.headlineEn
             binding.dateTV.text = args.newsItems.dateEn
         }
+        if(args.newsItems.pictureLinksList?.size==0 || args.newsItems.pictureLinksList == null)
+            binding.textViewImagesTitle.visibility = View.INVISIBLE
         setupRecycler()
     }
 

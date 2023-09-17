@@ -6,6 +6,7 @@ data class LecturersItem(
     val isInvited: Boolean,
     val nameEn: String,
     val nameGe: String,
+    val email: String?,
     val pictureURL: String?,
     val statusEn: String,
     val statusGe: String

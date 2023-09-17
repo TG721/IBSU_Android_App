@@ -4,4 +4,5 @@
     <dimen name="home_btn_sp">20sp</dimen>
     <dimen name="settings_text_indicator">16sp</dimen>
     <dimen name="program_text_size">16sp</dimen>
+    <dimen name="news_title_size">16sp</dimen>
 </resources>

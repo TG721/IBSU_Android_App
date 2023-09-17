@@ -1,7 +1,9 @@
 package com.ibsu.ibsu.domain.repository
 
+import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
+import com.ibsu.ibsu.data.remote.model.ContactInfo
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -14,6 +16,7 @@ import com.ibsu.ibsu.data.remote.model.SliderEvents
 import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 interface IBSURepository {
     //retrofit
@@ -33,6 +36,9 @@ interface IBSURepository {
     suspend fun getLecturers(schoolName: String): Flow<ResponseState<Lecturers>>
     suspend fun getGoverningBoard(): Flow<ResponseState<Governance>>
     suspend fun getWorkingHours(): Flow<ResponseState<WorkingHours>>
+    suspend fun getContactInfo(): Flow<ResponseState<ContactInfo>>
+
+    suspend fun getAddress(): Flow<ResponseState<Address>>
 
 
 }

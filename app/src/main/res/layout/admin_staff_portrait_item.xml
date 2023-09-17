@@ -9,10 +9,10 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:minHeight="340dp"
-        app:cardBackgroundColor="@color/anti_line"
+        app:cardBackgroundColor="@color/slight_more_line"
         app:cardCornerRadius="10dp"
         app:cardElevation="2dp">
 
@@ -31,41 +31,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/adminStaffNameTV"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/textsWrapper"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minLines="2"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:textIsSelectable="true"
-                android:text="Tea Todua"
-                android:textColor="@color/line"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/adminStaffPositionTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
-                android:text="@string/dean_doctor"
-                android:textStyle="bold"
-                android:textColor="@color/line"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/adminStaffNameTV" />
+                <TextView
+                    android:id="@+id/adminStaffNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:minLines="2"
+                    android:text="Tea Todua"
+                    android:textColor="@color/line"
+                    android:textIsSelectable="true"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/moreInfoTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/adminStaffPositionTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="10dp"
+                    android:text="@string/dean_doctor"
+                    android:textColor="@color/line"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/adminStaffNameTV" />
 
+                <TextView
+                    android:id="@+id/moreInfoTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.cardview.widget.CardView>

@@ -1,7 +1,9 @@
 package com.ibsu.ibsu.data.remote
 
+import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
+import com.ibsu.ibsu.data.remote.model.ContactInfo
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -60,5 +62,11 @@ interface IBSUApi {
 
     @GET("contact/working_hours")
     suspend fun getWorkingHours(): Response<WorkingHours>
+
+    @GET("contact/contact_info")
+    suspend fun getContactInfo(): Response<ContactInfo>
+
+    @GET("contact/address")
+    suspend fun getAddress(): Response<Address>
 
 }
