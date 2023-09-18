@@ -29,6 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSISBinding
+import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.JavaScriptInterfaceForSIS
 import com.ibsu.ibsu.utils.WeekValue
 import dagger.hilt.android.AndroidEntryPoint
@@ -98,7 +99,7 @@ class SISFragment : Fragment() {
                     requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
 
                 if(isFirstLoad){
-                    if(appSettingPrefs.getInt("languageVal", 2)==1){
+                    if(requireContext().getCurrentLocale(requireContext()).language=="ka"){
                         view?.evaluateJavascript(
                             """
     function changeToKA() {
@@ -115,11 +116,11 @@ class SISFragment : Fragment() {
         
         // Dispatch the click event on the element
         elementToClick.dispatchEvent(clickEvent);
-}
+    }
 
     // Call the function to change the colors when needed
     changeToKA();
-""", null
+                                """, null
                         )
                     }
                 }
@@ -158,7 +159,7 @@ class SISFragment : Fragment() {
 
     // Call the function to change the colors when needed
     changeColors();
-""", null
+                        """, null
                     )
 
                     if (!url!!.contains("requests")) {
