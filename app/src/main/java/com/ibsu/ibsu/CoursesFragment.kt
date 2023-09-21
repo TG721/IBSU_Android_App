@@ -73,6 +73,7 @@ class CoursesFragment(private val programVal: String) :
                             binding.searchView.visibility = View.VISIBLE
                             binding.textInputLayout.visibility = View.VISIBLE
                             binding.checkBox.visibility = View.VISIBLE
+                            binding.filters.visibility = View.VISIBLE
 
                         }
 
@@ -111,10 +112,12 @@ class CoursesFragment(private val programVal: String) :
                         binding.autoCompleteTextView.visibility = View.GONE
                         binding.textInputLayout.visibility = View.GONE
                         binding.checkBox.visibility = View.GONE
+                        binding.filters.visibility = View.GONE
                     } else {
                         binding.autoCompleteTextView.visibility = View.VISIBLE
                         binding.textInputLayout.visibility = View.VISIBLE
                         binding.checkBox.visibility = View.VISIBLE
+                        binding.filters.visibility = View.VISIBLE
                     }
                     val filteredList = ArrayList<CoursesItem>()
                     for (item in list)
@@ -134,12 +137,12 @@ class CoursesFragment(private val programVal: String) :
         binding.autoCompleteTextView.setOnItemClickListener { adapterView, _, i, _ ->
             searchView?.clearFocus()
             when {
-                (adapterView.getItemAtPosition(i)).toString() == "ნებისმიერი კრედიტი" -> {
+                (adapterView.getItemAtPosition(i)).toString() == "ნებისმიერი" -> {
                     if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it2 -> it2.prerequisites.isEmpty() })
                     else rvAdapter.submitList(list)
                 }
 
-                (adapterView.getItemAtPosition(i)).toString() == "Any ETC" -> {
+                (adapterView.getItemAtPosition(i)).toString() == "Any" -> {
                     if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() })
                     else rvAdapter.submitList(list)
                 }
@@ -194,7 +197,7 @@ class CoursesFragment(private val programVal: String) :
             if (isChecked) {
                 searchView?.clearFocus()
                 when(etcFilterSelected){
-                    "Any ETC", "Filter by Credits", "ნებისმიერი კრედიტი", "კრედიტებით ფილტრაცია"  -> {
+                    "Any", "Credits", "ნებისმიერი", "კრედიტებით"  -> {
                         val filtered_NOPRE = list.filter {
                             it.prerequisites.isEmpty()
                         }
@@ -228,7 +231,7 @@ class CoursesFragment(private val programVal: String) :
 
             } else {
                 when(etcFilterSelected){
-                    "Any ETC", "Filter by Credits", "ნებისმიერი კრედიტი", "კრედიტებით ფილტრაცია"  -> {
+                    "Any", "Credits", "ნებისმიერი", "კრედიტებით"  -> {
                         rvAdapter.submitList(list)
                     }
                     "3" -> {

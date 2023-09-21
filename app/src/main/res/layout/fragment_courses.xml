@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
+        app:layout_constraintTop_toBottomOf="@+id/filters">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
@@ -102,19 +102,32 @@
         app:layout_constraintGuide_percent="0.5"
         android:orientation="vertical" />
 
+    <TextView
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="5dp"
+        android:visibility="gone"
+        android:textStyle="italic"
+        android:text="@string/filters"
+        android:textColor="@color/line"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        tools:layout_editor_absoluteX="-10dp" />
+
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
         android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="4dp"
         android:background="@color/slight_line"
         android:text="@string/no_prerequisite"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/filters" />
 </androidx.constraintlayout.widget.ConstraintLayout>

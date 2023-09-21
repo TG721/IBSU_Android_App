@@ -111,17 +111,18 @@
     <string name="semester">"სემესტრი: "</string>
     <string name="none">არ აქვს</string>
     <string name="course">კურსი</string>
-    <string name="filter_by_credits">კრედიტებით ფილტრაცია</string>
+    <string name="filter_by_credits">კრედიტებით</string>
     <string name="no_prerequisite">წინაპირობის გარეშე</string>
     <string name="obligatory">სავალდებულო</string>
     <string name="elective">არჩევითი</string>
+    <string name="filters">ფილტრაცია:</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>
         <item name="ge_sect">ქართულენოვანი პროგრამები</item>
     </string-array>
     <string-array name="filter_by_credit">
-        <item name="all_etc">ნებისმიერი კრედიტი</item>
+        <item name="all_etc">ნებისმიერი</item>
         <item name="3_etc">3</item>
         <item name="4_etc">4</item>
         <item name="5_etc">5</item>
