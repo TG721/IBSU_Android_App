@@ -20,19 +20,24 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CoursesFragment(private val programVal: String) :
+class CoursesFragment(private val programVal: String, private val type: String) :
     BaseFragment<FragmentCoursesBinding>(FragmentCoursesBinding::inflate) {
     private val viewModel: BachelorCoursesViewModel by viewModels()
     private lateinit var rvAdapter: CourseItemAdapter
     private var list = mutableListOf<CoursesItem>()
-    private var etcFilterSelected = "Any ETC"
+    private var etcFilterSelected = "Any"
     override fun setup() {
         setupRecycler()
         setupDropDownMenus()
     }
 
     override fun observers() {
-        observeItems()
+        when(type){
+            "Bachelor" -> {observeBachelorItems()}
+            "Master" -> {}
+           "Doctorate" -> {}
+        }
+
     }
 
     private fun setupDropDownMenus() {
@@ -48,7 +53,7 @@ class CoursesFragment(private val programVal: String) :
 
 
     @SuppressLint("SuspiciousIndentation")
-    private fun observeItems() {
+    private fun observeBachelorItems() {
         viewModel.getBachelorCourses(programVal);
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -60,6 +65,7 @@ class CoursesFragment(private val programVal: String) :
 
                         is ResponseState.Error -> {
                             binding.errorMessage.text = it.message.toString()
+                            binding.errorMessage.visibility = View.VISIBLE
                             binding.progressBar.visibility = View.GONE
                         }
 
@@ -73,7 +79,7 @@ class CoursesFragment(private val programVal: String) :
                             binding.searchView.visibility = View.VISIBLE
                             binding.textInputLayout.visibility = View.VISIBLE
                             binding.checkBox.visibility = View.VISIBLE
-                            binding.filters.visibility = View.VISIBLE
+//                            binding.filters.visibility = View.VISIBLE
 
                         }
 
@@ -112,12 +118,12 @@ class CoursesFragment(private val programVal: String) :
                         binding.autoCompleteTextView.visibility = View.GONE
                         binding.textInputLayout.visibility = View.GONE
                         binding.checkBox.visibility = View.GONE
-                        binding.filters.visibility = View.GONE
+//                        binding.filters.visibility = View.GONE
                     } else {
                         binding.autoCompleteTextView.visibility = View.VISIBLE
                         binding.textInputLayout.visibility = View.VISIBLE
                         binding.checkBox.visibility = View.VISIBLE
-                        binding.filters.visibility = View.VISIBLE
+//                        binding.filters.visibility = View.VISIBLE
                     }
                     val filteredList = ArrayList<CoursesItem>()
                     for (item in list)
@@ -197,7 +203,7 @@ class CoursesFragment(private val programVal: String) :
             if (isChecked) {
                 searchView?.clearFocus()
                 when(etcFilterSelected){
-                    "Any", "Credits", "ნებისმიერი", "კრედიტებით"  -> {
+                    "Any", "Credits", "ნებისმიერი", "კრედიტები" -> {
                         val filtered_NOPRE = list.filter {
                             it.prerequisites.isEmpty()
                         }
@@ -231,7 +237,7 @@ class CoursesFragment(private val programVal: String) :
 
             } else {
                 when(etcFilterSelected){
-                    "Any", "Credits", "ნებისმიერი", "კრედიტებით"  -> {
+                    "Any", "Credits", "ნებისმიერი", "კრედიტები",  -> {
                         rvAdapter.submitList(list)
                     }
                     "3" -> {
@@ -261,6 +267,11 @@ class CoursesFragment(private val programVal: String) :
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupDropDownMenus()
     }
 
 }

@@ -13,6 +13,7 @@ import com.ibsu.ibsu.data.remote.model.Games
 import com.ibsu.ibsu.data.remote.model.Governance
 import com.ibsu.ibsu.data.remote.model.Lecturers
 import com.ibsu.ibsu.data.remote.model.News
+import com.ibsu.ibsu.data.remote.model.ProgramAdmin
 import com.ibsu.ibsu.data.remote.model.Programs
 import com.ibsu.ibsu.data.remote.model.SliderEvents
 import com.ibsu.ibsu.data.remote.model.WorkingHours
@@ -77,4 +78,6 @@ interface IBSUApi {
     @GET("bachelor/{programVar}/Credit Value")
     suspend fun getCreditValue(@Path("programVar") nameValue: String): Response<CreditValue>
 
+    @GET("bachelor/{programVar}/administration")
+    suspend fun getProgramAdministration(@Path("programVar") nameValue: String): Response<ProgramAdmin>
 }

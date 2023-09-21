@@ -111,11 +111,15 @@
     <string name="semester">"სემესტრი: "</string>
     <string name="none">არ აქვს</string>
     <string name="course">კურსი</string>
-    <string name="filter_by_credits">კრედიტებით</string>
+    <string name="filter_by_credits">კრედიტები</string>
     <string name="no_prerequisite">წინაპირობის გარეშე</string>
     <string name="obligatory">სავალდებულო</string>
     <string name="elective">არჩევითი</string>
     <string name="filters">ფილტრაცია:</string>
+    <string name="contact_hours_per_week">საკონტაქტო საათები კვირაში: </string>
+    <string name="page_is_being_processed">გვერდი მუშავდება</string>
+    <string name="downloading_pdf">იწერება PDF</string>
+    <string name="download_failed">გადმოწერისას მოხდა შეცდომა</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

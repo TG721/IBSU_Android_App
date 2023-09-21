@@ -25,7 +25,7 @@ class ProgramDetailsFragment :
     private fun setupTabLayout() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
-        val mainViewPagerAdapter = ViewPagerForCourseDetailsAdapter(this, args.ProgramName)
+        val mainViewPagerAdapter = ViewPagerForCourseDetailsAdapter(this, args.ProgramName, args.type)
         viewPager2.adapter = mainViewPagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->

@@ -16,6 +16,7 @@ import com.ibsu.ibsu.data.remote.model.Lecturers
 import com.ibsu.ibsu.data.remote.model.News
 import com.ibsu.ibsu.data.remote.model.Programs
 import com.ibsu.ibsu.data.remote.model.Governance
+import com.ibsu.ibsu.data.remote.model.ProgramAdmin
 import com.ibsu.ibsu.data.remote.model.SliderEvents
 import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.domain.repository.IBSURepository
@@ -294,6 +295,21 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
             val response: Response<CreditValue> =
                 api.getCreditValue(programValue)
             val body: CreditValue? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getProgramAdministration(programVar: String): Flow<ResponseState<ProgramAdmin>> = flow {
+        try {
+            val response: Response<ProgramAdmin> =
+                api.getProgramAdministration(programVar)
+            val body: ProgramAdmin? = response.body()
             if (response.isSuccessful && body != null) {
                 emit(ResponseState.Success(body))
             } else {

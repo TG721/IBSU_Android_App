@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.navigation.findNavController
@@ -16,6 +17,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.ProgramItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.element.ProgramsFragmentDirections
+import com.ibsu.ibsu.utils.PdfDownloader
 import com.ibsu.ibsu.utils.Schools
 
 
@@ -58,15 +60,23 @@ class ProgramAdapter(private val context: Context, private val type: String) :
                     }
                     else -> {programBtn.setBackgroundColor(ContextCompat.getColor(context, R.color.ibsu))}
                 }
-                if(type=="Bachelor"){
                     programBtn.setOnClickListener {
+                        if(source.isReady && !source.shouldDownloadFile){
                         val action =
                             ProgramsFragmentDirections.actionProgramsFragmentToProgramDetailsFragment(
-                                source.programNameEn
+                                source.programNameEn,
+                                type
                             )
                         root.findNavController().navigate(action)
-                    }
+                    } else if (source.isReady && source.shouldDownloadFile){
+                            PdfDownloader.setFileName(source.programNameEn)
+                            PdfDownloader.downloadPdfWithReceiver(context, source.fileLink!!, binding.root)
+                        }
+                        else {
+                            Toast.makeText(context, context.getString(R.string.page_is_being_processed), Toast.LENGTH_SHORT).show()
+                        }
                 }
+
             }
             }
         }

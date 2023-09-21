@@ -50,13 +50,21 @@
                 android:text="ETC - 5"
                 android:textColor="@color/line"
                 android:textSize="18sp" />
-
             <TextView
                 android:id="@+id/isCoreTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/obligatory"
+                android:textColor="@color/line"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/contact_hours_per_week"
                 android:textColor="@color/line"
                 android:textSize="18sp" />
 
@@ -87,7 +95,7 @@
                     android:layout_weight="0.3"
                     android:background="@drawable/contact_link_bg"
                     android:gravity="end"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textColor="@color/link_blue"
                     android:textSize="18sp"
                     android:textStyle="italic"

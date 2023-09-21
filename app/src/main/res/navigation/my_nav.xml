@@ -281,6 +281,9 @@
         <argument
             android:name="ProgramName"
             app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/coursesFragment"

@@ -21,13 +21,17 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class CreditValueFragment(private val programVal: String) : BaseFragment<FragmentCreditValueBinding>(FragmentCreditValueBinding::inflate) {
+class CreditValueFragment(private val programVal: String, private val type: String) : BaseFragment<FragmentCreditValueBinding>(FragmentCreditValueBinding::inflate) {
     private val viewModel: BachelorCreditValueViewModel by viewModels()
     override fun setup() {
-        observeCreditValue()
+        when(type){
+            "Bachelor" -> {observeBachelorCreditValue()}
+            "Master" -> {}
+            "Doctorate" -> {}
+        }
     }
 
-    private fun observeCreditValue() {
+    private fun observeBachelorCreditValue() {
         viewModel.getBachelorCreditValue(programVal)
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {

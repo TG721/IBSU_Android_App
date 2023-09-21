@@ -78,6 +78,8 @@ class ContactInfoFragment :
 
                         is ResponseState.Error -> {
                             binding.errorMessage.text = it.message.toString()
+                            binding.errorMessage.visibility = View.VISIBLE
+
                         }
 
                         is ResponseState.Success -> {

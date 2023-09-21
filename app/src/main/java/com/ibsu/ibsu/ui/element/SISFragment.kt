@@ -97,7 +97,7 @@ class SISFragment : Fragment() {
                 super.onPageFinished(view, url)
                 val appSettingPrefs: SharedPreferences =
                     requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-
+//                d("urlld", url.toString())
                 if(isFirstLoad){
                     if(requireContext().getCurrentLocale(requireContext()).language=="ka"){
                         view?.evaluateJavascript(
@@ -128,21 +128,21 @@ class SISFragment : Fragment() {
     function changeToEn() {
 
      
-        var elementToClick = document.getElementById('languageEnglish');
+        var elementToClickEn = document.getElementById('languageEnglish');
         
         // Create a click event
-        var clickEvent = new MouseEvent('click', {
+        var clickEventEn = new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
             view: window
         });
         
         // Dispatch the click event on the element
-        elementToClick.dispatchEvent(clickEvent);
+        elementToClickEn.dispatchEvent(clickEventEn);
     }
 
     // Call the function to change the colors when needed
-    changeToEN();
+    changeToEn();
                                 """, null
                         )
                     }
@@ -151,7 +151,7 @@ class SISFragment : Fragment() {
 
                 //setup dark mode
 
-                d("snnnnnnn", appSettingPrefs.getInt("darkModeVal", 2).toString())
+//                d("snnnnnnn", appSettingPrefs.getInt("darkModeVal", 2).toString())
                 if (appSettingPrefs.getInt("darkModeVal", 2) == 0) {
 //                    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
 //
@@ -185,7 +185,7 @@ class SISFragment : Fragment() {
                         """, null
                     )
 
-                    if (!url!!.contains("requests")) {
+                    if (!url!!.contains("requests") && url.length > 40 ) {
 
                         view?.evaluateJavascript(
                             """
@@ -308,30 +308,8 @@ class SISFragment : Fragment() {
                             "      break;" +
                             "    }" +
                             "  }" +
-                            " }" +
-                            //script for program
-                            "for (var i = 0; i < emElements.length; i++) {" +
-                            "if (emElements[i].textContent.trim() === 'Program' || emElements[i].textContent.trim() === 'ძირითადი სპეციალობა') {" +
-                            "var programEmElement = emElements[i];" +
-                            "var nextSiblingOfProgramEmElement = programEmElement.nextElementSibling;" +
-                            "if (nextSiblingOfProgramEmElement && nextSiblingOfProgramEmElement.tagName.toLowerCase() === 'strong') {" +
-                            "         if (schoolValue.includes('COMPUTER SCIENCE AND ARCHITECTURE') || schoolValue.includes('კომპიუტერული მეცნიერებისა და არქიტექტურის'.toUpperCase())) {" +
-                            "        nextSiblingOfProgramEmElement.style.background = '#1E73BE';" +
-                            "      } else if (schoolValue.includes('BUSINESS') || schoolValue.includes('ბიზნესის'.toUpperCase())){" +
-                            "        nextSiblingOfProgramEmElement.style.background = '#1D5822';" +
-                            "      } else if (schoolValue.includes('EDUCATION') || schoolValue.includes('HUMANITIES AND SOCIAL SCIENCES') || schoolValue.includes('განათლების, ჰუმანიტარული და სოციალური მეცნიერებების'.toUpperCase())) {" +
-                            "        nextSiblingOfProgramEmElement.style.background = '#F4A83B';" +
-                            "      } else if (schoolValue.includes('LAW AND STATE GOVERNANCE') || schoolValue.includes('სამართლისა და სახელმწიფო მმართველობის'.toUpperCase())) {" +
-                            "        nextSiblingOfProgramEmElement.style.background = '#6E0000';" +
-                            "      }" +
-                            "        nextSiblingOfProgramEmElement.style.color = 'white';" +
-                            "        nextSiblingOfProgramEmElement.style.borderRadius = '5px';" +
-                            "        nextSiblingOfProgramEmElement.style.padding = '2px';" +
-                            // You can perform further actions with 'nextSibling' here
-                            "}" +
-                            "break;" +
-                            "}" +
-                            "}",
+                            " }"
+                          ,
 
                     null
                 )
@@ -357,7 +335,7 @@ class SISFragment : Fragment() {
                 Handler(Looper.getMainLooper()).postDelayed({
                     binding?.progressBar?.visibility = View.GONE
                     binding?.overlay?.visibility = View.GONE
-                }, 400) // Delay for 400 milliseconds (0.4 seconds)
+                }, 500) // Delay for 500 milliseconds (0.5 seconds)
             }
         }
 

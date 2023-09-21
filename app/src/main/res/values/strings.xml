@@ -116,6 +116,10 @@
     <string name="obligatory">Obligatory</string>
     <string name="elective">Elective</string>
     <string name="filters">Filters:</string>
+    <string name="contact_hours_per_week">Contact hours per week:</string>
+    <string name="page_is_being_processed">Page is being processed</string>
+    <string name="downloading_pdf">Downloading PDF</string>
+    <string name="download_failed">Download failed</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>

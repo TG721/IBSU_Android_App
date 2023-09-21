@@ -8,6 +8,9 @@ data class ProgramItem(
     val georgianSectorAvailable: Boolean,
     val georgianSectorCost: Int,
     val id: Int,
+    val isReady: Boolean,
+    val shouldDownloadFile: Boolean,
+    val fileLink: String?,
     val programNameEn: String,
     val programNameGe: String
 )

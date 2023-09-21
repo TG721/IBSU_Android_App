@@ -79,9 +79,11 @@ class CourseItemAdapter (private val context: Context) :
                         }
                     } else seeDescription.visibility = View.GONE
                 }
+                hours.text = "${context.getString(R.string.contact_hours_per_week)} ${source.hours}"
                 prerequisites.text = finalStringValue
                 ETC.text = "${context.getString(R.string.etc)}${source.ETC}"
-                if(semester!=null) semester.text = context.getString(R.string.semester) + source.semesterNumber
+                if(source.semesterNumber!=null) semester.text = context.getString(R.string.semester) + source.semesterNumber
+                else semester.visibility = View.GONE
 
 //                imageBtn.setOnClickListener {
 //                    val action =
