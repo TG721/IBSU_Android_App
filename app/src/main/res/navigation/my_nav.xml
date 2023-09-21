@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_SISFragment_to_schoolMenuFragment"
             app:destination="@id/schoolMenuFragment" />
+        <action
+            android:id="@+id/action_SISFragment_to_programDetailsFragment"
+            app:destination="@id/programDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -80,6 +83,9 @@
             android:name="school"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_programsFragment_to_programDetailsFragment"
+            app:destination="@id/programDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/facebookPagesFragment"
@@ -267,4 +273,28 @@
             android:name="listOfImages"
             app:argType="string[]" />
     </fragment>
+    <fragment
+        android:id="@+id/programDetailsFragment"
+        android:name="com.ibsu.ibsu.ProgramDetailsFragment"
+        android:label="fragment_program_details"
+        tools:layout="@layout/fragment_program_details" >
+        <argument
+            android:name="ProgramName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.ibsu.ibsu.CoursesFragment"
+        android:label="fragment_courses"
+        tools:layout="@layout/fragment_courses" />
+    <fragment
+        android:id="@+id/creditValueFragment"
+        android:name="com.ibsu.ibsu.CreditValueFragment"
+        android:label="fragment_credit_value"
+        tools:layout="@layout/fragment_credit_value" />
+    <fragment
+        android:id="@+id/programAdminFragment"
+        android:name="com.ibsu.ibsu.ProgramAdminFragment"
+        android:label="fragment_program_admin"
+        tools:layout="@layout/fragment_program_admin" />
 </navigation>

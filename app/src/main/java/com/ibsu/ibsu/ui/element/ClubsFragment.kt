@@ -1,23 +1,16 @@
 package com.ibsu.ibsu.ui.element
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentClubsBinding
-import com.ibsu.ibsu.databinding.FragmentErasmusPlusBinding
 import com.ibsu.ibsu.ui.adapter.ClubsAdapter
-import com.ibsu.ibsu.ui.adapter.ProgramAdapter
+import com.ibsu.ibsu.ui.adapter.CourseItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.BachelorViewModel
 import com.ibsu.ibsu.ui.viewmodel.ClubViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint

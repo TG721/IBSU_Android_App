@@ -103,9 +103,28 @@
     <string name="downloading">downloading</string>
     <string name="downloaded">Downloaded</string>
     <string name="go_to_downloads">Go to Downloads</string>
+    <string name="courses">Courses</string>
+    <string name="credit_value">Credit Value</string>
+    <string name="about_program">About Program</string>
+    <string name="prerequisites">Prerequisites:</string>
+    <string name="etc">"ETC: "</string>
+    <string name="semester">"Semester: "</string>
+    <string name="none">none</string>
+    <string name="course">Course</string>
+    <string name="filter_by_credits">Filter by Credits</string>
+    <string name="no_prerequisite">No Prerequisite</string>
+    <string name="obligatory">Obligatory</string>
+    <string name="elective">Elective</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>
         <item name="ge_sect">Georgian Programs</item>
+    </string-array>
+    <string-array name="filter_by_credit">
+        <item name="all_etc">Any ETC</item>
+        <item name="3_etc">3</item>
+        <item name="4_etc">4</item>
+        <item name="5_etc">5</item>
+        <item name="6_etc">6</item>
     </string-array>
 </resources>

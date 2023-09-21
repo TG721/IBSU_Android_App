@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.data.remote.model.ProgramItem
@@ -14,10 +15,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.ProgramItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.element.ProgramsFragmentDirections
 import com.ibsu.ibsu.utils.Schools
 
 
-class ProgramAdapter(private val context: Context) :
+class ProgramAdapter(private val context: Context, private val type: String) :
     ListAdapter<ProgramItem, ProgramAdapter.ProgramViewHolder>(ItemDiffCallback()) {
     inner class ProgramViewHolder(private val binding: ProgramItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -56,9 +58,18 @@ class ProgramAdapter(private val context: Context) :
                     }
                     else -> {programBtn.setBackgroundColor(ContextCompat.getColor(context, R.color.ibsu))}
                 }
+                if(type=="Bachelor"){
+                    programBtn.setOnClickListener {
+                        val action =
+                            ProgramsFragmentDirections.actionProgramsFragmentToProgramDetailsFragment(
+                                source.programNameEn
+                            )
+                        root.findNavController().navigate(action)
+                    }
+                }
+            }
             }
         }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgramViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

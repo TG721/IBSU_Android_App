@@ -122,6 +122,29 @@ class SISFragment : Fragment() {
     changeToKA();
                                 """, null
                         )
+                    } else {
+                        view?.evaluateJavascript(
+                            """
+    function changeToEn() {
+
+     
+        var elementToClick = document.getElementById('languageEnglish');
+        
+        // Create a click event
+        var clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        
+        // Dispatch the click event on the element
+        elementToClick.dispatchEvent(clickEvent);
+    }
+
+    // Call the function to change the colors when needed
+    changeToEN();
+                                """, null
+                        )
                     }
                 }
                     isFirstLoad = false

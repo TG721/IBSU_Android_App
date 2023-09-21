@@ -4,6 +4,8 @@ import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
 import com.ibsu.ibsu.data.remote.model.ContactInfo
+import com.ibsu.ibsu.data.remote.model.Courses
+import com.ibsu.ibsu.data.remote.model.CreditValue
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -17,6 +19,7 @@ import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import retrofit2.http.Path
 
 interface IBSURepository {
     //retrofit
@@ -39,6 +42,11 @@ interface IBSURepository {
     suspend fun getContactInfo(): Flow<ResponseState<ContactInfo>>
 
     suspend fun getAddress(): Flow<ResponseState<Address>>
+
+    suspend fun getCourses(programVar: String): Flow<ResponseState<Courses>>
+
+    suspend fun getCreditValue(programVar: String): Flow<ResponseState<CreditValue>>
+
 
 
 }

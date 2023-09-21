@@ -103,9 +103,28 @@
     <string name="downloading">იწერება</string>
     <string name="downloaded">გადმოწერა დასრულებულია</string>
     <string name="go_to_downloads">გადმოწერებეში გადასვლა</string>
+    <string name="courses">კურსები</string>
+    <string name="credit_value">მოცულობა კრედიტებით</string>
+    <string name="about_program">პროგრამის შესახებ</string>
+    <string name="prerequisites">წინაპირობები:</string>
+    <string name="etc">"კრედიტი: "</string>
+    <string name="semester">"სემესტრი: "</string>
+    <string name="none">არ აქვს</string>
+    <string name="course">კურსი</string>
+    <string name="filter_by_credits">კრედიტებით ფილტრაცია</string>
+    <string name="no_prerequisite">წინაპირობის გარეშე</string>
+    <string name="obligatory">სავალდებულო</string>
+    <string name="elective">არჩევითი</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>
         <item name="ge_sect">ქართულენოვანი პროგრამები</item>
+    </string-array>
+    <string-array name="filter_by_credit">
+        <item name="all_etc">ნებისმიერი კრედიტი</item>
+        <item name="3_etc">3</item>
+        <item name="4_etc">4</item>
+        <item name="5_etc">5</item>
+        <item name="6_etc">6</item>
     </string-array>
 </resources>

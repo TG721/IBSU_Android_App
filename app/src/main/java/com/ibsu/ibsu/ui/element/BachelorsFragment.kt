@@ -130,7 +130,7 @@ class BachelorsFragment(val schoolValue: String?) :
     }
 
     private fun setupRecycler() {
-        programAdapter = ProgramAdapter(requireContext())
+        programAdapter = ProgramAdapter(requireContext(), "Bachelor")
         val recycler = binding.programRV
         var spanCount = 2
         if (requireContext().getCurrentLocale(requireContext()).language == "ka") spanCount = 1

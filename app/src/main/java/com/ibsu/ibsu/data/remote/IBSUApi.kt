@@ -4,6 +4,8 @@ import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
 import com.ibsu.ibsu.data.remote.model.ContactInfo
+import com.ibsu.ibsu.data.remote.model.Courses
+import com.ibsu.ibsu.data.remote.model.CreditValue
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -68,5 +70,11 @@ interface IBSUApi {
 
     @GET("contact/address")
     suspend fun getAddress(): Response<Address>
+
+    @GET("bachelor/{programVar}/program")
+    suspend fun getCourses(@Path("programVar") nameValue: String): Response<Courses>
+
+    @GET("bachelor/{programVar}/Credit Value")
+    suspend fun getCreditValue(@Path("programVar") nameValue: String): Response<CreditValue>
 
 }

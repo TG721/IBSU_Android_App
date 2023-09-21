@@ -6,6 +6,8 @@ import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
 import com.ibsu.ibsu.data.remote.model.Clubs
 import com.ibsu.ibsu.data.remote.model.ContactInfo
+import com.ibsu.ibsu.data.remote.model.Courses
+import com.ibsu.ibsu.data.remote.model.CreditValue
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
@@ -262,6 +264,36 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
             val response: Response<Address> =
                 api.getAddress()
             val body: Address? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getCourses(programVar: String): Flow<ResponseState<Courses>> = flow {
+        try {
+            val response: Response<Courses> =
+                api.getCourses(programVar)
+            val body: Courses? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getCreditValue(programValue: String): Flow<ResponseState<CreditValue>> = flow {
+        try {
+            val response: Response<CreditValue> =
+                api.getCreditValue(programValue)
+            val body: CreditValue? = response.body()
             if (response.isSuccessful && body != null) {
                 emit(ResponseState.Success(body))
             } else {

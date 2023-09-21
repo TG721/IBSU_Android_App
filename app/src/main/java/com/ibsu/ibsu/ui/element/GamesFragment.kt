@@ -100,4 +100,6 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(FragmentGamesBinding::i
         recycler.adapter = gamesAdapter
         recycler.layoutManager = layoutManager
     }
+
+
 }
