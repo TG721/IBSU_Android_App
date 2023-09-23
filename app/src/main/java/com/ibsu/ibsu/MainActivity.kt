@@ -126,6 +126,11 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
 
+                    R.id.IniFragment -> {
+                        navController.navigate(R.id.iniFragment)
+                        true
+                    }
+
                     R.id.settingsFragment -> {
                         navController.navigate(R.id.settingsFragment)
                         true

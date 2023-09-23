@@ -18,6 +18,7 @@ import com.ibsu.ibsu.data.remote.model.Programs
 import com.ibsu.ibsu.data.remote.model.Governance
 import com.ibsu.ibsu.data.remote.model.ProgramAdmin
 import com.ibsu.ibsu.data.remote.model.SliderEvents
+import com.ibsu.ibsu.data.remote.model.UsefulDocs
 import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.domain.repository.IBSURepository
 import com.ibsu.ibsu.utils.ResponseState
@@ -310,6 +311,36 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
             val response: Response<ProgramAdmin> =
                 api.getProgramAdministration(programVar)
             val body: ProgramAdmin? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getDoctoratePrograms(): Flow<ResponseState<Programs>> = flow {
+        try {
+            val response: Response<Programs> =
+                api.getDoctoratePrograms()
+            val body: Programs? = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(ResponseState.Success(body))
+            } else {
+                emit(ResponseState.Error(response.errorBody()?.string()))
+            }
+        } catch (e: Exception) {
+            emit(ResponseState.Error(e.message.toString()))
+        }
+    }
+
+    override suspend fun getUsefulDocs(): Flow<ResponseState<UsefulDocs>> = flow {
+        try {
+            val response: Response<UsefulDocs> =
+                api.getUsefulDocs()
+            val body: UsefulDocs? = response.body()
             if (response.isSuccessful && body != null) {
                 emit(ResponseState.Success(body))
             } else {

@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_homeFragment_to_contactFragment"
             app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_usefulDocsFragment"
+            app:destination="@id/usefulDocsFragment" />
 
     </fragment>
     <fragment
@@ -300,4 +303,14 @@
         android:name="com.ibsu.ibsu.ProgramAdminFragment"
         android:label="fragment_program_admin"
         tools:layout="@layout/fragment_program_admin" />
+    <fragment
+        android:id="@+id/iniFragment"
+        android:name="com.ibsu.ibsu.IniFragment"
+        android:label="fragment_ini"
+        tools:layout="@layout/fragment_ini" />
+    <fragment
+        android:id="@+id/usefulDocsFragment"
+        android:name="com.ibsu.ibsu.UsefulDocsFragment"
+        android:label="fragment_useful_docs"
+        tools:layout="@layout/fragment_useful_docs" />
 </navigation>

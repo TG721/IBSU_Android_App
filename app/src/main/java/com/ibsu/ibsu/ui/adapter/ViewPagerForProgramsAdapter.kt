@@ -16,7 +16,7 @@ class ViewPagerForProgramsAdapter(fragment: Fragment, schoolValue: String? ) :
         // Preload the fragments for all positions
         fragments.add(BachelorsFragment(schoolValue)) // Position 0
         fragments.add(MastersFragment(schoolValue)) // Position 1
-        fragments.add(DoctorateFragment()) // Position 2
+        fragments.add(DoctorateFragment(schoolValue)) // Position 2
     }
 
 

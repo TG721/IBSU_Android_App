@@ -32,7 +32,7 @@ class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsB
         val schoolValue = args.school
         val mainViewPagerAdapter = ViewPagerForProgramsAdapter(this, schoolValue)
         viewPager2.adapter = mainViewPagerAdapter
-        binding.viewPager.reduceDragSensitivity()
+//        binding.viewPager.reduceDragSensitivity()
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
             tab.text = when (index) {

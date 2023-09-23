@@ -144,17 +144,17 @@ class CoursesFragment(private val programVal: String, private val type: String) 
             searchView?.clearFocus()
             when {
                 (adapterView.getItemAtPosition(i)).toString() == "ნებისმიერი" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it2 -> it2.prerequisites.isEmpty() })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it2 -> it2.prerequisites!!.isEmpty() })
                     else rvAdapter.submitList(list)
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == "Any" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() })
                     else rvAdapter.submitList(list)
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == "3" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() && it.ETC == 3 })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 3 })
                     else {
                         val filtered_Ects = list.filter {
                             it.ETC == 3
@@ -164,7 +164,7 @@ class CoursesFragment(private val programVal: String, private val type: String) 
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == "4" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() && it.ETC == 4 })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 4 })
                     else {
                         val filtered_Ects = list.filter {
                             it.ETC == 4
@@ -174,7 +174,7 @@ class CoursesFragment(private val programVal: String, private val type: String) 
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == "5" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() && it.ETC == 5 })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 5 })
                     else {
                         val filtered_Ects = list.filter {
                             it.ETC == 5
@@ -184,7 +184,7 @@ class CoursesFragment(private val programVal: String, private val type: String) 
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == "6" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites.isEmpty() && it.ETC == 6 })
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 6 })
                     else {
                         val filtered_Ects = list.filter {
                             it.ETC == 6
@@ -205,31 +205,31 @@ class CoursesFragment(private val programVal: String, private val type: String) 
                 when(etcFilterSelected){
                     "Any", "Credits", "ნებისმიერი", "კრედიტები" -> {
                         val filtered_NOPRE = list.filter {
-                            it.prerequisites.isEmpty()
+                            it.prerequisites!!.isEmpty()
                         }
                         rvAdapter.submitList(filtered_NOPRE)
                     }
                     "3" -> {
                         val filtered_NOPRE = list.filter {
-                            it.prerequisites.isEmpty() && it.ETC == 3
+                            it.prerequisites!!.isEmpty() && it.ETC == 3
                         }
                         rvAdapter.submitList(filtered_NOPRE)
                     }
                     "4" -> {
                         val filtered_NOPRE = list.filter {
-                            it.prerequisites.isEmpty() && it.ETC == 4
+                            it.prerequisites!!.isEmpty() && it.ETC == 4
                         }
                         rvAdapter.submitList(filtered_NOPRE)
                     }
                     "5" -> {
                         val filtered_NOPRE = list.filter {
-                            it.prerequisites.isEmpty() && it.ETC == 5
+                            it.prerequisites!!.isEmpty() && it.ETC == 5
                         }
                         rvAdapter.submitList(filtered_NOPRE)
                     }
                     "6" -> {
                         val filtered_NOPRE = list.filter {
-                            it.prerequisites.isEmpty() && it.ETC == 6
+                            it.prerequisites!!.isEmpty() && it.ETC == 6
                         }
                         rvAdapter.submitList(filtered_NOPRE)
                     }

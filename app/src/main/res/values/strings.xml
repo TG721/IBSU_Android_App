@@ -120,6 +120,8 @@
     <string name="page_is_being_processed">Page is being processed</string>
     <string name="downloading_pdf">Downloading PDF</string>
     <string name="download_failed">Download failed</string>
+    <string name="open">Open</string>
+    <string name="useful_documents">Useful Documents</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>

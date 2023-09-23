@@ -16,9 +16,11 @@ import com.ibsu.ibsu.data.remote.model.News
 import com.ibsu.ibsu.data.remote.model.ProgramAdmin
 import com.ibsu.ibsu.data.remote.model.Programs
 import com.ibsu.ibsu.data.remote.model.SliderEvents
+import com.ibsu.ibsu.data.remote.model.UsefulDocs
 import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 interface IBSURepository {
     //retrofit
@@ -47,6 +49,11 @@ interface IBSURepository {
     suspend fun getCreditValue(programVar: String): Flow<ResponseState<CreditValue>>
 
     suspend fun getProgramAdministration(programVar: String): Flow<ResponseState<ProgramAdmin>>
+
+    suspend fun getDoctoratePrograms(): Flow<ResponseState<Programs>>
+
+    suspend fun getUsefulDocs(): Flow<ResponseState<UsefulDocs>>
+
 
 
 }

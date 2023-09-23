@@ -74,6 +74,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 HomeFragmentDirections.actionHomeFragmentToContactFragment()
                 findNavController().navigate(action)
             }
+            buttonUsefulDocuments.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToUsefulDocsFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 

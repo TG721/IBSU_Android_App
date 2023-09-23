@@ -1,19 +1,22 @@
 package com.ibsu.ibsu.ui.adapter
 
+import android.R.attr.value
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.ProgramItem
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.R
+import com.ibsu.ibsu.data.remote.model.ProgramItem
 import com.ibsu.ibsu.databinding.ProgramItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.element.ProgramsFragmentDirections
@@ -69,8 +72,11 @@ class ProgramAdapter(private val context: Context, private val type: String) :
                             )
                         root.findNavController().navigate(action)
                     } else if (source.isReady && source.shouldDownloadFile){
-                            PdfDownloader.setFileName(source.programNameEn)
-                            PdfDownloader.downloadPdfWithReceiver(context, source.fileLink!!, binding.root)
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(source.fileLink!!))
+
+                            // start activity
+                            context.startActivity(intent);
+
                         }
                         else {
                             Toast.makeText(context, context.getString(R.string.page_is_being_processed), Toast.LENGTH_SHORT).show()

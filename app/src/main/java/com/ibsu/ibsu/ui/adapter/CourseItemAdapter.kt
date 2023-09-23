@@ -1,28 +1,21 @@
 package com.ibsu.ibsu.ui.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.ClubsItem
 import com.ibsu.ibsu.data.remote.model.CoursesItem
 import com.ibsu.ibsu.databinding.CourseItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
-import com.ibsu.ibsu.ui.element.EntertainmentFragmentDirections
 
-class CourseItemAdapter (private val context: Context) :
+class CourseItemAdapter(private val context: Context) :
     ListAdapter<CoursesItem, CourseItemAdapter.RVViewHolder>(ItemDiffCallback()) {
     inner class RVViewHolder(private val binding: CourseItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -31,22 +24,32 @@ class CourseItemAdapter (private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
-                if(source.isCore) isCoreTV.text = context.getString(R.string.obligatory)
-                else isCoreTV.text = context.getString(R.string.elective)
+                if (source.isCore != null) {
+                    if (source.isCore) isCoreTV.text = context.getString(R.string.obligatory)
+                    else isCoreTV.text = context.getString(R.string.elective)
+                } else isCoreTV.visibility = View.GONE
+
 
                 var finalStringValue = ""
-                if(context.getCurrentLocale(context).language=="ka") {
+                if (context.getCurrentLocale(context).language == "ka") {
                     courseName.text = source.nameGe
-                    source.prerequisitesGe.forEach {
-                        finalStringValue += "$it;\n"
+                    if (source.prerequisitesGe != null)
+                        source.prerequisitesGe.forEach {
+                            finalStringValue += "$it;\n"
+                        } else {
+                        prerequisites.visibility = View.GONE
+                        staticItem.visibility = View.GONE
                     }
-                    if(source.description_Ge!=null) {
+                    if (source.description_Ge != null) {
                         seeDescription.visibility = View.VISIBLE
-                        seeDescription.paintFlags =  seeDescription.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                        val dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_layout, null)
-                        val descriptionTextView = dialogView.findViewById<TextView>(R.id.descriptionTextView)
-                        descriptionTextView.text = source.description_Ge
-                        seeDescription.setOnClickListener {
+                        seeDescription.paintFlags =
+                            seeDescription.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                        val dialogView = LayoutInflater.from(context)
+                            .inflate(R.layout.custom_dialog_layout, null)
+                        val descriptionTextView =
+                            dialogView.findViewById<TextView>(R.id.descriptionTextView)
+                        descriptionTextView?.text = source.description_Ge
+                        seeDescription?.setOnClickListener {
                             MaterialAlertDialogBuilder(context)
                                 .setTitle(context.getString(R.string.description))
                                 .setView(dialogView)
@@ -58,18 +61,24 @@ class CourseItemAdapter (private val context: Context) :
 
                 } else {
                     courseName.text = source.nameEn
-                    source.prerequisites.forEach {
-                        finalStringValue +=  "$it;\n"
+                    if (source.prerequisites != null) {
+                        source.prerequisites.forEach {
+                            finalStringValue += "$it;\n"
+                        }
+                    } else {
+                        prerequisites.visibility = View.GONE
+                        staticItem.visibility = View.GONE
                     }
-                    if(source.description_En!=null) {
+                    if (source.description_En != null) {
                         seeDescription.visibility = View.VISIBLE
-                        seeDescription.paintFlags =  seeDescription.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                        seeDescription.setOnClickListener {
+                        seeDescription.paintFlags =
+                            seeDescription.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                        seeDescription?.setOnClickListener {
                             val dialogView = LayoutInflater.from(context)
                                 .inflate(R.layout.custom_dialog_layout, null)
                             val descriptionTextView =
                                 dialogView.findViewById<TextView>(R.id.descriptionTextView)
-                            descriptionTextView.text = source.description_En
+                            descriptionTextView?.text = source.description_En
                             MaterialAlertDialogBuilder(context)
                                 .setTitle(context.getString(R.string.description))
                                 .setView(dialogView)
@@ -82,7 +91,8 @@ class CourseItemAdapter (private val context: Context) :
                 hours.text = "${context.getString(R.string.contact_hours_per_week)} ${source.hours}"
                 prerequisites.text = finalStringValue
                 ETC.text = "${context.getString(R.string.etc)}${source.ETC}"
-                if(source.semesterNumber!=null) semester.text = context.getString(R.string.semester) + source.semesterNumber
+                if (source.semesterNumber != null) semester.text =
+                    context.getString(R.string.semester) + source.semesterNumber
                 else semester.visibility = View.GONE
 
 //                imageBtn.setOnClickListener {
@@ -92,7 +102,7 @@ class CourseItemAdapter (private val context: Context) :
 //                        )
 //                    root.findNavController().navigate(action)
 //                }
-                if(finalStringValue=="") prerequisites.text = context.getString(R.string.none)
+                if (finalStringValue == "") prerequisites.text = context.getString(R.string.none)
             }
         }
     }

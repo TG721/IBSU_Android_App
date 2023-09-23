@@ -120,6 +120,8 @@
     <string name="page_is_being_processed">გვერდი მუშავდება</string>
     <string name="downloading_pdf">იწერება PDF</string>
     <string name="download_failed">გადმოწერისას მოხდა შეცდომა</string>
+    <string name="open">გახსნა</string>
+    <string name="useful_documents">სასარგებლო დოკუმენტები</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

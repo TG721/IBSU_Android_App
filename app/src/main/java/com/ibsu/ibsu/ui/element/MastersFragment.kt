@@ -43,9 +43,9 @@ class MastersFragment(private val schoolValue: String?) : BaseFragment<FragmentM
     private fun setupContainer() {
         val initialFragment = MasterProgramFragment(schoolValue)
         fragmentContainerID = binding.fragmentMastersContainerView.id
-        if (schoolValue != null) {
-            binding.programMenu.visibility = View.GONE
-        } else binding.programMenu.visibility = View.VISIBLE
+//        if (schoolValue != null) {
+//            binding.programMenu.visibility = View.GONE
+//        } else binding.programMenu.visibility = View.VISIBLE
 
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(fragmentContainerID!!, initialFragment)
@@ -53,37 +53,37 @@ class MastersFragment(private val schoolValue: String?) : BaseFragment<FragmentM
 
     }
 
-    override fun listeners() {
-        binding.menuAdmissionBtn.setOnClickListener {
-            val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(
-                R.id.fragmentMastersContainerView,
-                MasterAdmissionFragment()
-            ).commit()
-            fixColor(menuButtons, it.id);
-        }
-        binding.menuExamTopicsBtn.setOnClickListener {
-            val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainerID!!, ExamTopicsFragment()).commit()
-            fixColor(menuButtons, it.id);
-        }
-        binding.menuDiscountBtn.setOnClickListener {
-            val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainerID!!, MastersDiscountFragment()).commit()
-            fixColor(menuButtons, it.id);
-        }
-        binding.menuProgramsBtn.setOnClickListener {
-            val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainerID!!, MasterProgramFragment(schoolValue))
-                .commit()
-            fixColor(menuButtons, it.id);
-        }
-
-    }
+//    override fun listeners() {
+//        binding.menuAdmissionBtn?.setOnClickListener {
+//            val fragmentTransaction: FragmentTransaction =
+//                requireActivity().supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(
+//                R.id.fragmentMastersContainerView,
+//                MasterAdmissionFragment()
+//            ).commit()
+//            fixColor(menuButtons, it.id);
+//        }
+//        binding.menuExamTopicsBtn.setOnClickListener {
+//            val fragmentTransaction: FragmentTransaction =
+//                requireActivity().supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(fragmentContainerID!!, ExamTopicsFragment()).commit()
+//            fixColor(menuButtons, it.id);
+//        }
+//        binding.menuDiscountBtn.setOnClickListener {
+//            val fragmentTransaction: FragmentTransaction =
+//                requireActivity().supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(fragmentContainerID!!, MastersDiscountFragment()).commit()
+//            fixColor(menuButtons, it.id);
+//        }
+//        binding.menuProgramsBtn.setOnClickListener {
+//            val fragmentTransaction: FragmentTransaction =
+//                requireActivity().supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(fragmentContainerID!!, MasterProgramFragment(schoolValue))
+//                .commit()
+//            fixColor(menuButtons, it.id);
+//        }
+//
+//    }
 
     private fun fixColor(Buttons: MutableList<AppCompatButton>, targetID: Int) {
         for (i in Buttons) {
