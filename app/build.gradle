@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace 'com.ibsu.ibsu'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.ibsu.ibsu"
         minSdk 25
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -81,8 +81,8 @@ dependencies {
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.43.2"
     kapt "com.google.dagger:hilt-compiler:2.43.2"
-    //floating expandable button
-//    implementation 'com.github.imtuann:FloatingActionButtonExpandable:1.1.2'
+    //swipe refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     implementation 'androidx.browser:browser:1.3.0' // Use the latest version
 

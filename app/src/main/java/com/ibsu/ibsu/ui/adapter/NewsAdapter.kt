@@ -14,6 +14,7 @@ import com.ibsu.ibsu.data.remote.model.NewsItem
 import com.ibsu.ibsu.databinding.NewsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.element.EntertainmentFragmentDirections
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class NewsAdapter(private val context: Context) :
     ListAdapter<NewsItem, NewsAdapter.NewsViewHolder>(ItemDiffCallback()) {
@@ -24,7 +25,7 @@ class NewsAdapter(private val context: Context) :
             binding.apply {
                 source = getItem(absoluteAdapterPosition)
 
-                if (context.getCurrentLocale(context).language == "ka") {
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     newsTitleTV.text = source?.headlineGe
                     dateTV.text = source?.dateGe
                 } else {

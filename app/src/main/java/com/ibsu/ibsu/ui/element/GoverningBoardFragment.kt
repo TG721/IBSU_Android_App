@@ -48,12 +48,7 @@ class GoverningBoardFragment :
 
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            for (i in 0 until it.items.size) {
-                                governanceList.add(it.items.elementAt(i))
-
-                            }
-
-                            governanceAdapter.submitList(governanceList)
+                            governanceAdapter.submitList(it.items)
 
                         }
 
@@ -68,7 +63,7 @@ class GoverningBoardFragment :
         governanceAdapter = GovernanceAdapter(requireContext())
         val recycler = binding.governanceRV
         var spanCount = 2
-//        if(requireContext().getCurrentLocale(requireContext()).language=="ka") spanCount = 1
+
         val layoutManager =
             GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)
 

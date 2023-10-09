@@ -1,23 +1,29 @@
 package com.ibsu.ibsu.ui.element
 
 import android.content.res.Resources
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentProgramsBinding
 import com.ibsu.ibsu.extensions.hideBottomNavigation
-import com.ibsu.ibsu.extensions.reduceDragSensitivity
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.ViewPagerForProgramsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsBinding::inflate) {
     private val args by navArgs<ProgramsFragmentArgs>()
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
+
 
     override fun setup() {
+        if (args.school != null) {
+            sharedViewModel.setSchoolValue(args.school!!)
+        }
         showBackButton()
         setActionBarName(getString(R.string.programs))
         hideBottomNavigation()
@@ -30,7 +36,7 @@ class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsB
         val viewPager2 = binding.viewPager
         viewPager2.offscreenPageLimit = 2
         val schoolValue = args.school
-        val mainViewPagerAdapter = ViewPagerForProgramsAdapter(this, schoolValue)
+        val mainViewPagerAdapter = ViewPagerForProgramsAdapter(this)
         viewPager2.adapter = mainViewPagerAdapter
 //        binding.viewPager.reduceDragSensitivity()
 
@@ -57,8 +63,8 @@ class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsB
 
     override fun onResume() {
         super.onResume()
-        if(args.school==null)
-        setActionBarName(getString(R.string.programs))
+        if (args.school == null)
+            setActionBarName(getString(R.string.programs))
         else setActionBarName(getString(R.string.school_programs))
     }
 }

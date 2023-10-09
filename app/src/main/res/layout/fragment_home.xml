@@ -1,118 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-  
-    tools:context=".ui.element.HomeFragment">
+    android:id="@+id/swipeRefreshLayout"
 
+    tools:context=".ui.element.HomeFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:iss_auto_cycle="true"
+        app:iss_corner_radius="0"
+        app:iss_delay="0"
+        app:iss_period="1400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.denzcoskun.imageslider.ImageSlider>
 
     <com.ibsu.ibsu.ui.common.HoverButton
-        android:layout_margin="10dp"
         android:id="@+id/buttonPrograms"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/programs"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
-        app:icon="@drawable/catalog"
-        app:iconSize="30dp"
-        android:paddingEnd="60dp"
-        app:iconTint="@color/white"
         app:hoverTextColor="@color/OrangeHover"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="277dp" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
     <com.ibsu.ibsu.ui.common.HoverButton
         android:id="@+id/buttonSchool"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
-        app:iconSize="30dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/schools"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
-        android:paddingEnd="60dp"
-        app:iconTint="@color/white"
-        app:icon="@drawable/baseline_school_24"
         app:hoverTextColor="@color/OrangeHover"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="277dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
     <com.ibsu.ibsu.ui.common.HoverButton
         android:id="@+id/buttonIRO"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
-        android:visibility="gone"
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/international_relations"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
         app:hoverTextColor="@color/OrangeHover"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSchool"
-        tools:layout_editor_absoluteX="33dp" />
-
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPrograms" />
     <com.ibsu.ibsu.ui.common.HoverButton
         android:id="@+id/buttonStudentLife"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
-        app:iconSize="30dp"
-        app:iconTint="@color/white"
-        app:icon="@drawable/reading_student"
-        android:paddingEnd="60dp"
-
+        android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/student_nlife"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
         app:hoverTextColor="@color/OrangeHover"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSchool"
-        tools:layout_editor_absoluteX="209dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSchool" />
 
     <com.ibsu.ibsu.ui.common.HoverButton
         android:id="@+id/buttonUsefulDocuments"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
-        app:iconSize="30dp"
-
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/useful_ndocuments"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
-        app:iconTint="@color/white"
-        android:paddingEnd="60dp"
-        app:icon="@drawable/document"
         app:hoverTextColor="@color/OrangeHover"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIRO"
-        tools:layout_editor_absoluteX="33dp" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStudentLife" />
 
     <com.ibsu.ibsu.ui.common.HoverButton
         android:id="@+id/buttonContact"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
-        android:paddingEnd="60dp"
-        app:iconSize="30dp"
-        app:iconTint="@color/white"
-        app:icon="@drawable/baseline_call_24"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
         android:backgroundTint="@color/ibsu"
         android:text="@string/contact"
         android:textColor="@color/white"
         android:textSize="@dimen/home_btn_sp"
         app:hoverTextColor="@color/OrangeHover"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStudentLife"
-        tools:layout_editor_absoluteX="209dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStudentLife" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

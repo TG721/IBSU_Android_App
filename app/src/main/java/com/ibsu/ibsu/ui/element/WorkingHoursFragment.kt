@@ -50,12 +50,7 @@ class WorkingHoursFragment :
 
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            for (i in 0 until it.items.size) {
-                                list.add(it.items.elementAt(i))
-
-                            }
-
-                            rvAdapter.submitList(list)
+                            rvAdapter.submitList(it.items)
 
                         }
 

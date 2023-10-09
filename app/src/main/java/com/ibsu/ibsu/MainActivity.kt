@@ -22,7 +22,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.ibsu.ibsu.databinding.ActivityMainBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.ui.viewmodel.WeekValueViewModel
+import com.ibsu.ibsu.utils.LanguagesLocale.englishLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.LocaleHelper
 import com.ibsu.ibsu.utils.ResponseState
 import com.ibsu.ibsu.utils.WeekValue
@@ -50,7 +53,6 @@ class MainActivity : AppCompatActivity() {
     private fun setup() {
         setupLanguage()
         setupActionBar()
-        observeWeekValue();
         setupBottomNavigation();
 
     }
@@ -59,8 +61,8 @@ class MainActivity : AppCompatActivity() {
         val appSettingPrefs: SharedPreferences =
             getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = when (appSettingPrefs.getInt("languageVal", 2)) {
-            0 -> "en"
-            1 -> "ka"
+            0 -> englishLocale
+            1 -> georgianLocale
             else -> getCurrentLocale(this).language
         }
 
@@ -157,53 +159,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun observeWeekValue(): String {
-        viewModel.getCurrentWeek();
-        var weekValue: String = "";
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.myState.collect {
-                    when (it) {
-                        is ResponseState.Loading -> {
-                            setupActionBarText(getString(R.string.loading))
-                        }
-
-                        is ResponseState.Error -> {
-                            weekValue = getString(R.string.no_week_value_found)
-                            WeekValue.weekValue = weekValue
-                            setupActionBarText(weekValue)
-                        }
-
-                        is ResponseState.Success -> {
-                            weekValue = if(getCurrentLocale(this@MainActivity).language=="ka")
-                                it.items.weekValueGe
-                            else it.items.weekValueEn
-
-                            WeekValue.weekValue = weekValue
-                            setupActionBarText(weekValue)
-                        }
-
-                        else -> {}
-                    }
-                }
-            }
-        }
-        return weekValue
-    }
-
-    private fun setupActionBarText(weekValue: String) {
-
-        // Change the title color of the action bar
-        supportActionBar?.title = HtmlCompat.fromHtml(
-            "<font color='#FFFFFF'> IBSU - $weekValue</font>",
-            HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
-        //for georgian case
-//        supportActionBar?.title = HtmlCompat.fromHtml(
-//            "<font color='#FFFFFF'><b> IBSU - $weekValue</b></font>",
-//            HtmlCompat.FROM_HTML_MODE_LEGACY
-//        )
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

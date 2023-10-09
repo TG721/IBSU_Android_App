@@ -1,100 +1,148 @@
 package com.ibsu.ibsu.ui.element
 
 import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
+import com.ibsu.ibsu.data.remote.model.ProgramItem
 import com.ibsu.ibsu.databinding.FragmentMastersBinding
+import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.ui.viewmodel.MasterViewModel
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
+import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MastersFragment(private val schoolValue: String?) : BaseFragment<FragmentMastersBinding>(
+class MastersFragment() : BaseFragment<FragmentMastersBinding>(
     FragmentMastersBinding::inflate
-) {
-    private lateinit var menuButtons: MutableList<AppCompatButton>
-    private var fragmentContainerID: Int? = null
-    private lateinit var colorStateListSelected: ColorStateList
-    private lateinit var colorStateListNotSelected: ColorStateList
+) {    private val viewModel: MasterViewModel by viewModels()
+    private lateinit var programAdapter: ProgramAdapter
+    private var programUIList = mutableListOf<ProgramItem>()
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
 
     override fun setup() {
-        setupContainer();
-        setupMenuList();
-        colorStateListSelected =
-            ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.ibsu))
-        colorStateListNotSelected = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                requireContext(),
-                R.color.program_menu_btn_color
-            )
+        setupRecycler()
+        setupDropDownMenus()
+    }
+
+    private fun setupDropDownMenus() {
+        val sortingMethods: Array<String> = resources.getStringArray(R.array.filter_programs)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, sortingMethods)
+        binding.autoCompleteTextViewSector.setAdapter(arrayAdapter)
+        binding.autoCompleteTextViewSector.showSoftInputOnFocus = false
+        binding.autoCompleteTextViewSector.setDropDownBackgroundDrawable(
+            ColorDrawable(ContextCompat.getColor(requireContext(), R.color.anti_line))
         )
-    }
-
-    private fun setupMenuList() {
-        menuButtons = mutableListOf(
-            binding.menuProgramsBtn,
-            binding.menuAdmissionBtn, binding.menuExamTopicsBtn,
-            binding.menuDiscountBtn
-        )
-    }
-
-    private fun setupContainer() {
-        val initialFragment = MasterProgramFragment(schoolValue)
-        fragmentContainerID = binding.fragmentMastersContainerView.id
-//        if (schoolValue != null) {
-//            binding.programMenu.visibility = View.GONE
-//        } else binding.programMenu.visibility = View.VISIBLE
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(fragmentContainerID!!, initialFragment)
-            .commit()
 
     }
 
-//    override fun listeners() {
-//        binding.menuAdmissionBtn?.setOnClickListener {
-//            val fragmentTransaction: FragmentTransaction =
-//                requireActivity().supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(
-//                R.id.fragmentMastersContainerView,
-//                MasterAdmissionFragment()
-//            ).commit()
-//            fixColor(menuButtons, it.id);
-//        }
-//        binding.menuExamTopicsBtn.setOnClickListener {
-//            val fragmentTransaction: FragmentTransaction =
-//                requireActivity().supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(fragmentContainerID!!, ExamTopicsFragment()).commit()
-//            fixColor(menuButtons, it.id);
-//        }
-//        binding.menuDiscountBtn.setOnClickListener {
-//            val fragmentTransaction: FragmentTransaction =
-//                requireActivity().supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(fragmentContainerID!!, MastersDiscountFragment()).commit()
-//            fixColor(menuButtons, it.id);
-//        }
-//        binding.menuProgramsBtn.setOnClickListener {
-//            val fragmentTransaction: FragmentTransaction =
-//                requireActivity().supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(fragmentContainerID!!, MasterProgramFragment(schoolValue))
-//                .commit()
-//            fixColor(menuButtons, it.id);
-//        }
-//
-//    }
 
-    private fun fixColor(Buttons: MutableList<AppCompatButton>, targetID: Int) {
-        for (i in Buttons) {
-            if (i.id == targetID) {
-                i.backgroundTintList = colorStateListSelected
-                i.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-            } else {
-                i.backgroundTintList = colorStateListNotSelected
-                i.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+    override fun observers() {
+        observePrograms()
+    }
+
+    override fun listeners() {
+        binding.autoCompleteTextViewSector.setOnItemClickListener { adapterView, _, i, _ ->
+            when {
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.english_programs) -> {
+                    val english_sects = programUIList.filter {
+                        it.englishSectorAvailable == true
+                    }
+                    programAdapter.submitList(english_sects)
+                }
+
+
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.georgian_programs) -> {
+                    val georgian_sects = programUIList.filter {
+                        it.georgianSectorAvailable == true
+                    }
+                    programAdapter.submitList(georgian_sects)
+                }
+
+
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.all_programs) -> {
+                    programAdapter.submitList(programUIList)
+                }
+
+                else -> {}
             }
         }
+    }
+
+    private fun observePrograms() {
+        viewModel.getMasterPrograms()
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.myState.collect {
+                    when (it) {
+                        is ResponseState.Loading -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+
+                        is ResponseState.Error -> {
+                            binding.errorMessage.text = it.message.toString()
+                            binding.progressBar.visibility = View.GONE
+                        }
+
+                        is ResponseState.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            programUIList.clear()
+                            for (i in 0 until it.items.size) {
+                                if(sharedViewModel.getSchoolValue()!=""){
+                                    if(it.items.elementAt(i).School==sharedViewModel.getSchoolValue())
+                                        programUIList.add(it.items.elementAt(i))
+                                }
+                                else   programUIList.add(it.items.elementAt(i))
+
+                            }
+
+                            programAdapter.submitList(programUIList)
+
+
+                        }
+
+                        else -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupRecycler() {
+        programAdapter = ProgramAdapter(requireContext(), "Master")
+        val recycler = binding.programRV
+        var spanCount  = 2
+        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) spanCount = 1
+        val layoutManager = GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)
+
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                // Set the span size for each item based on its position
+                return 1
+            }
+        }
+        recycler.adapter = programAdapter
+        recycler.layoutManager = layoutManager
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupDropDownMenus()
     }
 
 }

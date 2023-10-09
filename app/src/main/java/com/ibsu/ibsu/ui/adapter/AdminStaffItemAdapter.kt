@@ -25,6 +25,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.AdministrationItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class AdminStaffItemAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
     ListAdapter<AdministrationItem, AdminStaffItemAdapter.StaffViewHolder>(ItemDiffCallback()) {
@@ -104,11 +105,11 @@ class AdminStaffItemAdapter(private val context: Context, private val emailVisib
                         .into(imageView)
                 }
                 adminStaffNameTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                if (context.getCurrentLocale(context).language == "ka")
+                if (context.getCurrentLocale(context).language == georgianLocale)
                     adminStaffNameTV.text = source.nameGe
                 else adminStaffNameTV.text = source.nameEn
                 var positionValue: String
-                if (context.getCurrentLocale(context).language == "ka")
+                if (context.getCurrentLocale(context).language == georgianLocale)
                     positionValue = source.positionGe
                 else positionValue = source.positionEn
                 if (positionValue.length > 20) {

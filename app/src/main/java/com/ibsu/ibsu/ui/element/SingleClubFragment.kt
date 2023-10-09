@@ -18,6 +18,7 @@ import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 
 class SingleClubFragment :
@@ -71,12 +72,12 @@ class SingleClubFragment :
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(facebookPageUrl)))
     }
     private fun setupInfo() {
-        if(requireContext().getCurrentLocale(requireContext()).language=="ka")
+        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
         binding.clubName.text = args.club.clubNameGe
         else binding.clubName.text = args.club.clubNameEn
         if (args.club.descriptionEn != null)
         {
-            if(requireContext().getCurrentLocale(requireContext()).language=="ka")
+            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
             binding.clubdescription.text = args.club.descriptionGe
             else binding.clubdescription.text = args.club.descriptionEn
             binding.clubDescriptionTitle.visibility = View.VISIBLE
@@ -115,7 +116,7 @@ class SingleClubFragment :
         binding.presidentNumber.paintFlags =  binding.presidentEmail.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         binding.vicePresidentNumber.paintFlags =  binding.vicePresidentEmail.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
-        if(args.club.presidentNumber!="") binding.presidentNumber.visibility = View.GONE
+        if(args.club.presidentNumber=="") binding.presidentNumber.visibility = View.GONE
     }
 
     override fun onResume() {

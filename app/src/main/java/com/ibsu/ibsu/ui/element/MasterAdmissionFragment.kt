@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.ibsu.ibsu.databinding.FragmentMasterAdmissionBinding
 import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +40,7 @@ class MasterAdmissionFragment : Fragment() {
 
     private fun setupWebView() {
         var webURL: String
-        if (requireContext().getCurrentLocale(requireContext()).language == "ka")
+        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale)
             webURL = "https://ibsu.edu.ge/ge/masters/#1676283131963-b3849189-54ad"
         else webURL = "https://ibsu.edu.ge/en/masters/#1676283131963-b3849189-54ad"
         val webView = binding?.webView

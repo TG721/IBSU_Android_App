@@ -1,10 +1,12 @@
 package com.ibsu.ibsu.ui.element
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,16 +20,20 @@ import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.BachelorViewModel
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BachelorsFragment(val schoolValue: String?) :
+class BachelorsFragment() :
     BaseFragment<FragmentBachelorsBinding>(FragmentBachelorsBinding::inflate) {
     private val viewModel: BachelorViewModel by viewModels()
     private lateinit var programAdapter: ProgramAdapter
     private var programUIList = mutableListOf<ProgramItem>()
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
+
     override fun setup() {
         setupRecycler()
         setupDropDownMenus()
@@ -50,45 +56,30 @@ class BachelorsFragment(val schoolValue: String?) :
     override fun listeners() {
         binding.autoCompleteTextViewSector.setOnItemClickListener { adapterView, _, i, _ ->
             when {
-                (adapterView.getItemAtPosition(i)).toString() == "English Programs" -> {
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.english_programs) -> {
                     val english_sects = programUIList.filter {
                         it.englishSectorAvailable == true
                     }
                     programAdapter.submitList(english_sects)
                 }
 
-                (adapterView.getItemAtPosition(i)).toString() == "ინგლისურენოვანი პროგრამები" -> {
-                    val english_sects = programUIList.filter {
-                        it.englishSectorAvailable == true
-                    }
-                    programAdapter.submitList(english_sects)
-                }
 
-                (adapterView.getItemAtPosition(i)).toString() == "Georgian Programs" -> {
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.georgian_programs) -> {
                     val georgian_sects = programUIList.filter {
                         it.georgianSectorAvailable == true
                     }
                     programAdapter.submitList(georgian_sects)
                 }
 
-                (adapterView.getItemAtPosition(i)).toString() == "ქართულენოვანი პროგრამები" -> {
-                    val georgian_sects = programUIList.filter {
-                        it.georgianSectorAvailable == true
-                    }
-                    programAdapter.submitList(georgian_sects)
-                }
 
-                (adapterView.getItemAtPosition(i)).toString() == "All Programs" -> {
-                    programAdapter.submitList(programUIList)
-                }
-
-                (adapterView.getItemAtPosition(i)).toString() == "ყველა პროგრამა" -> {
+                (adapterView.getItemAtPosition(i)).toString() == getString(R.string.all_programs) -> {
                     programAdapter.submitList(programUIList)
                 }
 
                 else -> {}
             }
         }
+
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -110,9 +101,10 @@ class BachelorsFragment(val schoolValue: String?) :
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
 //                            programUIList = mutableListOf<ProgramItem>()
+                            programUIList.clear()
                             for (i in 0 until it.items.size) {
-                                if (schoolValue != null) {
-                                    if (it.items.elementAt(i).School == schoolValue)
+                                if (sharedViewModel.getSchoolValue() != "") {
+                                    if (it.items.elementAt(i).School == sharedViewModel.getSchoolValue())
                                         programUIList.add(it.items.elementAt(i))
                                 } else programUIList.add(it.items.elementAt(i))
 
@@ -133,7 +125,7 @@ class BachelorsFragment(val schoolValue: String?) :
         programAdapter = ProgramAdapter(requireContext(), "Bachelor")
         val recycler = binding.programRV
         var spanCount = 2
-        if (requireContext().getCurrentLocale(requireContext()).language == "ka") spanCount = 1
+        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) spanCount = 1
         val layoutManager =
             GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)
 

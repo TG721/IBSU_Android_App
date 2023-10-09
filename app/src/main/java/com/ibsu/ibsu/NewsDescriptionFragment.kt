@@ -25,6 +25,7 @@ import com.ibsu.ibsu.ui.adapter.NewsAdapter
 import com.ibsu.ibsu.ui.adapter.NewsImagesAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.element.EventDescriptionFragmentArgs
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,7 +37,7 @@ class NewsDescriptionFragment : BaseFragment<FragmentNewsDescriptionBinding>(
     private val args by navArgs<NewsDescriptionFragmentArgs>()
 
     override fun setup() {
-        if(requireContext().getCurrentLocale(requireContext()).language=="ka") {
+        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) {
             binding.descriptionTV.text = args.newsItems.descriptionGe
             binding.headlineTV.text = args.newsItems.headlineGe
             binding.dateTV.text = args.newsItems.dateGe

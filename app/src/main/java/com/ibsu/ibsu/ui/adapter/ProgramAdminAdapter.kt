@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.data.remote.model.ProgramAdminItem
 import com.ibsu.ibsu.databinding.ProgramAdminItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class ProgramAdminAdapter(private val context: Context) :
     ListAdapter<ProgramAdminItem, ProgramAdminAdapter.ItemViewHolder>(ItemDiffCallback()) {
@@ -27,7 +28,7 @@ class ProgramAdminAdapter(private val context: Context) :
             binding.apply {
                 email.paintFlags = binding.email.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 number.paintFlags = binding.number.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                if (context.getCurrentLocale(context).language == "ka") {
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     name.text = source.nameGe
                     position.text = source.positionGe
                 } else {

@@ -9,7 +9,7 @@
 
         <item name="colorSurface">@color/anti_line</item> //ტაბ ლეაიუთის ფონი და autotextlayout ჩამოსაშლელი მენიუს ფერის?
         <item name="colorOnPrimarySurface">@color/link_blue</item>
-        <item name="colorOnPrimary">@color/ibsu_light</item> //კნოპკის ripple effect ფერი
+        <item name="colorOnPrimary">@color/white</item> // მატერიალ კნოპკის ripple effect ფერი  და checkbox ის პწიჩკა
         <item name="colorPrimary">@color/ibsu_tab</item>
 
         <item name="colorControlActivated">@color/ibsu_tab</item> //radio button activated color
@@ -17,7 +17,7 @@
         <item name="colorPrimarySurface">@color/line</item>
         <item name="colorOnSurfaceVariant">@color/line</item>
 
-        <item name="colorOnSurface">@color/ibsu_tab</item> //bottom ნავიგაციას რომ დააჭერ და არ აუშვებ იმის ფერის და autotextlayout ჩამოსაშლელი მენიუს სანამ დააჭერ სამკუთხედის ფერი
+        <item name="colorOnSurface">@color/ibsu</item> //bottom ნავიგაციას რომ დააჭერ და არ აუშვებ იმის ფერის და autotextlayout ჩამოსაშლელი მენიუს სანამ დააჭერ სამკუთხედის ფერი
         <item name="android:colorControlHighlight">@color/ibsu_light </item> //autotextlayout ჩამოსაშლელი მენიუს სამკუთხედზე და მენიუს რიგზე დაჭერა
 
 <!--        <item name="android:textColorHint">@color/grey_700</item>-->

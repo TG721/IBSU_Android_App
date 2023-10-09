@@ -25,12 +25,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.JavaScriptInterfaceForSIS
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.WeekValue
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -38,7 +41,8 @@ import java.io.File
 
 @AndroidEntryPoint
 class SISFragment : Fragment() {
-        private var isFirstLoad = true
+
+    private var isFirstLoad = true
     private var binding: FragmentSISBinding? = null
 
     override fun onCreateView(
@@ -99,7 +103,7 @@ class SISFragment : Fragment() {
                     requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
 //                d("urlld", url.toString())
                 if(isFirstLoad){
-                    if(requireContext().getCurrentLocale(requireContext()).language=="ka"){
+                    if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale){
                         view?.evaluateJavascript(
                             """
     function changeToKA() {

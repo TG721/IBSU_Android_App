@@ -23,6 +23,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.LecturersItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 
 class LecturersAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
@@ -103,7 +104,7 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
                         .into(imageView)
                 }
                 adminStaffNameTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                if (context.getCurrentLocale(context).language == "ka"){
+                if (context.getCurrentLocale(context).language == georgianLocale){
                     adminStaffNameTV.text = source.nameGe
                     //position is name but variable represents status like M.A, Doctor
                     adminStaffPositionTV.text = source.statusGe

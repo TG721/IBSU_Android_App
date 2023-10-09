@@ -47,4 +47,9 @@ class ExchangeProgramsFragment :
         }.attach()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setActionBarName(getString(R.string.exchange_programs))
+    }
+
 }

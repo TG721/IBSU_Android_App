@@ -122,6 +122,12 @@
     <string name="download_failed">Download failed</string>
     <string name="open">Open</string>
     <string name="useful_documents">Useful Documents</string>
+    <string name="deadline">Deadline:</string>
+    <string name="country">Country:</string>
+    <string name="check_internet_connection_and_scroll_to_refresh">Check Internet Connection and Scroll to Refresh</string>
+    <string name="english_programs">English Programs</string>
+    <string name="georgian_programs">Georgian Programs</string>
+    <string name="all_programs">All Programs</string>
     <string-array name="filter_programs">
         <item name="all_sect">All Programs</item>
         <item name="eng_sect">English Programs</item>

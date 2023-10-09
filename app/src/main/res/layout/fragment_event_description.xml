@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +9,25 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        tools:src="@tools:sample/backgrounds/scenic"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/custom_progress_bar"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView"
@@ -25,7 +39,10 @@
 
 Sed luctus enim eget massa consequat ullamcorper. Cras accumsan porttitor leo, non dapibus arcu imperdiet ac. Suspendisse tristique bibendum ullamcorper. Nulla quis ullamcorper augue, non egestas dolor. Aliquam lorem nunc, imperdiet a urna non, pharetra dictum risus. Integer a libero magna. Nullam ut sollicitudin odio. Sed fermentum, massa ac mollis bibendum, odio nulla suscipit arcu, eu tristique nulla quam et orci. Vivamus varius ante eget consectetur lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         android:textColor="@color/line"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

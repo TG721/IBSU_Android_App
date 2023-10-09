@@ -1,5 +1,6 @@
 package com.ibsu.ibsu.ui.element
 
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ibsu.ibsu.R
@@ -8,12 +9,14 @@ import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SchoolMenuFragment :
     BaseFragment<FragmentSchoolMenuBinding>(FragmentSchoolMenuBinding::inflate) {
     private val args by navArgs<SchoolMenuFragmentArgs>()
+
 
     override fun setup() {
         setActionBarName(getString(R.string.about_school))

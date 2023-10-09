@@ -1,7 +1,7 @@
 package com.ibsu.ibsu.ui.element
 
-import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -12,23 +12,26 @@ import com.ibsu.ibsu.databinding.FragmentLectrurersBinding
 import com.ibsu.ibsu.ui.adapter.LecturersAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.LecturersViewModel
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LecturersFragment(val school: String, private val emailVisibility: Boolean = false) :
+class LecturersFragment() :
     BaseFragment<FragmentLectrurersBinding>(FragmentLectrurersBinding::inflate) {
     private val viewModel: LecturersViewModel by viewModels()
     private lateinit var rvAdapter: LecturersAdapter
     private lateinit var lecturers: ArrayList<LecturersItem>
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
+
 
     override fun setup() {
         setupRecycler()
     }
 
     private fun setupRecycler() {
-        rvAdapter = LecturersAdapter(requireContext(), emailVisibility)
+        rvAdapter = LecturersAdapter(requireContext(), sharedViewModel.getEmailVisibility())
         val recycler = binding.itemsRV
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -41,7 +44,7 @@ class LecturersFragment(val school: String, private val emailVisibility: Boolean
     }
 
     private fun observeItems() {
-        viewModel.getLecturers(school)
+        viewModel.getLecturers(sharedViewModel.getSchoolValue())
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -84,13 +87,17 @@ class LecturersFragment(val school: String, private val emailVisibility: Boolean
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if (lecturers?.size != 0){
-                val filteredList = ArrayList<LecturersItem>()
-                for (item in lecturers)
-                    if (item.nameEn.lowercase().contains(newText.toString().lowercase()) || item.nameGe.contains(newText.toString().lowercase()))
-                        filteredList.add(item)
-                rvAdapter.submitList(filteredList)
-            }
+                if (lecturers?.size != 0) {
+                    val filteredList = ArrayList<LecturersItem>()
+                    for (item in lecturers)
+                        if (item.nameEn.lowercase()
+                                .contains(newText.toString().lowercase()) || item.nameGe.contains(
+                                newText.toString().lowercase()
+                            )
+                        )
+                            filteredList.add(item)
+                    rvAdapter.submitList(filteredList)
+                }
                 return false
             }
 

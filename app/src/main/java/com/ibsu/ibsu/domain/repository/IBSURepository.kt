@@ -7,6 +7,7 @@ import com.ibsu.ibsu.data.remote.model.ContactInfo
 import com.ibsu.ibsu.data.remote.model.Courses
 import com.ibsu.ibsu.data.remote.model.CreditValue
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
+import com.ibsu.ibsu.data.remote.model.ExchangeUniversity
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
 import com.ibsu.ibsu.data.remote.model.Games
@@ -21,6 +22,7 @@ import com.ibsu.ibsu.data.remote.model.WorkingHours
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import retrofit2.http.GET
 
 interface IBSURepository {
     //retrofit
@@ -54,6 +56,11 @@ interface IBSURepository {
 
     suspend fun getUsefulDocs(): Flow<ResponseState<UsefulDocs>>
 
+    suspend fun getExchangeUniversitiesForErasmusPlus(): Flow<ResponseState<ExchangeUniversity>>
+
+    suspend fun getExchangeUniversitiesForBilateral(): Flow<ResponseState<ExchangeUniversity>>
+
+    suspend fun getExchangeUniversitiesForVirtual(): Flow<ResponseState<ExchangeUniversity>>
 
 
 }

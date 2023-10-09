@@ -25,7 +25,7 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(FragmentContactBind
     private fun setupTabLayout() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
-        viewPager2.offscreenPageLimit = 2 // Preload all three fragments
+        viewPager2.offscreenPageLimit = 3 // Preload all three fragments
         val mainViewPagerAdapter = ViewPagerForContactAdapter(this)
         viewPager2.adapter = mainViewPagerAdapter
 

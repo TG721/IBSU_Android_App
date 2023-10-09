@@ -1,6 +1,7 @@
 package com.ibsu.ibsu.ui.element
 
 import android.content.res.Resources
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ibsu.ibsu.R
@@ -10,13 +11,20 @@ import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.ViewPagerForSchoolStaffAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StaffSelectionFragment :
     BaseFragment<FragmentStaffSelectionBinding>(FragmentStaffSelectionBinding::inflate) {
     private val args by navArgs<StaffSelectionFragmentArgs>()
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
+
     override fun setup() {
+        if (args.school != null) {
+            sharedViewModel.setSchoolValue(args.school!!)
+        }
+        sharedViewModel.setEmailVisibility(args.emailVisibility)
         setActionBarName(getString(R.string.staff))
         hideBottomNavigation()
         showBackButton()

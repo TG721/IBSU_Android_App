@@ -18,6 +18,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.AdminStaffPortraitItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class GovernanceAdapter(private val context: Context) :
     ListAdapter<GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
@@ -39,7 +40,7 @@ class GovernanceAdapter(private val context: Context) :
                     .inflate(R.layout.custom_dialog_layout, null)
                 val descriptionTextView =
                     dialogView.findViewById<TextView>(R.id.descriptionTextView)
-                if (context.getCurrentLocale(context).language == "ka") {
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     adminStaffNameTV.text = source.NameGe
                     adminStaffPositionTV.text = source.governingPositionGe
                     moreInfoTV.text = source.academicPositionGe

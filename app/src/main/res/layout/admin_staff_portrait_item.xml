@@ -6,12 +6,13 @@
     android:background="@color/anti_line"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:minHeight="340dp"
+
         app:cardBackgroundColor="@color/slight_more_line"
         app:cardCornerRadius="10dp"
         app:cardElevation="2dp">
@@ -91,5 +92,5 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.appcompat.widget.LinearLayoutCompat>

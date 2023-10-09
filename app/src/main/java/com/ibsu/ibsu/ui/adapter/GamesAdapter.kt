@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ibsu.ibsu.data.remote.model.GamesItem
 import com.ibsu.ibsu.databinding.GameItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class GamesAdapter(private val context: Context) :
     ListAdapter<GamesItem, GamesAdapter.GameViewHolder>(ItemDiffCallback()) {
@@ -28,7 +29,7 @@ class GamesAdapter(private val context: Context) :
                     .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
                     .into(imageBtn)
             }
-            if(context.getCurrentLocale(context).language=="ka")
+            if(context.getCurrentLocale(context).language==georgianLocale)
             binding.titleTV.text = source.nameGe
             else binding.titleTV.text = source.nameEn
 //            binding.roomTV.text = source.location

@@ -15,6 +15,7 @@ import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ContactInfoItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.ContactViewModel
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -53,7 +54,7 @@ class ContactInfoFragment :
 
                         is ResponseState.Success -> {
                             binding.addressTV.visibility = View.VISIBLE
-                            if(requireContext().getCurrentLocale(requireContext()).language=="ka")
+                            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
                             binding.addressTV.text = it.items.addressGe
                             else binding.addressTV.text = it.items.addressEn
 

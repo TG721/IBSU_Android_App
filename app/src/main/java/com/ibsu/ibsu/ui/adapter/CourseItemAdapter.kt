@@ -14,6 +14,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.CoursesItem
 import com.ibsu.ibsu.databinding.CourseItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class CourseItemAdapter(private val context: Context) :
     ListAdapter<CoursesItem, CourseItemAdapter.RVViewHolder>(ItemDiffCallback()) {
@@ -31,7 +32,7 @@ class CourseItemAdapter(private val context: Context) :
 
 
                 var finalStringValue = ""
-                if (context.getCurrentLocale(context).language == "ka") {
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     courseName.text = source.nameGe
                     if (source.prerequisitesGe != null)
                         source.prerequisitesGe.forEach {
@@ -89,7 +90,9 @@ class CourseItemAdapter(private val context: Context) :
                     } else seeDescription.visibility = View.GONE
                 }
                 hours.text = "${context.getString(R.string.contact_hours_per_week)} ${source.hours}"
-                prerequisites.text = finalStringValue
+                if(source.prerequisitesGe!=null && source.prerequisites!=null)
+                    prerequisites.text = finalStringValue
+
                 ETC.text = "${context.getString(R.string.etc)}${source.ETC}"
                 if (source.semesterNumber != null) semester.text =
                     context.getString(R.string.semester) + source.semesterNumber

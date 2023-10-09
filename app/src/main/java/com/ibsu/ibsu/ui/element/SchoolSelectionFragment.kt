@@ -1,5 +1,7 @@
 package com.ibsu.ibsu.ui.element
 
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSchoolSelectionBinding
@@ -7,6 +9,7 @@ import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.Schools
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SchoolSelectionFragment : BaseFragment<FragmentSchoolSelectionBinding>(
     FragmentSchoolSelectionBinding::inflate
 ) {
-
     override fun setup() {
         setActionBarName(getString(R.string.choose_school))
         hideBottomNavigation()

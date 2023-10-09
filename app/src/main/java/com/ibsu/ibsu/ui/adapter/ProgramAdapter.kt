@@ -20,6 +20,7 @@ import com.ibsu.ibsu.data.remote.model.ProgramItem
 import com.ibsu.ibsu.databinding.ProgramItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.element.ProgramsFragmentDirections
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.PdfDownloader
 import com.ibsu.ibsu.utils.Schools
 
@@ -33,7 +34,7 @@ class ProgramAdapter(private val context: Context, private val type: String) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
-                if(context.getCurrentLocale(context).language=="ka")
+                if(context.getCurrentLocale(context).language==georgianLocale)
                 programBtn.text = source.programNameGe
                 else programBtn.text = source.programNameEn
                 when(source.School) {

@@ -71,6 +71,7 @@ class CoursesFragment(private val programVal: String, private val type: String) 
 
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
+                            list.clear()
                             for (i in 0 until it.items.size) {
                                 list.add(it.items.elementAt(i))
 

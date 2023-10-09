@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_homeFragment_to_usefulDocsFragment"
             app:destination="@id/usefulDocsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exchangeProgramsFragment"
+            app:destination="@id/exchangeProgramsFragment" />
 
     </fragment>
     <fragment
@@ -184,11 +187,6 @@
         android:label="fragment_admission"
         tools:layout="@layout/fragment_master_admission" />
     <fragment
-        android:id="@+id/masterProgramFragment"
-        android:name="com.ibsu.ibsu.ui.element.MasterProgramFragment"
-        android:label="fragment_master_program"
-        tools:layout="@layout/fragment_master_program" />
-    <fragment
         android:id="@+id/examTopicsFragment"
         android:name="com.ibsu.ibsu.ui.element.ExamTopicsFragment"
         android:label="fragment_exam_topics"
@@ -208,11 +206,6 @@
         android:name="com.ibsu.ibsu.ui.element.SelfGovernanceFragment"
         android:label="fragment_self_governance"
         tools:layout="@layout/fragment_self_governance" />
-    <fragment
-        android:id="@+id/mastersDiscountFragment"
-        android:name="com.ibsu.ibsu.ui.element.MastersDiscountFragment"
-        android:label="fragment_masters_discount"
-        tools:layout="@layout/fragment_masters_discount" />
     <fragment
         android:id="@+id/schoolMenuFragment"
         android:name="com.ibsu.ibsu.ui.element.SchoolMenuFragment"

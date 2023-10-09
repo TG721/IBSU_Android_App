@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">იბსუ</string>
     <string name="home">მთავარი</string>
     <string name="lecturers">ლექტორები</string>
     <string name="sis">SIS</string>
@@ -122,6 +123,12 @@
     <string name="download_failed">გადმოწერისას მოხდა შეცდომა</string>
     <string name="open">გახსნა</string>
     <string name="useful_documents">სასარგებლო დოკუმენტები</string>
+    <string name="deadline">განცხადების ვადა:</string>
+    <string name="country">ქვეყანა:</string>
+    <string name="check_internet_connection_and_scroll_to_refresh">შეამოწმეთ ინტერნეტთან კავშირი და დასქროლეთ დასარეფრეშებლად</string>
+    <string name="english_programs">ინგლისურენოვანი პროგრამები</string>
+    <string name="georgian_programs">ქართულენოვანი პროგრამები</string>
+    <string name="all_programs">ყველა პროგრამა</string>
     <string-array name="filter_programs">
         <item name="all_sect">ყველა პროგრამა</item>
         <item name="eng_sect">ინგლისურენოვანი პროგრამები</item>

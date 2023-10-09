@@ -15,11 +15,11 @@ class ViewPagerForSchoolStaffAdapter(fragment: Fragment, val school: String, pri
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> {
-                return AdminStaffFragment(school, emailVisibility)
+                return AdminStaffFragment()
             }
 
             1 -> {
-                return LecturersFragment(school, emailVisibility)
+                return LecturersFragment()
             }
 
             else -> {

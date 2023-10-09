@@ -7,79 +7,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.element.MastersFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/programMenu"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="5dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:visibility="gone"
-        android:background="@color/anti_line"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="5"
+        android:textColor="@color/line"
+        app:boxStrokeColor="@color/ibsu"
+        app:endIconTint="@color/ibsu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/menuProgramsBtn"
-            android:layout_width="wrap_content"
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewSector"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/ibsu"
-            android:layout_weight="1"
-            android:text="@string/programs"
-            android:textSize="@dimen/menu_button_sp"
-            android:textColor="@color/white" />
+            android:background="@color/slight_line"
+            android:cursorVisible="false"
+            android:inputType="none|textNoSuggestions"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/menuAdmissionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/rounded_rectangle"
-            android:layout_weight="1"
-            android:textSize="@dimen/menu_button_sp"
-            android:text="@string/admission"
-            android:textColor="@color/black" />
+            android:text="@string/filter_by_language"
+            android:textColor="@color/line" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/menuExamTopicsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:visibility="gone"
-            android:background="@drawable/rounded_rectangle"
-            android:text="@string/exam_ntopics"
-            android:textSize="@dimen/menu_button_sp"
-            android:textColor="@color/black" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/menuDiscountBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_rectangle"
-            android:text="@string/discount"
-            android:visibility="gone"
+    </com.google.android.material.textfield.TextInputLayout>
 
-            android:textSize="@dimen/menu_button_sp"
-            android:textColor="@color/black" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentMastersContainerView"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/programRV"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/hello_blank_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/programMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textColor="@color/line"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/programRV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/custom_progress_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

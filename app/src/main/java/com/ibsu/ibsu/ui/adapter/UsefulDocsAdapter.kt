@@ -19,6 +19,7 @@ import com.ibsu.ibsu.NewsDescriptionFragmentDirections
 import com.ibsu.ibsu.data.remote.model.UsefulDocsItem
 import com.ibsu.ibsu.databinding.UsefulDocsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class UsefulDocsAdapter(private val context: Context) : ListAdapter<UsefulDocsItem, UsefulDocsAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
@@ -29,7 +30,7 @@ class UsefulDocsAdapter(private val context: Context) : ListAdapter<UsefulDocsIt
         fun bind(position: Int) {
 
             val source = getItem(absoluteAdapterPosition)
-            if (context.getCurrentLocale(context).language == "ka")
+            if (context.getCurrentLocale(context).language == georgianLocale)
                 binding.textView.text = source.nameGe
             else binding.textView.text = source.nameEn
 

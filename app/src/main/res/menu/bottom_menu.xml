@@ -14,7 +14,7 @@
         />
     <item
         android:id="@+id/IniFragment"
-        android:title="INI"
+        android:title="Students"
         android:icon="@drawable/ini"
         />
     <item

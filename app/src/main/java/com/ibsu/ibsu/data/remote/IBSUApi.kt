@@ -7,6 +7,7 @@ import com.ibsu.ibsu.data.remote.model.ContactInfo
 import com.ibsu.ibsu.data.remote.model.Courses
 import com.ibsu.ibsu.data.remote.model.CreditValue
 import com.ibsu.ibsu.data.remote.model.CurrentWeek
+import com.ibsu.ibsu.data.remote.model.ExchangeUniversity
 import com.ibsu.ibsu.data.remote.model.FBFanPages
 import com.ibsu.ibsu.data.remote.model.GameRoomLocation
 import com.ibsu.ibsu.data.remote.model.Games
@@ -88,4 +89,14 @@ interface IBSUApi {
 
     @GET("bachelor/{programVar}/administration")
     suspend fun getProgramAdministration(@Path("programVar") nameValue: String): Response<ProgramAdmin>
+
+    @GET("IRO/ErasmusPlus")
+    suspend fun getExchangeUniversitiesForErasmusPlus(): Response<ExchangeUniversity>
+
+    @GET("IRO/Bilateral")
+    suspend fun getExchangeUniversitiesForBilateral(): Response<ExchangeUniversity>
+
+    @GET("IRO/virtual")
+    suspend fun getExchangeUniversitiesForVirtual(): Response<ExchangeUniversity>
+
 }

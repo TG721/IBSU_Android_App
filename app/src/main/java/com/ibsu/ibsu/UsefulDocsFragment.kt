@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -66,11 +67,13 @@ class UsefulDocsFragment : BaseFragment<FragmentUsefulDocsBinding>(FragmentUsefu
 
                             is ResponseState.Error -> {
                                 binding.errorMessage.text = it.message.toString()
+                                binding.errorMessage.visibility = View.VISIBLE
                                 binding.progressBar.visibility = View.GONE
                             }
 
                             is ResponseState.Success -> {
                                 binding.progressBar.visibility = View.GONE
+                                binding.errorMessage.visibility = View.GONE
 //                            Log.d("Received list ", it.items.toString())
                                 rvAdapter.submitList(it.items)
                                 list = it.items
@@ -83,6 +86,16 @@ class UsefulDocsFragment : BaseFragment<FragmentUsefulDocsBinding>(FragmentUsefu
                 }
             }
         }
+
+    override fun listeners() {
+        val swipeLayout = binding.swipeRefreshLayout
+        swipeLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.ibsu))
+        swipeLayout.setOnRefreshListener {
+            observeItems()
+            swipeLayout.isRefreshing = false
+
+        }
+    }
 
     override fun onResume() {
         super.onResume()

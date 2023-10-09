@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.data.remote.model.WorkingHoursItem
 import com.ibsu.ibsu.databinding.WorkingHoursItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class WorkingHoursAdapter(private val context: Context) :
     ListAdapter<WorkingHoursItem, WorkingHoursAdapter.ItemViewHolder>(ItemDiffCallback()) {
@@ -20,7 +21,7 @@ class WorkingHoursAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
-                if (context.getCurrentLocale(context).language == "ka") {
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     statement.text = source.statementGe
                     workingHours.text = source.hoursGe
                 } else {

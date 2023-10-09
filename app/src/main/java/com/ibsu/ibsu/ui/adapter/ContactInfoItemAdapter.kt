@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.data.remote.model.ContactInfoItem
 import com.ibsu.ibsu.databinding.ContactInfoItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class ContactInfoItemAdapter(private val context: Context) :
     ListAdapter<ContactInfoItem, ContactInfoItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
@@ -26,7 +27,7 @@ class ContactInfoItemAdapter(private val context: Context) :
             binding.apply {
                 email.paintFlags = binding.email.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 number.paintFlags = binding.number.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                if (context.getCurrentLocale(context).language == "ka")
+                if (context.getCurrentLocale(context).language == georgianLocale)
                     statement.text = source.nameGe
                 else statement.text = source.nameEn
                 email.text = source.Email

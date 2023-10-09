@@ -15,6 +15,7 @@ import com.ibsu.ibsu.ui.adapter.GamesAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.BachelorCreditValueViewModel
 import com.ibsu.ibsu.ui.viewmodel.GameViewModel
+import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class CreditValueFragment(private val programVal: String, private val type: Stri
 
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            if(requireContext().getCurrentLocale(requireContext()).language=="ka")
+                            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
                             binding.result.text = it.items.valueGe
                             else binding.result.text = it.items.valueEn
 

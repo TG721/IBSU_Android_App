@@ -1,12 +1,16 @@
 package com.ibsu.ibsu.ui.element
 
+import android.graphics.Color
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentClubsBinding
 import com.ibsu.ibsu.ui.adapter.ClubsAdapter
 import com.ibsu.ibsu.ui.adapter.CourseItemAdapter
@@ -56,6 +60,15 @@ class ClubsFragment : BaseFragment<FragmentClubsBinding>(FragmentClubsBinding::i
         }
     }
 
+    override fun listeners() {
+        val swipeLayout = binding.swipeRefreshLayout
+        swipeLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.ibsu))
+        swipeLayout.setOnRefreshListener {
+            observeClubs()
+            swipeLayout.isRefreshing = false
+
+        }
+    }
     private fun setupRecycler() {
         clubsAdapter = ClubsAdapter(requireContext())
         val recycler = binding.clubsRV
@@ -69,4 +82,5 @@ class ClubsFragment : BaseFragment<FragmentClubsBinding>(FragmentClubsBinding::i
         recycler.adapter = clubsAdapter
         recycler.layoutManager = layoutManager
     }
+
 }
