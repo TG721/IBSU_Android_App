@@ -19,7 +19,8 @@
             app:destination="@id/entertainmentFragment" />
         <action
             android:id="@+id/action_homeFragment_to_SchoolSelectionFragment"
-            app:destination="@id/SchoolSelectionFragment" />
+            app:destination="@id/SchoolSelectionFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_homeFragment_to_programsFragment"
             app:destination="@id/programsFragment" />
@@ -62,27 +63,27 @@
     </fragment>
     <fragment
         android:id="@+id/exchangeProgramsFragment"
-        android:name="com.ibsu.ibsu.ui.element.ExchangeProgramsFragment"
+        android:name="com.ibsu.ibsu.ui.element.iro.ExchangeProgramsFragment"
         android:label="fragment_exchange_programs"
         tools:layout="@layout/fragment_exchange_programs" />
     <fragment
         android:id="@+id/erasmusPlusFragment"
-        android:name="com.ibsu.ibsu.ui.element.ErasmusPlusFragment"
+        android:name="com.ibsu.ibsu.ui.element.iro.ErasmusPlusFragment"
         android:label="fragment_erasmus_plus"
         tools:layout="@layout/fragment_erasmus_plus" />
     <fragment
         android:id="@+id/bilateralFragment"
-        android:name="com.ibsu.ibsu.ui.element.BilateralFragment"
+        android:name="com.ibsu.ibsu.ui.element.iro.BilateralFragment"
         android:label="fragment_bilateral"
         tools:layout="@layout/fragment_bilateral" />
     <fragment
         android:id="@+id/onlineFragment"
-        android:name="com.ibsu.ibsu.ui.element.OnlineFragment"
+        android:name="com.ibsu.ibsu.ui.element.iro.OnlineFragment"
         android:label="fragment_online"
         tools:layout="@layout/fragment_online" />
     <fragment
         android:id="@+id/programsFragment"
-        android:name="com.ibsu.ibsu.ui.element.ProgramsFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.ProgramsFragment"
         android:label="fragment_programs"
         tools:layout="@layout/fragment_programs" >
         <argument
@@ -100,12 +101,12 @@
         tools:layout="@layout/fragment_facebook_pages" />
     <fragment
         android:id="@+id/clubsFragment"
-        android:name="com.ibsu.ibsu.ui.element.ClubsFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.ClubsFragment"
         android:label="fragment_clubs"
         tools:layout="@layout/fragment_clubs" />
     <fragment
         android:id="@+id/entertainmentFragment"
-        android:name="com.ibsu.ibsu.ui.element.EntertainmentFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.EntertainmentFragment"
         android:label="fragment_entertainment"
         tools:layout="@layout/fragment_entertainment" >
         <action
@@ -117,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/gamesFragment"
-        android:name="com.ibsu.ibsu.ui.element.GamesFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.GamesFragment"
         android:label="fragment_games"
         tools:layout="@layout/fragment_games" />
     <fragment
@@ -127,33 +128,28 @@
         tools:layout="@layout/fragment_admin_staff" />
     <fragment
         android:id="@+id/bachelorsFragment"
-        android:name="com.ibsu.ibsu.ui.element.BachelorsFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.BachelorsFragment"
         android:label="fragment_bachelors"
         tools:layout="@layout/fragment_bachelors" />
     <fragment
         android:id="@+id/doctorateFragment"
-        android:name="com.ibsu.ibsu.ui.element.DoctorateFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.DoctorateFragment"
         android:label="fragment_doctorate"
         tools:layout="@layout/fragment_doctorate" />
     <fragment
         android:id="@+id/mastersFragment"
-        android:name="com.ibsu.ibsu.ui.element.MastersFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.MastersFragment"
         android:label="fragment_masters"
         tools:layout="@layout/fragment_masters" />
     <fragment
         android:id="@+id/singleClubFragment"
-        android:name="com.ibsu.ibsu.ui.element.SingleClubFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.SingleClubFragment"
         android:label="fragment_single_club"
         tools:layout="@layout/fragment_single_club" >
         <argument
             android:name="club"
             app:argType="com.ibsu.ibsu.data.remote.model.ClubsItem" />
     </fragment>
-    <fragment
-        android:id="@+id/languagesFragment"
-        android:name="com.ibsu.ibsu.ui.element.LanguagesFragment"
-        android:label="fragment_languages"
-        tools:layout="@layout/fragment_languages" />
     <fragment
         android:id="@+id/staffSelectionFragment"
         android:name="com.ibsu.ibsu.ui.element.StaffSelectionFragment"
@@ -187,23 +183,18 @@
         android:label="fragment_admission"
         tools:layout="@layout/fragment_master_admission" />
     <fragment
-        android:id="@+id/examTopicsFragment"
-        android:name="com.ibsu.ibsu.ui.element.ExamTopicsFragment"
-        android:label="fragment_exam_topics"
-        tools:layout="@layout/fragment_exam_topics" />
-    <fragment
         android:id="@+id/sportFragment"
-        android:name="com.ibsu.ibsu.ui.element.SportFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.SportFragment"
         android:label="fragment_sport"
         tools:layout="@layout/fragment_sport" />
     <fragment
         android:id="@+id/sportNewsFragment"
-        android:name="com.ibsu.ibsu.ui.element.SportNewsFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.SportNewsFragment"
         android:label="fragment_sport_news"
         tools:layout="@layout/fragment_sport_news" />
     <fragment
         android:id="@+id/selfGovernanceFragment"
-        android:name="com.ibsu.ibsu.ui.element.SelfGovernanceFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.SelfGovernanceFragment"
         android:label="fragment_self_governance"
         tools:layout="@layout/fragment_self_governance" />
     <fragment
@@ -227,27 +218,27 @@
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
-        android:name="com.ibsu.ibsu.ui.element.ContactFragment"
+        android:name="com.ibsu.ibsu.ui.element.contact.ContactFragment"
         android:label="fragment_contact"
         tools:layout="@layout/fragment_contact" />
     <fragment
         android:id="@+id/governingBoardFragment"
-        android:name="com.ibsu.ibsu.ui.element.GoverningBoardFragment"
+        android:name="com.ibsu.ibsu.ui.element.contact.GoverningBoardFragment"
         android:label="fragment_governing_board"
         tools:layout="@layout/fragment_governing_board" />
     <fragment
         android:id="@+id/contactInfoFragment"
-        android:name="com.ibsu.ibsu.ui.element.ContactInfoFragment"
+        android:name="com.ibsu.ibsu.ui.element.contact.ContactInfoFragment"
         android:label="fragment_contact_info"
         tools:layout="@layout/fragment_contact_info" />
     <fragment
         android:id="@+id/workingHoursFragment"
-        android:name="com.ibsu.ibsu.ui.element.WorkingHoursFragment"
+        android:name="com.ibsu.ibsu.ui.element.contact.WorkingHoursFragment"
         android:label="fragment_working_hours"
         tools:layout="@layout/fragment_working_hours" />
     <fragment
         android:id="@+id/newsDescriptionFragment"
-        android:name="com.ibsu.ibsu.NewsDescriptionFragment"
+        android:name="com.ibsu.ibsu.ui.element.NewsDescriptionFragment"
         android:label="fragment_news_description"
         tools:layout="@layout/fragment_news_description" >
         <action
@@ -259,7 +250,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsImageFullScreenFragment"
-        android:name="com.ibsu.ibsu.NewsImageFullScreenFragment"
+        android:name="com.ibsu.ibsu.ui.element.student_life.NewsImageFullScreenFragment"
         android:label="fragment_news_image_full_screen"
         tools:layout="@layout/fragment_news_image_full_screen" >
         <argument
@@ -271,7 +262,7 @@
     </fragment>
     <fragment
         android:id="@+id/programDetailsFragment"
-        android:name="com.ibsu.ibsu.ProgramDetailsFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.ProgramDetailsFragment"
         android:label="fragment_program_details"
         tools:layout="@layout/fragment_program_details" >
         <argument
@@ -283,27 +274,27 @@
     </fragment>
     <fragment
         android:id="@+id/coursesFragment"
-        android:name="com.ibsu.ibsu.CoursesFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.CoursesFragment"
         android:label="fragment_courses"
         tools:layout="@layout/fragment_courses" />
     <fragment
         android:id="@+id/creditValueFragment"
-        android:name="com.ibsu.ibsu.CreditValueFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.CreditValueFragment"
         android:label="fragment_credit_value"
         tools:layout="@layout/fragment_credit_value" />
     <fragment
         android:id="@+id/programAdminFragment"
-        android:name="com.ibsu.ibsu.ProgramAdminFragment"
+        android:name="com.ibsu.ibsu.ui.element.programs.ProgramAdminFragment"
         android:label="fragment_program_admin"
         tools:layout="@layout/fragment_program_admin" />
     <fragment
         android:id="@+id/iniFragment"
-        android:name="com.ibsu.ibsu.IniFragment"
+        android:name="com.ibsu.ibsu.ui.element.IniFragment"
         android:label="fragment_ini"
         tools:layout="@layout/fragment_ini" />
     <fragment
         android:id="@+id/usefulDocsFragment"
-        android:name="com.ibsu.ibsu.UsefulDocsFragment"
+        android:name="com.ibsu.ibsu.ui.element.UsefulDocsFragment"
         android:label="fragment_useful_docs"
         tools:layout="@layout/fragment_useful_docs" />
 </navigation>

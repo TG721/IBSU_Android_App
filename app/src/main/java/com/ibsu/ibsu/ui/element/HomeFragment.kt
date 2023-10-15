@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +28,7 @@ import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.HomeViewModel
+import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.ui.viewmodel.WeekValueViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale
 import com.ibsu.ibsu.utils.ResponseState
@@ -38,9 +40,12 @@ import kotlinx.coroutines.launch
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private val viewModel: HomeViewModel by viewModels()
     private val weekValueViewModel: WeekValueViewModel by viewModels()
+    private val sharedViewModel: SchoolViewModel by activityViewModels()
+
     private lateinit var listOfPictureURLs: List<String>
     private var isFirstResume = true
     override fun setup() {
+        sharedViewModel.setSchoolValue("")
         setupSlider()
         showBottomMenu()
         observeWeekValue();
@@ -145,9 +150,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
 
                         is ResponseState.Success -> {
-                            d("beforeresultlist", "beforeeeeeee")
+                            binding.swipeRefreshLayout.setEnabled(false);
+                            binding.imageSlider.visibility = View.VISIBLE
                             listOfPictureURLs = it.items.map { sliderEventItem -> sliderEventItem.pictureURL.toString() }
-                            d("resultlist", listOfPictureURLs.toString())
                             insertSlideData(listOfPictureURLs)
                             //setup click listener
                             binding.imageSlider.setItemClickListener(object : ItemClickListener {

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".CreditValueFragment">
+    tools:context=".ui.element.programs.CreditValueFragment">
 
     <TextView
         android:id="@+id/result"

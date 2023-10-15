@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/anti_line"
-    tools:context=".ui.element.SportFragment">
+    tools:context=".ui.element.student_life.SportFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/sportMenu"

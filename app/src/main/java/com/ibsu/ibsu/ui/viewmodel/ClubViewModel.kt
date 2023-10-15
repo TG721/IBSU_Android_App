@@ -3,8 +3,6 @@ package com.ibsu.ibsu.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibsu.ibsu.data.remote.model.Clubs
-import com.ibsu.ibsu.data.remote.model.Programs
-import com.ibsu.ibsu.domain.usecase.GetBachelorProgramsUseCase
 import com.ibsu.ibsu.domain.usecase.GetClubsUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel

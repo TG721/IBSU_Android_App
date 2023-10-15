@@ -17,7 +17,7 @@
         <item name="colorPrimarySurface">@color/line</item>
         <item name="colorOnSurfaceVariant">@color/line</item>
 
-        <item name="colorOnSurface">@color/ibsu</item> //bottom ნავიგაციას რომ დააჭერ და არ აუშვებ იმის ფერის და autotextlayout ჩამოსაშლელი მენიუს სანამ დააჭერ სამკუთხედის ფერი
+        <item name="colorOnSurface">@color/ibsu_light</item> //bottom ნავიგაციას რომ დააჭერ და არ აუშვებ იმის ფერის და autotextlayout ჩამოსაშლელი მენიუს სანამ დააჭერ სამკუთხედის ფერი
         <item name="android:colorControlHighlight">@color/ibsu_light </item> //autotextlayout ჩამოსაშლელი მენიუს სამკუთხედზე და მენიუს რიგზე დაჭერა
 
 <!--        <item name="android:textColorHint">@color/grey_700</item>-->

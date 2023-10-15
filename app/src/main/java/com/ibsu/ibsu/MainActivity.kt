@@ -119,21 +119,26 @@ class MainActivity : AppCompatActivity() {
                 when (it.itemId) {
 
                     R.id.homeFragment -> {
+                        navController.popBackStack(navController.currentDestination!!.id, true);
                         navController.navigate(R.id.homeFragment)
                         true
                     }
 
                     R.id.SISFragment -> {
+                        navController.popBackStack(navController.currentDestination!!.id, true);
                         navController.navigate(R.id.SISFragment)
                         true
                     }
 
-                    R.id.IniFragment -> {
-                        navController.navigate(R.id.iniFragment)
-                        true
-                    }
+//                    R.id.IniFragment -> {
+//                        navController.popBackStack(navController.currentDestination!!.id, true);
+//                        navController.navigate(R.id.iniFragment)
+//
+//                        true
+//                    }
 
                     R.id.settingsFragment -> {
+                        navController.popBackStack(navController.currentDestination!!.id, true);
                         navController.navigate(R.id.settingsFragment)
                         true
                     }

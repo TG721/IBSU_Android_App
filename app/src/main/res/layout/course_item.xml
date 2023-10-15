@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +16,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/slight_more_line"
         android:minHeight="150dp"
+        android:paddingVertical="2dp"
         android:paddingBottom="8dp"
         app:cardBackgroundColor="@color/slight_more_line"
         app:cardCornerRadius="10dp"
@@ -46,14 +47,17 @@
                 android:id="@+id/ETC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="ETC - 5"
                 android:textColor="@color/line"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/isCoreTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/obligatory"
                 android:textColor="@color/line"
@@ -63,6 +67,7 @@
                 android:id="@+id/hours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/contact_hours_per_week"
                 android:textColor="@color/line"
@@ -78,6 +83,7 @@
                     android:id="@+id/semester"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="0.7"
                     android:gravity="start"
@@ -106,6 +112,7 @@
                 android:id="@+id/staticItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/prerequisites"
                 android:textColor="@color/red_700"
@@ -115,13 +122,15 @@
                 android:id="@+id/prerequisites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
                 android:text=""
                 android:textColor="@color/line"
                 android:textSize="18sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

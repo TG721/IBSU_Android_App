@@ -28,8 +28,8 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 universityNameTV.text = source.name
-                deadline.text = "Deadline" +" " + source.deadline
-                country.text = "Country" +" " + source.county
+                deadline.text = "Deadline:" +" " + source.deadline
+                country.text = "Country:" +" " + source.county
                 moreDetails.text = source.Details
                 if (source.image != null) {
                     Glide.with(imageView)

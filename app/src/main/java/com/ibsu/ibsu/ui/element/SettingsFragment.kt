@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -27,6 +28,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         setupDarkModeIndicator()
         setupLanguageIndicator()
     }
+
+
 
     private fun setupLanguageIndicator() {
         val appSettingPrefs: SharedPreferences =

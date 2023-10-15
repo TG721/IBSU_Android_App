@@ -5,6 +5,6 @@ data class ContactInfoItem(
     val Phone: String,
     val extra: String,
     val id: Int,
-    val nameEn: String,
-    val nameGe: String
+    val nameEn: String?,
+    val nameGe: String?
 )

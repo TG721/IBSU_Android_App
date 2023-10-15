@@ -3,9 +3,9 @@ package com.ibsu.ibsu.ui.adapter
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ibsu.ibsu.ui.element.BilateralFragment
-import com.ibsu.ibsu.ui.element.ErasmusPlusFragment
-import com.ibsu.ibsu.ui.element.OnlineFragment
+import com.ibsu.ibsu.ui.element.iro.BilateralFragment
+import com.ibsu.ibsu.ui.element.iro.ErasmusPlusFragment
+import com.ibsu.ibsu.ui.element.iro.OnlineFragment
 
 
 class ViewPagerForExchangeProgramsAdapter(fragment: Fragment) :

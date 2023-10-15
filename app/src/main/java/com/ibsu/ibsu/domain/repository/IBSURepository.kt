@@ -46,11 +46,11 @@ interface IBSURepository {
 
     suspend fun getAddress(): Flow<ResponseState<Address>>
 
-    suspend fun getCourses(programVar: String): Flow<ResponseState<Courses>>
+    suspend fun getCourses(typeValue: String, programVar: String): Flow<ResponseState<Courses>>
 
-    suspend fun getCreditValue(programVar: String): Flow<ResponseState<CreditValue>>
+    suspend fun getCreditValue(typeValue: String, programVar: String): Flow<ResponseState<CreditValue>>
 
-    suspend fun getProgramAdministration(programVar: String): Flow<ResponseState<ProgramAdmin>>
+    suspend fun getProgramAdministration(typeValue: String, programVar: String): Flow<ResponseState<ProgramAdmin>>
 
     suspend fun getDoctoratePrograms(): Flow<ResponseState<Programs>>
 

@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetProgramAdministrationUseCase @Inject constructor(
     private val ibsuRepository: IBSURepository
 ) {
-    suspend fun getProgramAdministration(programVar: String): Flow<ResponseState<ProgramAdmin>> {
-        return ibsuRepository.getProgramAdministration(programVar)
+    suspend fun getProgramAdministration(typeValue: String, programVar: String): Flow<ResponseState<ProgramAdmin>> {
+        return ibsuRepository.getProgramAdministration(typeValue, programVar)
     }
 }

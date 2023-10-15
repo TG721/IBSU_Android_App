@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ibsu.ibsu.R
@@ -59,6 +60,7 @@ class SISFragment : Fragment() {
         setupWebView()
         showBottomMenu()
     }
+
 
     private fun setupWebView() {
         val webURL = "https://sis.ibsu.edu.ge/"

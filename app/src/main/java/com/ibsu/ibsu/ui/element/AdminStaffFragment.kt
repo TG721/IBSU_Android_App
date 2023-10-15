@@ -3,12 +3,14 @@ package com.ibsu.ibsu.ui.element
 import android.util.Log
 import android.util.Log.d
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentAdminStaffBinding
 import com.ibsu.ibsu.ui.adapter.AdminStaffItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -62,6 +64,16 @@ class AdminStaffFragment() :
                     }
                 }
             }
+        }
+    }
+
+    override fun listeners() {
+        val swipeLayout = binding.swipeRefreshLayout
+        swipeLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.ibsu))
+        swipeLayout.setOnRefreshListener {
+            observeItems()
+            swipeLayout.isRefreshing = false
+
         }
     }
 

@@ -18,10 +18,10 @@ class ProgramAdministrationViewModel @Inject constructor(private val getProgramA
         MutableStateFlow<ResponseState<ProgramAdmin>>(ResponseState.Empty()) //mutable state flow
     val myState: StateFlow<ResponseState<ProgramAdmin>> = _myState //immutable state flow
 
-    fun getProgramAdministration(programVar: String) {
+    fun getProgramAdministration(typeValue: String, programVar: String) {
         viewModelScope.launch {
             _myState.emit(ResponseState.Loading())
-            val data = getProgramAdministrationUseCase.getProgramAdministration(programVar)
+            val data = getProgramAdministrationUseCase.getProgramAdministration(typeValue, programVar)
             data.collect {
                 _myState.value = it
             }

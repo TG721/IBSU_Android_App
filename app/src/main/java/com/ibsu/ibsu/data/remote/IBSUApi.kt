@@ -81,14 +81,14 @@ interface IBSUApi {
     @GET("contact/address")
     suspend fun getAddress(): Response<Address>
 
-    @GET("bachelor/{programVar}/program")
-    suspend fun getCourses(@Path("programVar") nameValue: String): Response<Courses>
+    @GET("{type}/{programVar}/program")
+    suspend fun getCourses(@Path("type") typeValue: String, @Path("programVar") programValue: String): Response<Courses>
 
-    @GET("bachelor/{programVar}/Credit Value")
-    suspend fun getCreditValue(@Path("programVar") nameValue: String): Response<CreditValue>
+    @GET("{type}/{programVar}/Credit Value")
+    suspend fun getCreditValue(@Path("type") typeValue: String, @Path("programVar") programValue: String): Response<CreditValue>
 
-    @GET("bachelor/{programVar}/administration")
-    suspend fun getProgramAdministration(@Path("programVar") nameValue: String): Response<ProgramAdmin>
+    @GET("{type}/{programVar}/administration")
+    suspend fun getProgramAdministration(@Path("type") typeValue: String, @Path("programVar") programValue: String): Response<ProgramAdmin>
 
     @GET("IRO/ErasmusPlus")
     suspend fun getExchangeUniversitiesForErasmusPlus(): Response<ExchangeUniversity>

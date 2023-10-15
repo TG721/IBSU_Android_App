@@ -1,11 +1,10 @@
 package com.ibsu.ibsu.ui.adapter
 
-import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ibsu.ibsu.ui.element.BachelorsFragment
-import com.ibsu.ibsu.ui.element.DoctorateFragment
-import com.ibsu.ibsu.ui.element.MastersFragment
+import com.ibsu.ibsu.ui.element.programs.BachelorsFragment
+import com.ibsu.ibsu.ui.element.programs.DoctorateFragment
+import com.ibsu.ibsu.ui.element.programs.MastersFragment
 
 
 class ViewPagerForProgramsAdapter(fragment: Fragment) :

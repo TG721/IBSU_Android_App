@@ -12,11 +12,11 @@
         android:title="@string/sis"
         android:icon="@drawable/sis_icon"
         />
-    <item
-        android:id="@+id/IniFragment"
-        android:title="Students"
-        android:icon="@drawable/ini"
-        />
+<!--    <item-->
+<!--        android:id="@+id/IniFragment"-->
+<!--        android:title="Students"-->
+<!--        android:icon="@drawable/ini"-->
+<!--        />-->
     <item
         android:id="@+id/settingsFragment"
         android:title="@string/settings"

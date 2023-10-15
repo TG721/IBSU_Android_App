@@ -3,9 +3,9 @@ package com.ibsu.ibsu.ui.adapter
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ibsu.ibsu.ui.element.SelfGovernanceFragment
-import com.ibsu.ibsu.ui.element.ClubsFragment
-import com.ibsu.ibsu.ui.element.SportFragment
+import com.ibsu.ibsu.ui.element.student_life.SelfGovernanceFragment
+import com.ibsu.ibsu.ui.element.student_life.ClubsFragment
+import com.ibsu.ibsu.ui.element.student_life.SportFragment
 
 class ViewPagerForEntertainmentAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {

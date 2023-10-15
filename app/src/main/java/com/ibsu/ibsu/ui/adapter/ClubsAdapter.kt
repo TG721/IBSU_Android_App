@@ -17,7 +17,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.ibsu.ibsu.data.remote.model.ClubsItem
 import com.ibsu.ibsu.databinding.ClubItemBinding
-import com.ibsu.ibsu.ui.element.EntertainmentFragmentDirections
+import com.ibsu.ibsu.ui.element.student_life.EntertainmentFragmentDirections
 
 class ClubsAdapter(private val context: Context) :
     ListAdapter<ClubsItem, ClubsAdapter.ClubViewHolder>(ItemDiffCallback()) {

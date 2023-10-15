@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
@@ -27,9 +28,12 @@ class ContactInfoItemAdapter(private val context: Context) :
             binding.apply {
                 email.paintFlags = binding.email.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 number.paintFlags = binding.number.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                if (context.getCurrentLocale(context).language == georgianLocale)
-                    statement.text = source.nameGe
-                else statement.text = source.nameEn
+                if(source.nameEn!=null) {
+                    statement.visibility = View.VISIBLE
+                    if (context.getCurrentLocale(context).language == georgianLocale)
+                        statement.text = source.nameGe
+                    else statement.text = source.nameEn
+                } else { statement.visibility = View.GONE }
                 email.text = source.Email
                 number.text = source.Phone
                 extra.text = source.extra

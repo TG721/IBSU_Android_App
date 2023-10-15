@@ -10,13 +10,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.signature.ObjectKey
-import com.ibsu.ibsu.NewsDescriptionFragmentDirections
 import com.ibsu.ibsu.databinding.NewsImageItemBinding
+import com.ibsu.ibsu.ui.element.NewsDescriptionFragmentDirections
 
 class NewsImagesAdapter :
     ListAdapter<String, NewsImagesAdapter.ItemViewHolder>(ItemDiffCallback()) {
@@ -35,10 +32,10 @@ class NewsImagesAdapter :
                         e: GlideException?,
                         model: Any?,
                         target: com.bumptech.glide.request.target.Target<Drawable>?,
-                        isFirstResource: Boolean
+                        isFirstResource: Boolean,
                     ): Boolean {
                         // Hide the progress bar if image loading fails
-                       binding.progressBar.visibility = View.GONE
+                        binding.progressBar.visibility = View.GONE
                         return false
                     }
 
@@ -47,7 +44,7 @@ class NewsImagesAdapter :
                         model: Any?,
                         target: com.bumptech.glide.request.target.Target<Drawable>?,
                         dataSource: DataSource?,
-                        isFirstResource: Boolean
+                        isFirstResource: Boolean,
                     ): Boolean {
                         binding.progressBar.visibility = View.GONE
                         return false
