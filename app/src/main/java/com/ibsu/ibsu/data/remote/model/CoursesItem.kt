@@ -11,6 +11,6 @@ data class CoursesItem(
     val nameGe: String,
     val prerequisites: List<String>?,
     val prerequisitesGe: List<String?>,
-    val semesterNumber: Int?,
+    val semesterNumber: Any?,
     val semesterSeason: String?
 )

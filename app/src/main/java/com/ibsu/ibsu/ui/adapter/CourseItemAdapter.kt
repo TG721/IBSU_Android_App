@@ -95,7 +95,7 @@ class CourseItemAdapter(private val context: Context) :
 
                 ETC.text = "${context.getString(R.string.etc)}${source.ETC}"
                 if (source.semesterNumber != null) semester.text =
-                    context.getString(R.string.semester) + source.semesterNumber
+                    context.getString(R.string.semester) + source.semesterNumber.toString()
                 else semester.visibility = View.GONE
 
 //                imageBtn.setOnClickListener {

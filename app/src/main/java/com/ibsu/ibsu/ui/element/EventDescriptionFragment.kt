@@ -103,4 +103,10 @@ class EventDescriptionFragment :
         return spannableString
     }
 
+    override fun onResume() {
+        super.onResume()
+        hideBottomNavigation()
+        showBackButton()
+    }
+
 }

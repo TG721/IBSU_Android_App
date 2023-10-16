@@ -2,6 +2,8 @@ package com.ibsu.ibsu.ui.element.student_life
 
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
+import android.os.Bundle
+import android.util.Log.d
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
@@ -19,6 +21,8 @@ class SportFragment :
     private lateinit var colorStateListNotSelected: ColorStateList
 
     var animator : ValueAnimator? = null
+
+
 
     override fun setup() {
         setupContainer();
@@ -42,9 +46,12 @@ class SportFragment :
 
     private fun setupContainer() {
         val initialFragment = GamesFragment()
-        fragmentContainerID = binding.fragmentMastersContainerView.id
+        if(binding.fragmentSportContainerView!=null)
+            fragmentContainerID = binding.fragmentSportContainerView.id
 
-        requireActivity().supportFragmentManager.beginTransaction()
+        d("idda", binding.fragmentSportContainerView.toString())
+        if(fragmentContainerID!=null && binding.fragmentSportContainerView!=null)
+            childFragmentManager.beginTransaction()
             .replace(fragmentContainerID!!, initialFragment)
             .commit()
     }
@@ -52,21 +59,20 @@ class SportFragment :
     override fun listeners() {
         binding.menuSportTypesBtn.setOnClickListener {
             val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
+                childFragmentManager.beginTransaction()
             fragmentTransaction.replace(
-                R.id.fragmentMastersContainerView,
+                R.id.fragmentSportContainerView,
                 GamesFragment()
             ).commit()
             fixColor(menuButtons, it.id);
         }
         binding.menuSportNewsBtn.setOnClickListener {
             val fragmentTransaction: FragmentTransaction =
-                requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainerID!!, SportNewsFragment()).commit()
+//                requireActivity().supportFragmentManager.beginTransaction()
+                childFragmentManager.beginTransaction()
+             fragmentTransaction.replace(fragmentContainerID!!, SportNewsFragment()).commit()
             fixColor(menuButtons, it.id);
         }
-
-
 
     }
 
@@ -81,5 +87,6 @@ class SportFragment :
             }
         }
     }
+
 
 }

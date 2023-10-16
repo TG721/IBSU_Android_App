@@ -5,6 +5,8 @@ import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ibsu.ibsu.databinding.FragmentNewsImageFullScreenBinding
+import com.ibsu.ibsu.extensions.hideBottomNavigation
+import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.NewsImagesViewPagerAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,10 +43,8 @@ class NewsImageFullScreenFragment : BaseFragment<FragmentNewsImageFullScreenBind
 
     override fun onResume() {
         super.onResume()
-//        setupActionBar()
+        hideBottomNavigation()
+        showBackButton()
     }
-//    private fun setupActionBar() {
-//        requireActivity().findViewById<MaterialToolbar>(R.id.materialToolbar).backgroundTintList = getColorStateList(requireContext(),R.color.black)
-//    }
 
 }
