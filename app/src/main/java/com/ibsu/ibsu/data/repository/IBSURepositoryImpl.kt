@@ -31,269 +31,97 @@ import javax.inject.Inject
 
 class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
     IBSURepository {
+
+    private suspend fun <T> safeApiCall(
+        apiCall: suspend () -> Response<T>
+    ): ResponseState<T> {
+        return try {
+            val response = apiCall()
+            if (response.isSuccessful) {
+                ResponseState.Success(response.body()!!)
+            } else {
+                ResponseState.Error(response.errorBody()?.string() ?: "Unknown error")
+            }
+        } catch (e: Exception) {
+            ResponseState.Error(e.message ?: "Unknown error")
+        }
+    }
+
     //retrofit
     override suspend fun getCurrentWeek(): Flow<ResponseState<CurrentWeek>> =
         flow {
-            try {
-                val response: Response<CurrentWeek> =
-                    api.getCurrentWeek()
-                val body: CurrentWeek? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall<CurrentWeek> { api.getCurrentWeek() })
         }
 
     override suspend fun getSliderEvents(): Flow<ResponseState<SliderEvents>> = flow {
-        try {
-            val response: Response<SliderEvents> =
-                api.getAllEvents()
-            val body: SliderEvents? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getAllEvents() })
     }
 
     override suspend fun getPrograms(): Flow<ResponseState<Programs>> = flow {
-        try {
-            val response: Response<Programs> =
-                api.getPrograms()
-            val body: Programs? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getPrograms() })
     }
 
     override suspend fun getClubs(): Flow<ResponseState<Clubs>> = flow {
-        try {
-            val response: Response<Clubs> =
-                api.getClubs()
-            val body: Clubs? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getClubs() })
     }
 
     override suspend fun getGames(): Flow<ResponseState<Games>> = flow {
-        try {
-            val response: Response<Games> =
-                api.getGames()
-            val body: Games? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getGames() })
     }
 
     override suspend fun getMasterPrograms(): Flow<ResponseState<Programs>> = flow {
-        try {
-            val response: Response<Programs> =
-                api.getMasterPrograms()
-            val body: Programs? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getMasterPrograms() })
     }
 
     override suspend fun getFBFanPages(): Flow<ResponseState<FBFanPages>> = flow {
-        try {
-            val response: Response<FBFanPages> =
-                api.getFBFanPages()
-            val body: FBFanPages? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getFBFanPages() })
     }
 
     override suspend fun getAdminStaff(schoolName: String): Flow<ResponseState<Administration>> =
         flow {
-            try {
-                val response: Response<Administration> =
-                    api.getAdminStaff(schoolName)
-                d("aha", schoolName)
-                val body: Administration? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getAdminStaff(schoolName) })
         }
+
 
     override suspend fun getSelfGovernance(): Flow<ResponseState<Governance>> =
         flow {
-            try {
-                val response: Response<Governance> =
-                    api.getSelfGovernance()
-                val body: Governance? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getSelfGovernance() })
         }
 
     override suspend fun getSportNews(): Flow<ResponseState<News>> = flow {
-        try {
-            val response: Response<News> =
-                api.getSportNews()
-            val body: News? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        getSportNews()
     }
 
     override suspend fun getGameRoomLocation(): Flow<ResponseState<GameRoomLocation>> = flow {
-        try {
-            val response: Response<GameRoomLocation> =
-                api.getGameRoomLocation()
-            val body: GameRoomLocation? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getGameRoomLocation() })
     }
 
     override suspend fun getLecturers(schoolName: String): Flow<ResponseState<Lecturers>> = flow {
-        try {
-            val response: Response<Lecturers> =
-                api.getLecturers(schoolName)
-
-            val body: Lecturers? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getLecturers(schoolName) })
     }
 
     override suspend fun getGoverningBoard(): Flow<ResponseState<Governance>> =
         flow {
-            try {
-                val response: Response<Governance> =
-                    api.getGoverningBoard()
-                val body: Governance? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getGoverningBoard() })
         }
 
     override suspend fun getWorkingHours(): Flow<ResponseState<WorkingHours>> = flow {
-        try {
-            val response: Response<WorkingHours> =
-                api.getWorkingHours()
-            val body: WorkingHours? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getWorkingHours() })
     }
 
     override suspend fun getContactInfo(): Flow<ResponseState<ContactInfo>> = flow {
-        try {
-            val response: Response<ContactInfo> =
-                api.getContactInfo()
-            val body: ContactInfo? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getContactInfo() })
     }
 
     override suspend fun getAddress(): Flow<ResponseState<Address>> = flow {
-        try {
-            val response: Response<Address> =
-                api.getAddress()
-            val body: Address? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getAddress() })
     }
 
     override suspend fun getCourses(
         typeValue: String,
         programVar: String,
     ): Flow<ResponseState<Courses>> = flow {
-        try {
-            val response: Response<Courses> =
-                api.getCourses(typeValue, programVar)
-            val body: Courses? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getCourses(typeValue, programVar) })
     }
 
     override suspend fun getCreditValue(
@@ -301,18 +129,7 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
         programVar: String,
     ): Flow<ResponseState<CreditValue>> =
         flow {
-            try {
-                val response: Response<CreditValue> =
-                    api.getCreditValue(typeValue, programVar)
-                val body: CreditValue? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getCreditValue(typeValue, programVar) })
         }
 
     override suspend fun getProgramAdministration(
@@ -320,95 +137,29 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
         programVar: String,
     ): Flow<ResponseState<ProgramAdmin>> =
         flow {
-            try {
-                val response: Response<ProgramAdmin> =
-                    api.getProgramAdministration(typeValue, programVar)
-                val body: ProgramAdmin? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getProgramAdministration(typeValue, programVar) })
         }
 
     override suspend fun getDoctoratePrograms(): Flow<ResponseState<Programs>> = flow {
-        try {
-            val response: Response<Programs> =
-                api.getDoctoratePrograms()
-            val body: Programs? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getDoctoratePrograms() })
     }
 
     override suspend fun getUsefulDocs(): Flow<ResponseState<UsefulDocs>> = flow {
-        try {
-            val response: Response<UsefulDocs> =
-                api.getUsefulDocs()
-            val body: UsefulDocs? = response.body()
-            if (response.isSuccessful && body != null) {
-                emit(ResponseState.Success(body))
-            } else {
-                emit(ResponseState.Error(response.errorBody()?.string()))
-            }
-        } catch (e: Exception) {
-            emit(ResponseState.Error(e.message.toString()))
-        }
+        emit(safeApiCall { api.getUsefulDocs() })
     }
 
     override suspend fun getExchangeUniversitiesForErasmusPlus(): Flow<ResponseState<ExchangeUniversity>> =
         flow {
-            try {
-                val response: Response<ExchangeUniversity> =
-                    api.getExchangeUniversitiesForErasmusPlus()
-                val body: ExchangeUniversity? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getExchangeUniversitiesForErasmusPlus() })
         }
 
     override suspend fun getExchangeUniversitiesForBilateral(): Flow<ResponseState<ExchangeUniversity>> =
         flow {
-            try {
-                val response: Response<ExchangeUniversity> =
-                    api.getExchangeUniversitiesForBilateral()
-                val body: ExchangeUniversity? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getExchangeUniversitiesForBilateral() })
         }
 
     override suspend fun getExchangeUniversitiesForVirtual(): Flow<ResponseState<ExchangeUniversity>> =
         flow {
-            try {
-                val response: Response<ExchangeUniversity> =
-                    api.getExchangeUniversitiesForVirtual()
-                val body: ExchangeUniversity? = response.body()
-                if (response.isSuccessful && body != null) {
-                    emit(ResponseState.Success(body))
-                } else {
-                    emit(ResponseState.Error(response.errorBody()?.string()))
-                }
-            } catch (e: Exception) {
-                emit(ResponseState.Error(e.message.toString()))
-            }
+            emit(safeApiCall { api.getExchangeUniversitiesForVirtual() })
         }
 }

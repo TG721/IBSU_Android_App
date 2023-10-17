@@ -180,7 +180,10 @@ class SISFragment : Fragment() {
         if (!div.classList.contains('navbar-sis') && !div.closest('.navbar-sis')) {
           // If it doesn't have the class or is not a child, change its background color to black and text color to white
           div.style.background = 'black';
-          div.style.color = 'white';
+//          if(!div.classList.contains('col-xs-12'))
+            div.style.color = 'white';
+//          else 
+//            div.style.color = '#d6c4a3';
         }
       });
       
@@ -191,7 +194,7 @@ class SISFragment : Fragment() {
                         """, null
                     )
 
-                    if (!url!!.contains("requests") && url.length > 40 ) {
+                    if (!url!!.contains("requests")  ) {
 
                         view?.evaluateJavascript(
                             """
