@@ -1,6 +1,5 @@
 package com.ibsu.ibsu.data.repository
 
-import android.util.Log.d
 import com.ibsu.ibsu.data.remote.IBSUApi
 import com.ibsu.ibsu.data.remote.model.Address
 import com.ibsu.ibsu.data.remote.model.Administration
@@ -33,7 +32,7 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
     IBSURepository {
 
     private suspend fun <T> safeApiCall(
-        apiCall: suspend () -> Response<T>
+        apiCall: suspend () -> Response<T>,
     ): ResponseState<T> {
         return try {
             val response = apiCall()
@@ -89,7 +88,7 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
         }
 
     override suspend fun getSportNews(): Flow<ResponseState<News>> = flow {
-        getSportNews()
+        emit(safeApiCall { api.getSportNews() })
     }
 
     override suspend fun getGameRoomLocation(): Flow<ResponseState<GameRoomLocation>> = flow {

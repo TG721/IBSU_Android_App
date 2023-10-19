@@ -8,7 +8,6 @@ import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.ViewPagerForEntertainmentAdapter
-import com.ibsu.ibsu.ui.adapter.ViewPagerForExchangeProgramsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +22,7 @@ class EntertainmentFragment :
         hideBottomNavigation()
         showBackButton()
     }
+
     private fun setupTabLayout() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
@@ -35,9 +35,11 @@ class EntertainmentFragment :
                 0 -> {
                     getString(R.string.clubs)
                 }
+
                 1 -> {
                     getString(R.string.sport)
                 }
+
                 2 -> {
                     getString(R.string.self_governance)
                 }

@@ -90,7 +90,7 @@ class CourseItemAdapter(private val context: Context) :
                     } else seeDescription.visibility = View.GONE
                 }
                 hours.text = "${context.getString(R.string.contact_hours_per_week)} ${source.hours}"
-                if(source.prerequisitesGe!=null && source.prerequisites!=null)
+                if (source.prerequisitesGe != null && source.prerequisites != null)
                     prerequisites.text = finalStringValue
 
                 ETC.text = "${context.getString(R.string.etc)}${source.ETC}"

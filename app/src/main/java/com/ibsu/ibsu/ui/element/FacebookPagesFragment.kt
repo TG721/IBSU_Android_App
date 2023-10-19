@@ -29,7 +29,7 @@ class FacebookPagesFragment :
     }
 
     private fun observeFanPages() {
-        viewModel.getFBFanPages();
+        viewModel.getFBFanPages()
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.myState.collect {

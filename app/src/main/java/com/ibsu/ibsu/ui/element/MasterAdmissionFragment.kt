@@ -13,7 +13,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.ibsu.ibsu.databinding.FragmentMasterAdmissionBinding
-import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import dagger.hilt.android.AndroidEntryPoint

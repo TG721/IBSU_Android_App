@@ -1,17 +1,10 @@
 package com.ibsu.ibsu.ui.element
 
-import android.app.UiModeManager
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Build
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.ibsu.ibsu.R
@@ -30,11 +23,13 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
 
 
-
     private fun setupLanguageIndicator() {
         val appSettingPrefs: SharedPreferences =
             requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-        when (appSettingPrefs.getInt("languageVal", SYSTEM_DEFAULT)) { //0 dark, 1 light, 2 system default
+        when (appSettingPrefs.getInt(
+            "languageVal",
+            SYSTEM_DEFAULT
+        )) { //0 dark, 1 light, 2 system default
             LANGUAGE_ENGLISH -> {
                 binding.tvLanguageMore.text = getString(R.string.en)
             }
@@ -46,12 +41,16 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
             SYSTEM_DEFAULT -> {
                 binding.tvLanguageMore.text = getString(R.string.sys)
             }
-        }    }
+        }
+    }
 
     private fun setupDarkModeIndicator() {
         val appSettingPrefs: SharedPreferences =
             requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-        when (appSettingPrefs.getInt("darkModeVal", SYSTEM_DEFAULT)) { //0 dark, 1 light, 2 system default
+        when (appSettingPrefs.getInt(
+            "darkModeVal",
+            SYSTEM_DEFAULT
+        )) { //0 dark, 1 light, 2 system default
             MODE_DARK -> {
                 binding.tvDarkModeMore.text = getString(R.string.on)
             }
@@ -67,22 +66,23 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
 
     private fun setupLabelSwitch() {
-        val appSettingPrefs: SharedPreferences = requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
+        val appSettingPrefs: SharedPreferences =
+            requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
         val isDisableLabelOn: Boolean = appSettingPrefs.getBoolean("disableLabel", false)
 
         sharedPrefsEdit = appSettingPrefs.edit()
 
         val switchButton = binding.switchBtmNav
 
-        if(isDisableLabelOn) {
-            switchButton.isChecked=true
+        if (isDisableLabelOn) {
+            switchButton.isChecked = true
         }
 
         binding.switchBTMLayout.setOnClickListener {
-            switchButton.isChecked=!switchButton.isChecked
+            switchButton.isChecked = !switchButton.isChecked
             handleBTMSwitchClick()
         }
-        binding.darkModeLayout.setOnClickListener{
+        binding.darkModeLayout.setOnClickListener {
             handleDarkModeClick()
         }
 
@@ -97,9 +97,14 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
 
     private fun handleLanguageClick() {
-        val appSettingPrefs: SharedPreferences = requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
+        val appSettingPrefs: SharedPreferences =
+            requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
         var selectedItemIndex = appSettingPrefs.getInt("languageVal", 2)
-        val arrItems = arrayOf(getString(R.string.english), getString(R.string.georgian), getString(R.string.system_default))
+        val arrItems = arrayOf(
+            getString(R.string.english),
+            getString(R.string.georgian),
+            getString(R.string.system_default)
+        )
         var selectedItem = arrItems[selectedItemIndex]
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.select_language))
@@ -108,28 +113,34 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                 selectedItem = arrItems[which]
             }
             .setPositiveButton(getString(R.string.ok)) { dialog, which ->
-                when(selectedItem){
+                when (selectedItem) {
                     getString(R.string.english) -> {
-                        binding.tvLanguageMore.text=getString(R.string.en)
+                        binding.tvLanguageMore.text = getString(R.string.en)
                         sharedPrefsEdit.putInt("languageVal", LANGUAGE_ENGLISH)
                         sharedPrefsEdit.apply()
 
 
                     }
+
                     getString(R.string.georgian) -> {
-                        binding.tvLanguageMore.text=getString(R.string.ka)
+                        binding.tvLanguageMore.text = getString(R.string.ka)
                         sharedPrefsEdit.putInt("languageVal", LANGUAGE_GEORGIAN)
                         sharedPrefsEdit.apply()
 
                     }
+
                     getString(R.string.system_default) -> {
-                        binding.tvLanguageMore.text=getString(R.string.sys)
+                        binding.tvLanguageMore.text = getString(R.string.sys)
                         sharedPrefsEdit.putInt("languageVal", SYSTEM_DEFAULT)
                         sharedPrefsEdit.apply()//
 
                     }
                 }
-                Toast.makeText(requireContext(), getString(R.string.changes_will_apply_after_application_restart), Toast.LENGTH_LONG).show();
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.changes_will_apply_after_application_restart),
+                    Toast.LENGTH_LONG
+                ).show()
             }
             .setNeutralButton(getString(R.string.cancel)) { dialog, which ->
 
@@ -137,9 +148,14 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     }
 
     private fun handleDarkModeClick() {
-        val appSettingPrefs: SharedPreferences = requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
+        val appSettingPrefs: SharedPreferences =
+            requireContext().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
         var selectedItemIndex = appSettingPrefs.getInt("darkModeVal", 2)
-        val arrItems = arrayOf(getString(R.string.dark), getString(R.string.light), getString(R.string.system_default))
+        val arrItems = arrayOf(
+            getString(R.string.dark),
+            getString(R.string.light),
+            getString(R.string.system_default)
+        )
         var selectedItem = arrItems[selectedItemIndex]
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.select_mode))
@@ -148,9 +164,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                 selectedItem = arrItems[which]
             }
             .setPositiveButton(getString(R.string.ok)) { dialog, which ->
-                when(selectedItem){
+                when (selectedItem) {
                     getString(R.string.dark) -> {
-                        binding.tvDarkModeMore.text=getString(R.string.on)
+                        binding.tvDarkModeMore.text = getString(R.string.on)
                         sharedPrefsEdit.putInt("darkModeVal", MODE_DARK)
                         sharedPrefsEdit.apply()
 //                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -158,11 +174,12 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 //                            uiModeManager.setApplicationNightMode(uiModeManager.nightMode)
 //                        }
 //                        else
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
                     }
+
                     getString(R.string.light) -> {
-                        binding.tvDarkModeMore.text=getString(R.string.off)
+                        binding.tvDarkModeMore.text = getString(R.string.off)
                         sharedPrefsEdit.putInt("darkModeVal", MODE_LIGHT)
                         sharedPrefsEdit.apply()
 //                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -170,18 +187,19 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 //                            uiModeManager.setNightMode(UiModeManager.MODE_NIGHT_NO)
 //                        }
 //                        else
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
                     }
+
                     getString(R.string.system_default) -> {
-                        binding.tvDarkModeMore.text=getString(R.string.sys)
+                        binding.tvDarkModeMore.text = getString(R.string.sys)
                         sharedPrefsEdit.putInt("darkModeVal", SYSTEM_DEFAULT)
                         sharedPrefsEdit.apply()//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
 //                            val uiModeManager = requireContext().getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
 //                            uiModeManager.setNightMode(UiModeManager.MODE_NIGHT_AUTO)
 //                        }
 //                        else
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                     }
                 }
             }
@@ -192,15 +210,16 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     private fun handleBTMSwitchClick() {
         if (binding.switchBtmNav.isChecked) {
-            val bottomNavigation = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            bottomNavigation?.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_SELECTED);
+            val bottomNavigation =
+                activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+            bottomNavigation?.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_SELECTED)
 
             sharedPrefsEdit.putBoolean("disableLabel", true)
             sharedPrefsEdit.apply()
-        }
-        else {
-            val bottomNavigation = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            bottomNavigation?.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED);
+        } else {
+            val bottomNavigation =
+                activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+            bottomNavigation?.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED)
             sharedPrefsEdit.putBoolean("disableLabel", false)
             sharedPrefsEdit.apply()
         }
