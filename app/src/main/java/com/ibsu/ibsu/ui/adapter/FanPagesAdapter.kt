@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ibsu.ibsu.data.remote.model.FBFanPagesItem
 import com.ibsu.ibsu.databinding.FacebookFanPageItemBinding
+import com.ibsu.ibsu.extensions.loadFromUrl
 
 class FanPagesAdapter(private val context: Context) :
     ListAdapter<FBFanPagesItem, FanPagesAdapter.FBFanPageViewHolder>(ItemDiffCallback()) {
@@ -23,11 +24,8 @@ class FanPagesAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
-                Glide.with(imageBtn)
-                    .load(source.pictureURL)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                    .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
-                    .into(imageBtn)
+                imageBtn.loadFromUrl(source.pictureURL)
+
                 binding.titleTV.text = source.name
                 imageBtn.setOnClickListener {
                     openFacebookPage(source.link)

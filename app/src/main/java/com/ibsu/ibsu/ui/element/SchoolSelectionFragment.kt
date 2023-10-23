@@ -18,7 +18,6 @@ class SchoolSelectionFragment : BaseFragment<FragmentSchoolSelectionBinding>(
     FragmentSchoolSelectionBinding::inflate
 ) {
     override fun setup() {
-        setActionBarName(getString(R.string.choose_school))
         hideBottomNavigation()
         showBackButton()
     }

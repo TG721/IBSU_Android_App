@@ -36,7 +36,7 @@ class SportNewsFragment :
 
     @SuppressLint("SuspiciousIndentation")
     private fun observeItems() {
-        viewModel.getNews();
+        viewModel.getNews()
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.myState.collect {

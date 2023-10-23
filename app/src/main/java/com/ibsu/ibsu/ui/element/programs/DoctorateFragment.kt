@@ -3,7 +3,6 @@ package com.ibsu.ibsu.ui.element.programs
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -26,7 +25,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DoctorateFragment() : BaseFragment<FragmentDoctorateBinding>(FragmentDoctorateBinding::inflate) {
+class DoctorateFragment() :
+    BaseFragment<FragmentDoctorateBinding>(FragmentDoctorateBinding::inflate) {
     private val viewModel: DoctorateProgramsViewModel by viewModels()
     private lateinit var programAdapter: ProgramAdapter
     private var programUIList = mutableListOf<ProgramItem>()
@@ -110,11 +110,10 @@ class DoctorateFragment() : BaseFragment<FragmentDoctorateBinding>(FragmentDocto
                             binding.progressBar.visibility = View.GONE
                             programUIList.clear()
                             for (i in 0 until it.items.size) {
-                                if(sharedViewModel.getSchoolValue()!=""){
-                                    if(it.items.elementAt(i).School==sharedViewModel.getSchoolValue())
+                                if (sharedViewModel.getSchoolValue() != "") {
+                                    if (it.items.elementAt(i).School == sharedViewModel.getSchoolValue())
                                         programUIList.add(it.items.elementAt(i))
-                                }
-                                else   programUIList.add(it.items.elementAt(i))
+                                } else programUIList.add(it.items.elementAt(i))
 
                             }
 
@@ -133,9 +132,11 @@ class DoctorateFragment() : BaseFragment<FragmentDoctorateBinding>(FragmentDocto
     private fun setupRecycler() {
         programAdapter = ProgramAdapter(requireContext(), "doctorate")
         val recycler = binding.programRV
-        var spanCount  = 2
-        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) spanCount = 1
-        val layoutManager = GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)
+        var spanCount = 2
+        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) spanCount =
+            1
+        val layoutManager =
+            GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)
 
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {

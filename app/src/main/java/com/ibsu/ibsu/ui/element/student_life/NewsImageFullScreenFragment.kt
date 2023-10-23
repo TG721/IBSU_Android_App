@@ -1,6 +1,5 @@
 package com.ibsu.ibsu.ui.element.student_life
 
-import android.util.Log.d
 import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -27,13 +26,11 @@ class NewsImageFullScreenFragment : BaseFragment<FragmentNewsImageFullScreenBind
             viewPager.currentItem = args.currentImagePos
         }
 
-        d("bbbbb", viewPager.currentItem.toString())
 
         binding.pageNumberTextView.text = "${args.currentImagePos + 1}/${args.listOfImages.size}"
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                d("aaaaaa", viewPager.currentItem.toString())
                 binding.pageNumberTextView.text = "${position + 1}/${args.listOfImages.size}"
             }
         })

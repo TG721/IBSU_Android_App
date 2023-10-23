@@ -3,26 +3,21 @@ package com.ibsu.ibsu.ui.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.LecturersItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.extensions.loadFromResource
+import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 
@@ -35,8 +30,8 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
-                if(emailVisibility) {
-                    if(source.email!=null)
+                if (emailVisibility) {
+                    if (source.email != null)
                         imageViewMail.visibility = View.VISIBLE
                 }
 
@@ -45,66 +40,13 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
                 }
 
                 if (source.pictureURL != null) {
-                    Glide.with(imageView)
-                        .load(source.pictureURL)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                        .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
-                        .listener(object : RequestListener<Drawable> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                // Hide the progress bar if image loading fails
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
-
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                dataSource: DataSource?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
-                        })
-                        .into(imageView)
+                    imageView.loadFromUrl(source.pictureURL, progressBar)
                 } else {
-                    Glide.with(imageView)
-                        .load(R.drawable.baseline_person_24)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                        .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
-                        .listener(object : RequestListener<Drawable> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                // Hide the progress bar if image loading fails
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
-
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                dataSource: DataSource?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
-                        })
-                        .into(imageView)
+                    imageView.loadFromResource(R.drawable.baseline_person_24)
+                    binding.progressBar.visibility = View.GONE
                 }
                 adminStaffNameTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                if (context.getCurrentLocale(context).language == georgianLocale){
+                if (context.getCurrentLocale(context).language == georgianLocale) {
                     adminStaffNameTV.text = source.nameGe
                     //position is name but variable represents status like M.A, Doctor
                     adminStaffPositionTV.text = source.statusGe
@@ -114,7 +56,7 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
                     adminStaffNameTV.text = source.nameEn
                     adminStaffPositionTV.text = source.statusEn
                 }
-                if(source.isAcademic)
+                if (source.isAcademic)
                     invitedOrAcademic.text = context.getString(R.string.academic)
                 else {
                     invitedOrAcademic.text = context.getString(R.string.invited)
@@ -135,6 +77,7 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
                 Toast.makeText(context, "No email app found.", Toast.LENGTH_SHORT).show()
             }
         }
+
         fun replaceFirstCommaWithNewLine(text: String): String {
             val indexOfComma = text.indexOf(", ")
             return if (indexOfComma != -1) {

@@ -18,6 +18,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.AdminStaffPortraitItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class GovernanceAdapter(private val context: Context) :
@@ -31,11 +32,8 @@ class GovernanceAdapter(private val context: Context) :
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
 
-                Glide.with(imageView)
-                    .load(source.pictureURL)
-                    .transition(withCrossFade())
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                    .into(imageView)
+                imageView.loadFromUrl(source.pictureURL)
+
                 val dialogView = LayoutInflater.from(context)
                     .inflate(R.layout.custom_dialog_layout, null)
                 val descriptionTextView =

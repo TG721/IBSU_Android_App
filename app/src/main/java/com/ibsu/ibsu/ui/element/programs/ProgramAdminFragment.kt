@@ -1,6 +1,5 @@
 package com.ibsu.ibsu.ui.element.programs
 
-import android.util.Log.d
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -33,7 +32,10 @@ class ProgramAdminFragment :
     }
 
     private fun observeItems() {
-        viewModel.getProgramAdministration(sharedViewModel.getTypeValue(), sharedViewModel.getProgramValue())
+        viewModel.getProgramAdministration(
+            sharedViewModel.getTypeValue(),
+            sharedViewModel.getProgramValue()
+        )
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.myState.collect {

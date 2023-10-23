@@ -17,6 +17,7 @@ import com.bumptech.glide.request.RequestListener
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.ExchangeUniversityItem
 import com.ibsu.ibsu.databinding.ExchangeUniversityItemBinding
+import com.ibsu.ibsu.extensions.loadFromUrl
 
 class ExchangeUniversityItemAdapter(private val context: Context) :
     ListAdapter<ExchangeUniversityItem, ExchangeUniversityItemAdapter.ViewHolder>(ItemDiffCallback()) {
@@ -32,35 +33,8 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
                 country.text = "Country:" +" " + source.county
                 moreDetails.text = source.Details
                 if (source.image != null) {
-                    Glide.with(imageView)
-                        .load(source.image)
-                        .override(800)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                        .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
-                        .listener(object : RequestListener<Drawable> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                // Hide the progress bar if image loading fails
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
+                    imageView.loadFromUrl(source.image, progressBar, 800)
 
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any?,
-                                target: com.bumptech.glide.request.target.Target<Drawable>?,
-                                dataSource: DataSource?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                progressBar.visibility = View.GONE
-                                return false
-                            }
-                        })
-                        .into(imageView)
                 } else imageView.visibility = View.GONE
 
 

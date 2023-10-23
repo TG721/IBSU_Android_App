@@ -115,7 +115,7 @@ class CoursesFragment :
                 if (list?.size != 0) {
                     if(newText?.length!! > 0 ) {
                         binding.autoCompleteTextView.setText(requireContext().getString(R.string.filter_by_credits))
-                        binding.checkBox.isChecked = false;
+                        binding.checkBox.isChecked = false
                         setupDropDownMenus()
                         binding.autoCompleteTextView.visibility = View.GONE
                         binding.textInputLayout.visibility = View.GONE

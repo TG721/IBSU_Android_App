@@ -10,7 +10,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.FragmentSelfGovernanceBinding
 import com.ibsu.ibsu.ui.adapter.GovernanceAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -24,7 +23,6 @@ class SelfGovernanceFragment :
     BaseFragment<FragmentSelfGovernanceBinding>(FragmentSelfGovernanceBinding::inflate) {
     private val viewModel: SelfGovernanceViewModel by viewModels()
     private lateinit var governanceAdapter: GovernanceAdapter
-    private var governanceList = mutableListOf<GovernanceItem>()
     override fun setup() {
         setupRecycler()
     }
@@ -35,7 +33,7 @@ class SelfGovernanceFragment :
 
     @SuppressLint("SuspiciousIndentation")
     private fun observeItems() {
-        viewModel.getSelfGovernance();
+        viewModel.getSelfGovernance()
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.myState.collect {
@@ -75,7 +73,7 @@ class SelfGovernanceFragment :
     private fun setupRecycler() {
         governanceAdapter = GovernanceAdapter(requireContext())
         val recycler = binding.selfGovernanceRV
-        var spanCount = 2
+        val spanCount = 2
 //        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) spanCount = 1
         val layoutManager =
             GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)

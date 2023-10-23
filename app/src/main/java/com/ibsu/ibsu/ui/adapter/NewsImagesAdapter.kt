@@ -13,6 +13,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.ibsu.ibsu.databinding.NewsImageItemBinding
+import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.ui.element.NewsDescriptionFragmentDirections
 
 class NewsImagesAdapter :
@@ -25,32 +26,8 @@ class NewsImagesAdapter :
         fun bind(position: Int) {
 
             val source = getItem(absoluteAdapterPosition)
-            Glide.with(binding.imageView)
-                .load(source)
-                .listener(object : RequestListener<Drawable> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<Drawable>?,
-                        isFirstResource: Boolean,
-                    ): Boolean {
-                        // Hide the progress bar if image loading fails
-                        binding.progressBar.visibility = View.GONE
-                        return false
-                    }
+            binding.imageView.loadFromUrl(source, binding.progressBar)
 
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<Drawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean,
-                    ): Boolean {
-                        binding.progressBar.visibility = View.GONE
-                        return false
-                    }
-                })
-                .into(binding.imageView)
             binding.imageView.setOnClickListener {
                 val action =
                     NewsDescriptionFragmentDirections.actionNewsDescriptionFragmentToNewsImageFullScreenFragment(

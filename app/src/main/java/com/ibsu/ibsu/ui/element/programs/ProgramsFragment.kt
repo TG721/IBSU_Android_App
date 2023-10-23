@@ -35,7 +35,6 @@ class ProgramsFragment : BaseFragment<FragmentProgramsBinding>(FragmentProgramsB
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
         viewPager2.offscreenPageLimit = 2
-        val schoolValue = args.school
         val mainViewPagerAdapter = ViewPagerForProgramsAdapter(this)
         viewPager2.adapter = mainViewPagerAdapter
 //        binding.viewPager.reduceDragSensitivity()

@@ -8,11 +8,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ibsu.ibsu.data.remote.model.NewsItem
 import com.ibsu.ibsu.databinding.NewsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.ui.element.student_life.EntertainmentFragmentDirections
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
@@ -33,11 +32,9 @@ class NewsAdapter(private val context: Context) :
                     dateTV.text = source?.dateEn
 
                 }
-                Glide.with(thumbnail)
-                    .load(source?.thumbnail)
-//                    .apply(RequestOptions.placeholderOf(R.drawable.music_club))  // Optional: Set a placeholder image
-                    .transition(DrawableTransitionOptions.withCrossFade())  // Optional: Add a fade-in animation
-                    .into(thumbnail)
+
+                thumbnail.loadFromUrl(source?.thumbnail)
+
                 thumbnail.setOnClickListener {
                     navigateToDescription()
                 }

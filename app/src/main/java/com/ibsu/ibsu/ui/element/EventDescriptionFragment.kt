@@ -20,6 +20,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentEventDescriptionBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.hideBottomNavigation
+import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -35,33 +36,7 @@ class EventDescriptionFragment :
         showBackButton()
         hideBottomNavigation()
         binding.apply {
-            Glide.with(imageView)
-                .load(args.clickedEventInfo.pictureURL)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .listener(object : RequestListener<Drawable> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<Drawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        // Hide the progress bar if image loading fails
-                        progressBar.visibility = View.GONE
-                        return false
-                    }
-
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<Drawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        progressBar.visibility = View.GONE
-                        return false
-                    }
-                })
-                .into(imageView)
+            imageView.loadFromUrl(args.clickedEventInfo.pictureURL, progressBar)
             var receivedText: String? = null
             if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) {
                  receivedText = args.clickedEventInfo.descriptionGe

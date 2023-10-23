@@ -28,7 +28,6 @@ class UsefulDocsFragment : BaseFragment<FragmentUsefulDocsBinding>(FragmentUsefu
         private lateinit var list: ArrayList<UsefulDocsItem>
 
         override fun setup() {
-            setActionBarName(getString(R.string.useful_documents))
             showBackButton()
             hideBottomNavigation()
             setupRecycler()

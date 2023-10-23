@@ -19,7 +19,6 @@ class SchoolMenuFragment :
 
 
     override fun setup() {
-        setActionBarName(getString(R.string.about_school))
         showBackButton()
         hideBottomNavigation()
 

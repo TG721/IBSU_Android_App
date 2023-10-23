@@ -21,11 +21,10 @@ class StaffSelectionFragment :
     private val sharedViewModel: SchoolViewModel by activityViewModels()
 
     override fun setup() {
-        if (args.school != null) {
-            sharedViewModel.setSchoolValue(args.school!!)
-        }
+
+        sharedViewModel.setSchoolValue(args.school)
+
         sharedViewModel.setEmailVisibility(args.emailVisibility)
-        setActionBarName(getString(R.string.staff))
         hideBottomNavigation()
         showBackButton()
         setupTabLayout()
@@ -34,7 +33,8 @@ class StaffSelectionFragment :
     private fun setupTabLayout() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager
-        val mainViewPagerAdapter = ViewPagerForSchoolStaffAdapter(this, args.school, args.emailVisibility)
+        val mainViewPagerAdapter =
+            ViewPagerForSchoolStaffAdapter(this, args.school, args.emailVisibility)
         viewPager2.adapter = mainViewPagerAdapter
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
