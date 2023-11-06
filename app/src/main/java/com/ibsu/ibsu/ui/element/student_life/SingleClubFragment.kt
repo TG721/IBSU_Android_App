@@ -61,7 +61,13 @@ class SingleClubFragment :
 
     private fun openNumber(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
-        startActivity(intent)
+        val packageManager = requireContext().packageManager
+        if (intent.resolveActivity(packageManager) != null) {
+            requireContext().startActivity(intent)
+        } else {
+            Toast.makeText(context, "No phone app found.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun openFacebookPage(facebookPageUrl: String) {

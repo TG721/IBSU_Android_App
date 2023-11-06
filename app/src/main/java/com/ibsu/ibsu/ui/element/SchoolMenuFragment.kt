@@ -1,6 +1,5 @@
 package com.ibsu.ibsu.ui.element
 
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ibsu.ibsu.R
@@ -9,7 +8,6 @@ import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +21,7 @@ class SchoolMenuFragment :
         hideBottomNavigation()
 
     }
+
     override fun onResume() {
         super.onResume()
         setActionBarName(getString(R.string.about_school))
@@ -37,10 +36,13 @@ class SchoolMenuFragment :
             }
             btnStaff.setOnClickListener {
                 val action =
-                    SchoolMenuFragmentDirections.actionSchoolMenuFragmentToStaffSelectionFragment2(args.school, args.emailVisibility)
+                    SchoolMenuFragmentDirections.actionSchoolMenuFragmentToStaffSelectionFragment2(
+                        args.school,
+                        args.emailVisibility
+                    )
                 findNavController().navigate(action)
             }
-            }
+        }
 
     }
 

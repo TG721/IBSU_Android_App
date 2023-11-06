@@ -50,7 +50,13 @@ class ContactInfoItemAdapter(private val context: Context) :
 
     private fun openNumber(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
-        context.startActivity(intent)
+        val packageManager = context.packageManager
+        if (intent.resolveActivity(packageManager) != null) {
+            context.startActivity(intent)
+        } else {
+            Toast.makeText(context, "No phone app found.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun openEmail(email: String) {

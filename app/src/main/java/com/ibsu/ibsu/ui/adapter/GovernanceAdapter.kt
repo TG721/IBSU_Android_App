@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.GovernanceItem
@@ -42,14 +39,15 @@ class GovernanceAdapter(private val context: Context) :
                     adminStaffNameTV.text = source.NameGe
                     adminStaffPositionTV.text = source.governingPositionGe
                     moreInfoTV.text = source.academicPositionGe
-                    if(source.descriptionGe!==null){
+                    if (source.descriptionGe !== null) {
                         info.visibility = View.VISIBLE
                         info.setOnClickListener {
-                            val dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_layout, null)
+                            val dialogView = LayoutInflater.from(context)
+                                .inflate(R.layout.custom_dialog_layout, null)
 
                             val descriptionTextView =
                                 dialogView.findViewById<TextView>(R.id.descriptionTextView)
-                            alertDialog =    MaterialAlertDialogBuilder(context)
+                            alertDialog = MaterialAlertDialogBuilder(context)
                                 .setTitle(context.getString(R.string.description))
                                 .setView(dialogView)
                                 .setNeutralButton(context.getString(R.string.ok)) { dialog, which ->
@@ -60,15 +58,16 @@ class GovernanceAdapter(private val context: Context) :
                     } else info.visibility = View.GONE
                 } else {
                     moreInfoTV.text = source.academicPositionEn
-                    if(source.descriptionEn!==null){
+                    if (source.descriptionEn !== null) {
                         info.visibility = View.VISIBLE
                         info.setOnClickListener {
-                            val dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_layout, null)
+                            val dialogView = LayoutInflater.from(context)
+                                .inflate(R.layout.custom_dialog_layout, null)
 
                             val descriptionTextView =
                                 dialogView.findViewById<TextView>(R.id.descriptionTextView)
                             alertDialog?.dismiss()
-                            alertDialog =   MaterialAlertDialogBuilder(context)
+                            alertDialog = MaterialAlertDialogBuilder(context)
                                 .setTitle(context.getString(R.string.description))
                                 .setView(dialogView)
                                 .setNeutralButton(context.getString(R.string.ok)) { dialog, which ->

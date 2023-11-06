@@ -77,9 +77,9 @@ class LecturersFragment() :
     }
 
     override fun listeners() {
-        val searchView = binding?.searchView
-        searchView?.clearFocus()
-        searchView?.setOnQueryTextListener(object :
+        val searchView = binding.searchView
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchView.clearFocus()

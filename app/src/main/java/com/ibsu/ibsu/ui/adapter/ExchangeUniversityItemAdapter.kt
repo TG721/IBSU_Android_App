@@ -2,19 +2,12 @@ package com.ibsu.ibsu.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
-import com.ibsu.ibsu.R
 import com.ibsu.ibsu.data.remote.model.ExchangeUniversityItem
 import com.ibsu.ibsu.databinding.ExchangeUniversityItemBinding
 import com.ibsu.ibsu.extensions.loadFromUrl
@@ -29,8 +22,8 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 universityNameTV.text = source.name
-                deadline.text = "Deadline:" +" " + source.deadline
-                country.text = "Country:" +" " + source.county
+                deadline.text = "Deadline:" + " " + source.deadline
+                country.text = "Country:" + " " + source.county
                 moreDetails.text = source.Details
                 if (source.image != null) {
                     imageView.loadFromUrl(source.image, progressBar, 800)
@@ -42,29 +35,29 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
         }
     }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val binding = ExchangeUniversityItemBinding.inflate(layoutInflater, parent, false)
-            return ViewHolder(binding)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.bind()
-        }
-
-        private class ItemDiffCallback : DiffUtil.ItemCallback<ExchangeUniversityItem>() {
-            override fun areItemsTheSame(
-                oldItem: ExchangeUniversityItem,
-                newItem: ExchangeUniversityItem,
-            ): Boolean =
-                oldItem.id == newItem.id
-
-            @SuppressLint("DiffUtilEquals")
-            override fun areContentsTheSame(
-                oldItem: ExchangeUniversityItem,
-                newItem: ExchangeUniversityItem,
-            ): Boolean =
-                oldItem == newItem
-
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ExchangeUniversityItemBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind()
+    }
+
+    private class ItemDiffCallback : DiffUtil.ItemCallback<ExchangeUniversityItem>() {
+        override fun areItemsTheSame(
+            oldItem: ExchangeUniversityItem,
+            newItem: ExchangeUniversityItem,
+        ): Boolean =
+            oldItem.id == newItem.id
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(
+            oldItem: ExchangeUniversityItem,
+            newItem: ExchangeUniversityItem,
+        ): Boolean =
+            oldItem == newItem
+
+    }
+}
