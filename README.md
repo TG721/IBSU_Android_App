@@ -13,7 +13,7 @@ Similar to [IBSU Website](https://ibsu.edu.ge/) the app features image slideshow
 
 ## Tab Layout
 
-Appliacation mainly uses TabLayout to allow stutudents to access related information of sort, using simple hand swipe.
+Appliacation mainly uses TabLayout to allow students to access related information using simple hand swipe.
 
 ![TabLayout](https://github.com/TG721/IBSU_Android-_App/assets/85778941/81957238-9ec5-4b93-8008-587754082a74)
 
@@ -51,11 +51,12 @@ The applications uses a version of clean architecture providing 3 layers: UI, Do
 BaseFragment class exists so other fragments can inherit common behaivors of a fragment.
 Domain Layer contains IBSURepository interface to abstract away the details of data access. The interface is implemented in Data Layer's IBSURepositoryImp class. 
 
-
+Dagger Hilt is used for handling dependency injection.
 Retrofit is used form making HTTP requests.
 Glide is used for Image Loading.
 
 The app also uses WebView to load and itegrate https://sis.ibsu.edu.ge/ into the application.
+
 
 
 ### Used Additional Dependencies
@@ -76,7 +77,6 @@ The app also uses WebView to load and itegrate https://sis.ibsu.edu.ge/ into the
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     //ImageSlideShow
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
     //circle imageview
