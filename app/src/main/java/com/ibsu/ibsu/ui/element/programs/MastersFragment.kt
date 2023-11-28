@@ -3,7 +3,6 @@ package com.ibsu.ibsu.ui.element.programs
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -18,7 +17,7 @@ import com.ibsu.ibsu.databinding.FragmentMastersBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.MasterViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.MasterViewModel
 import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState

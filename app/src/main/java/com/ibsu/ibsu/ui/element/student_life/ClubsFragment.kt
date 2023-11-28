@@ -12,7 +12,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentClubsBinding
 import com.ibsu.ibsu.ui.adapter.ClubsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.ClubViewModel
+import com.ibsu.ibsu.ui.viewmodel.student_life.ClubViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

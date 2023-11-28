@@ -140,5 +140,6 @@
         <item name="4_etc">4</item>
         <item name="5_etc">5</item>
         <item name="6_etc">6</item>
+        <item name="7_etc">7</item>
     </string-array>
 </resources>

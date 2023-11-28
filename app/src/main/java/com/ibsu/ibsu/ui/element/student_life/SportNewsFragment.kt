@@ -13,7 +13,7 @@ import com.ibsu.ibsu.data.remote.model.NewsItem
 import com.ibsu.ibsu.databinding.FragmentSportNewsBinding
 import com.ibsu.ibsu.ui.adapter.NewsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.SportNewsViewModel
+import com.ibsu.ibsu.ui.viewmodel.student_life.SportNewsViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

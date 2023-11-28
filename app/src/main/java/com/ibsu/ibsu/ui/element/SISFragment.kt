@@ -8,10 +8,10 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,14 +25,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
-import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.JavaScriptInterfaceForSIS
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.WeekValue
@@ -103,9 +100,8 @@ class SISFragment : Fragment() {
                 super.onPageFinished(view, url)
                 val appSettingPrefs: SharedPreferences =
                     requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-//                d("urlld", url.toString())
-                if(isFirstLoad){
-                    if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale){
+                if (isFirstLoad) {
+                    if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) {
                         view?.evaluateJavascript(
                             """
     function changeToKA() {
@@ -153,7 +149,7 @@ class SISFragment : Fragment() {
                         )
                     }
                 }
-                    isFirstLoad = false
+                isFirstLoad = false
 
                 //setup dark mode
 
@@ -194,7 +190,7 @@ class SISFragment : Fragment() {
                         """, null
                     )
 
-                    if (!url!!.contains("requests")  ) {
+                    if (!url!!.contains("requests")) {
 
                         view?.evaluateJavascript(
                             """
@@ -317,8 +313,7 @@ class SISFragment : Fragment() {
                             "      break;" +
                             "    }" +
                             "  }" +
-                            " }"
-                          ,
+                            " }",
 
                     null
                 )
@@ -400,6 +395,7 @@ class SISFragment : Fragment() {
 
             val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
             requireContext().registerReceiver(onComplete, filter)
+
         }
 
         webView?.loadUrl(webURL)

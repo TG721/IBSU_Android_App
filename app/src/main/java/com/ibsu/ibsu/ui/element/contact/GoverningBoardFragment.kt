@@ -14,7 +14,7 @@ import com.ibsu.ibsu.data.remote.model.GovernanceItem
 import com.ibsu.ibsu.databinding.FragmentGoverningBoardBinding
 import com.ibsu.ibsu.ui.adapter.GovernanceAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.GoverningBoardViewModel
+import com.ibsu.ibsu.ui.viewmodel.contact.GoverningBoardViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

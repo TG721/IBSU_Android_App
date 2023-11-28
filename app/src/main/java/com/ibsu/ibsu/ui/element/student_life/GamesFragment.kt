@@ -11,7 +11,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentGamesBinding
 import com.ibsu.ibsu.ui.adapter.GamesAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.GameViewModel
+import com.ibsu.ibsu.ui.viewmodel.student_life.GameViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

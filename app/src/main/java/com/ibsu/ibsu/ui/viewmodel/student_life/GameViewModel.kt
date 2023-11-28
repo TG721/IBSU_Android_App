@@ -1,4 +1,4 @@
-package com.ibsu.ibsu.ui.viewmodel
+package com.ibsu.ibsu.ui.viewmodel.student_life
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

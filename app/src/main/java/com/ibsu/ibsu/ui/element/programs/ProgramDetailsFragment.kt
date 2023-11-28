@@ -11,7 +11,7 @@ import com.ibsu.ibsu.extensions.setActionBarName
 import com.ibsu.ibsu.extensions.showBackButton
 import com.ibsu.ibsu.ui.adapter.ViewPagerForCourseDetailsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.ProgramViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.ProgramViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

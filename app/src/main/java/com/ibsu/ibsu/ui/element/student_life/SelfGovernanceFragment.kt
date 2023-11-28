@@ -13,7 +13,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSelfGovernanceBinding
 import com.ibsu.ibsu.ui.adapter.GovernanceAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.SelfGovernanceViewModel
+import com.ibsu.ibsu.ui.viewmodel.student_life.SelfGovernanceViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

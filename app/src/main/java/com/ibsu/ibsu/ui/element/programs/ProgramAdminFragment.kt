@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.databinding.FragmentProgramAdminBinding
 import com.ibsu.ibsu.ui.adapter.ProgramAdminAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.ProgramAdministrationViewModel
-import com.ibsu.ibsu.ui.viewmodel.ProgramViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.ProgramAdministrationViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.ProgramViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -13,7 +13,7 @@ import com.ibsu.ibsu.data.remote.model.WorkingHoursItem
 import com.ibsu.ibsu.databinding.FragmentWorkingHoursBinding
 import com.ibsu.ibsu.ui.adapter.WorkingHoursAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.WorkingHoursViewModel
+import com.ibsu.ibsu.ui.viewmodel.contact.WorkingHoursViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,8 +17,8 @@ import com.ibsu.ibsu.data.remote.model.CoursesItem
 import com.ibsu.ibsu.databinding.FragmentCoursesBinding
 import com.ibsu.ibsu.ui.adapter.CourseItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.CoursesViewModel
-import com.ibsu.ibsu.ui.viewmodel.ProgramViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.CoursesViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.ProgramViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -155,41 +156,11 @@ class CoursesFragment :
                     else rvAdapter.submitList(list)
                 }
 
-                (adapterView.getItemAtPosition(i)).toString() == "3" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 3 })
+                (adapterView.getItemAtPosition(i)).toString().isDigitsOnly() -> {
+                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == adapterView.getItemAtPosition(i).toString().toInt() })
                     else {
                         val filteredEcts = list.filter {
-                            it.ETC == 3
-                        }
-                        rvAdapter.submitList(filteredEcts)
-                    }
-                }
-
-                (adapterView.getItemAtPosition(i)).toString() == "4" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 4 })
-                    else {
-                        val filteredEcts = list.filter {
-                            it.ETC == 4
-                        }
-                        rvAdapter.submitList(filteredEcts)
-                    }
-                }
-
-                (adapterView.getItemAtPosition(i)).toString() == "5" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 5 })
-                    else {
-                        val filteredEcts = list.filter {
-                            it.ETC == 5
-                        }
-                        rvAdapter.submitList(filteredEcts)
-                    }
-                }
-
-                (adapterView.getItemAtPosition(i)).toString() == "6" -> {
-                    if (binding.checkBox.isChecked) rvAdapter.submitList(list.filter { it -> it.prerequisites!!.isEmpty() && it.ETC == 6 })
-                    else {
-                        val filteredEcts = list.filter {
-                            it.ETC == 6
+                            it.ETC == adapterView.getItemAtPosition(i).toString().toInt()
                         }
                         rvAdapter.submitList(filteredEcts)
                     }
@@ -235,6 +206,12 @@ class CoursesFragment :
                         }
                         rvAdapter.submitList(filteredNopre)
                     }
+                    "7" -> {
+                        val filteredNopre = list.filter {
+                            it.prerequisites!!.isEmpty() && it.ETC == 7
+                        }
+                        rvAdapter.submitList(filteredNopre)
+                    }
                 }
 
             } else {
@@ -263,6 +240,12 @@ class CoursesFragment :
                     "6" -> {
                         val filteredNopre = list.filter {
                             it.ETC == 6
+                        }
+                        rvAdapter.submitList(filteredNopre)
+                    }
+                    "7" -> {
+                        val filteredNopre = list.filter {
+                            it.prerequisites!!.isEmpty() && it.ETC == 7
                         }
                         rvAdapter.submitList(filteredNopre)
                     }

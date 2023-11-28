@@ -11,7 +11,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentBilateralBinding
 import com.ibsu.ibsu.ui.adapter.ExchangeUniversityItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.BilateralViewModel
+import com.ibsu.ibsu.ui.viewmodel.iro.BilateralViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

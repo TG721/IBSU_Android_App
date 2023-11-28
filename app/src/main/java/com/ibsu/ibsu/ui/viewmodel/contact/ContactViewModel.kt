@@ -1,4 +1,4 @@
-package com.ibsu.ibsu.ui.viewmodel
+package com.ibsu.ibsu.ui.viewmodel.contact
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

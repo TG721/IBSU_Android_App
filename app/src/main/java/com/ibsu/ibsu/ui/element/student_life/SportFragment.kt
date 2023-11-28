@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSportBinding
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.SportMenuViewModel
+import com.ibsu.ibsu.ui.viewmodel.student_life.SportMenuViewModel
 import com.ibsu.ibsu.utils.SportMenu.SportNews
 import com.ibsu.ibsu.utils.SportMenu.SportTypes
 import dagger.hilt.android.AndroidEntryPoint

@@ -12,7 +12,7 @@ import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentErasmusPlusBinding
 import com.ibsu.ibsu.ui.adapter.ExchangeUniversityItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.ErasmusPlusViewModel
+import com.ibsu.ibsu.ui.viewmodel.iro.ErasmusPlusViewModel
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -19,8 +19,7 @@ import com.ibsu.ibsu.databinding.FragmentBachelorsBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.BachelorViewModel
-import com.ibsu.ibsu.ui.viewmodel.ProgramViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.BachelorViewModel
 import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState

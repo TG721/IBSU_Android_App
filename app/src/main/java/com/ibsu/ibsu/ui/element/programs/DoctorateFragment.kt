@@ -17,7 +17,7 @@ import com.ibsu.ibsu.databinding.FragmentDoctorateBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.DoctorateProgramsViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.DoctorateProgramsViewModel
 import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState

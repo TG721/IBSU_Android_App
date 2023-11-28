@@ -9,8 +9,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.ibsu.ibsu.databinding.FragmentCreditValueBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.CreditValueViewModel
-import com.ibsu.ibsu.ui.viewmodel.ProgramViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.CreditValueViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.ProgramViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint

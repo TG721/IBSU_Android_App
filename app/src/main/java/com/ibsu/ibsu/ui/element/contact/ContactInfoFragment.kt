@@ -16,7 +16,7 @@ import com.ibsu.ibsu.databinding.FragmentContactInfoBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ContactInfoItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.ContactViewModel
+import com.ibsu.ibsu.ui.viewmodel.contact.ContactViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
