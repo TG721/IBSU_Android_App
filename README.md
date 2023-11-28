@@ -23,7 +23,6 @@ Application allows swiping from top to bottom in case user requests information 
 
 ## Screenshots
 
-
 <table >
 
    <tr>
@@ -33,19 +32,22 @@ Application allows swiping from top to bottom in case user requests information 
       <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/fe0a9923-793c-4f9e-94a1-f16da6c64d6a" width="216"></td>
    </tr>
    <tr>
-      <td colspan="3">Homework 5-10</td>
+      <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/fe0a9923-793c-4f9e-94a1-f16da6c64d6a" width="216"></td>
+      <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/4be71b12-54cc-47b8-a9b0-8cea1f30a318" width="216"></td>
+      <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/8d0f0e9d-b923-49bf-9ee9-90388d283d47" width="216"></td>
    </tr>
-   <tr>
-      <td colspan="3"><img src="https://github.com/TG721/Quantori_JS_Homeworks/assets/85778941/6cf09f74-0e28-48dc-9260-2ff192ba1db4"></td>  
-   </tr>
+
 </table>
 
 
 ## Technical details
 
-### Architecture
+### Architecture and More
 
 The applications uses a version of clean architecture providing 3 layers: UI, Domain and Data to separate concerns of application code.
+BaseFragment class exists so other fragments can inherit common behaivors of a fragment.
+Domain Layer contains IBSURepository interface to abstract away the details of data access. The interface is implemented in Data Layer's IBSURepositoryImp class. 
+
 
 Retrofit is used form making HTTP requests.
 Glide is used for Image Loading.
