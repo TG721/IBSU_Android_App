@@ -34,10 +34,10 @@ Application allows swiping from top to bottom in case user requests information 
       <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/fe0a9923-793c-4f9e-94a1-f16da6c64d6a" width="216"></td>
    </tr>
    <tr>
-      <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/fe0a9923-793c-4f9e-94a1-f16da6c64d6a" width="216"></td>
       <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/4be71b12-54cc-47b8-a9b0-8cea1f30a318" width="216"></td>
       <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/ce524982-f681-417a-a8a0-18ebcaf0a0a9" width="216"></td>
       <td><img src="https://github.com/TG721/IBSU_Android-_App/assets/85778941/8d0f0e9d-b923-49bf-9ee9-90388d283d47" width="216"></td>
+      <td><img src="https://github.com/TG721/IBSU_Android_App/assets/85778941/c945d2a3-6ca6-4b5b-bf16-32db017bd969" width="216"></td>
    </tr>
 
 </table>
