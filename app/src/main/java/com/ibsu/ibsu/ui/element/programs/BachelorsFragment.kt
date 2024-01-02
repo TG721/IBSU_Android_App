@@ -103,8 +103,7 @@ class BachelorsFragment() :
                         is ResponseState.Error -> {
                             binding.errorMessage.text = it.message.toString()
                             binding.progressBar.visibility = View.GONE
-                            Toast.makeText(requireContext(), getString(R.string.check_internet_connection_and_scroll_to_refresh), Toast.LENGTH_LONG).show()
-
+//
                         }
 
                         is ResponseState.Success -> {

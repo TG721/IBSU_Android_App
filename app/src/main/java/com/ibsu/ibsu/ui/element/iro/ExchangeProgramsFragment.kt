@@ -17,7 +17,6 @@ class ExchangeProgramsFragment :
 
     override fun setup() {
         setupTabLayout()
-        setActionBarName(getString(R.string.exchange_programs))
         hideBottomNavigation()
         showBackButton()
     }

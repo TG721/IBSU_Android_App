@@ -50,7 +50,7 @@ class AdminStaffFragment() :
                         is ResponseState.Error -> {
                             binding.errorMessage.text = it.message.toString()
                             binding.progressBar.visibility = View.GONE
-                            d("errrorrrr", it.message.toString())
+//                            d("errrorrrr", it.message.toString())
                         }
 
                         is ResponseState.Success -> {

@@ -1,8 +1,8 @@
 package com.ibsu.ibsu.ui.element
 
 import android.app.DownloadManager
-import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Context.RECEIVER_NOT_EXPORTED
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
@@ -26,15 +26,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.JavaScriptInterfaceForSIS
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
+import com.ibsu.ibsu.utils.OnDownloadCompleteReceiver
 import com.ibsu.ibsu.utils.WeekValue
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 
 
 @AndroidEntryPoint
@@ -47,7 +46,7 @@ class SISFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentSISBinding.inflate(inflater)
+        this.binding = FragmentSISBinding.inflate(inflater)
         return binding!!.root
     }
 
@@ -57,6 +56,7 @@ class SISFragment : Fragment() {
         setupWebView()
         showBottomMenu()
     }
+
 
 
     private fun setupWebView() {
@@ -356,45 +356,13 @@ class SISFragment : Fragment() {
             val downloadId = downloadManager.enqueue(request)
 
             // Listen for download completion using a BroadcastReceiver
-            val onComplete = object : BroadcastReceiver() {
-                override fun onReceive(context: Context?, intent: Intent?) {
-                    val query = DownloadManager.Query()
-                    query.setFilterById(downloadId)
-                    val cursor = downloadManager.query(query)
-                    if (cursor.moveToFirst()) {
-                        val columnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
-                        val status = cursor.getInt(columnIndex)
-                        if (status == DownloadManager.STATUS_SUCCESSFUL) {
-                            val columnIndexFileName =
-                                cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)
-                            if (columnIndexFileName >= 0) {
-                                val localFilePath = cursor.getString(columnIndexFileName)
-                                val file = File(localFilePath)
-                                // Handle the downloaded file (e.g., open it, share it, etc.)
-                                val snackbar = Snackbar.make(
-                                    binding?.root!!,
-                                    getString(R.string.downloaded),
-                                    Snackbar.LENGTH_LONG
-                                )
-                                snackbar.setAction(getString(R.string.go_to_downloads)) {
-                                    // Handle button click here
-                                    startActivity(Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
-                                }
-                                snackbar.show()
-                            } else {
-
-                            }
-                        }
-                    }
-                    cursor.close()
-
-                    // Unregister the BroadcastReceiver
-                    context?.unregisterReceiver(this)
-                }
-            }
 
             val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            requireContext().registerReceiver(onComplete, filter)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requireContext().registerReceiver(OnDownloadCompleteReceiver(downloadId, downloadManager, binding!!.root), filter,  null, null, RECEIVER_NOT_EXPORTED)
+            } else {
+                requireContext().registerReceiver(OnDownloadCompleteReceiver(downloadId, downloadManager, binding!!.root), filter)
+            }
 
         }
 

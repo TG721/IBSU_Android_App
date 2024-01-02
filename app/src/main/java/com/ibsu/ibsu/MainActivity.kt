@@ -132,12 +132,6 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
 
-//                    R.id.IniFragment -> {
-//                        navController.popBackStack(navController.currentDestination!!.id, true);
-//                        navController.navigate(R.id.iniFragment)
-//
-//                        true
-//                    }
 
                     R.id.settingsFragment -> {
                         navController.popBackStack(navController.currentDestination!!.id, true);
