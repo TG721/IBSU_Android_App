@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.GovernanceItem
+import com.ibsu.ibsu.domain.model.GovernanceItem
 import com.ibsu.ibsu.databinding.AdminStaffPortraitItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class GovernanceAdapter(private val context: Context) :
-    ListAdapter<GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
     inner class StaffPortraitItemHolder(private val binding: AdminStaffPortraitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var alertDialog: AlertDialog? = null
@@ -98,17 +98,17 @@ class GovernanceAdapter(private val context: Context) :
         holder.bind(position)
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<GovernanceItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.GovernanceItem>() {
         override fun areItemsTheSame(
-            oldItem: GovernanceItem,
-            newItem: GovernanceItem,
+            oldItem: com.ibsu.ibsu.domain.model.GovernanceItem,
+            newItem: com.ibsu.ibsu.domain.model.GovernanceItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: GovernanceItem,
-            newItem: GovernanceItem,
+            oldItem: com.ibsu.ibsu.domain.model.GovernanceItem,
+            newItem: com.ibsu.ibsu.domain.model.GovernanceItem,
         ): Boolean =
             oldItem == newItem
 

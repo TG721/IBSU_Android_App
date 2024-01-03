@@ -3,20 +3,12 @@ package com.ibsu.ibsu
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -24,15 +16,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.ibsu.ibsu.databinding.ActivityMainBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
-import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
-import com.ibsu.ibsu.ui.viewmodel.WeekValueViewModel
+import com.ibsu.ibsu.ui.viewmodel.SettingsViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.englishLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.LocaleHelper
-import com.ibsu.ibsu.utils.ResponseState
-import com.ibsu.ibsu.utils.WeekValue
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -41,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var bottomNavigationView: BottomNavigationView
-    private val viewModel: WeekValueViewModel by viewModels()
+    private val settingsPrefsViewModel: SettingsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupDarkMode()
@@ -55,14 +43,12 @@ class MainActivity : AppCompatActivity() {
     private fun setup() {
         setupLanguage()
         setupActionBar()
-        setupBottomNavigation();
+        setupBottomNavigation()
 
     }
 
     private fun setupLanguage() {
-        val appSettingPrefs: SharedPreferences =
-            getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-        val selectedLanguage = when (appSettingPrefs.getInt("languageVal", 2)) {
+        val selectedLanguage = when (settingsPrefsViewModel.getLanguageSetting()) {
             0 -> englishLocale
             1 -> georgianLocale
             else -> getCurrentLocale(this).language
@@ -77,10 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDarkMode() {
-        val appSettingPrefs: SharedPreferences =
-            getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-
-        when (appSettingPrefs.getInt("darkModeVal", 2)) { //0 dark, 1 light, 2 system default
+        when (settingsPrefsViewModel.getDarkModeSetting()) { //0 dark, 1 light, 2 system default
             0 -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
@@ -93,7 +76,6 @@ class MainActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             }
         }
-        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
 
     }
 
@@ -121,20 +103,20 @@ class MainActivity : AppCompatActivity() {
                 when (it.itemId) {
 
                     R.id.homeFragment -> {
-                        navController.popBackStack(navController.currentDestination!!.id, true);
+                        navController.popBackStack(navController.currentDestination!!.id, true)
                         navController.navigate(R.id.homeFragment)
                         true
                     }
 
                     R.id.SISFragment -> {
-                        navController.popBackStack(navController.currentDestination!!.id, true);
+                        navController.popBackStack(navController.currentDestination!!.id, true)
                         navController.navigate(R.id.SISFragment)
                         true
                     }
 
 
                     R.id.settingsFragment -> {
-                        navController.popBackStack(navController.currentDestination!!.id, true);
+                        navController.popBackStack(navController.currentDestination!!.id, true)
                         navController.navigate(R.id.settingsFragment)
                         true
                     }
@@ -148,11 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupLabels() {
-        val appSettingPrefs: SharedPreferences = getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
-        val isDisableLabelOn: Boolean = appSettingPrefs.getBoolean("disableLabel", false)
-
-        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
-
+        val isDisableLabelOn: Boolean = !settingsPrefsViewModel.getBottomNavBarLabelVisibilitySetting()
 
         if (isDisableLabelOn) {
             bottomNavigationView?.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_SELECTED);

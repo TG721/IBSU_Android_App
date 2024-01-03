@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.WorkingHoursItem
+import com.ibsu.ibsu.domain.model.WorkingHoursItem
 import com.ibsu.ibsu.databinding.WorkingHoursItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class WorkingHoursAdapter(private val context: Context) :
-    ListAdapter<WorkingHoursItem, WorkingHoursAdapter.ItemViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.WorkingHoursItem, WorkingHoursAdapter.ItemViewHolder>(ItemDiffCallback()) {
     inner class ItemViewHolder(private val binding: WorkingHoursItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -42,17 +42,17 @@ class WorkingHoursAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<WorkingHoursItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.WorkingHoursItem>() {
         override fun areItemsTheSame(
-            oldItem: WorkingHoursItem,
-            newItem: WorkingHoursItem,
+            oldItem: com.ibsu.ibsu.domain.model.WorkingHoursItem,
+            newItem: com.ibsu.ibsu.domain.model.WorkingHoursItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: WorkingHoursItem,
-            newItem: WorkingHoursItem,
+            oldItem: com.ibsu.ibsu.domain.model.WorkingHoursItem,
+            newItem: com.ibsu.ibsu.domain.model.WorkingHoursItem,
         ): Boolean =
             oldItem == newItem
 

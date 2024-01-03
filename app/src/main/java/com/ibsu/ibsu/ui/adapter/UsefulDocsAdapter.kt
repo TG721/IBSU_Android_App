@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.UsefulDocsItem
+import com.ibsu.ibsu.domain.model.UsefulDocsItem
 import com.ibsu.ibsu.databinding.UsefulDocsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class UsefulDocsAdapter(private val context: Context) :
-    ListAdapter<UsefulDocsItem, UsefulDocsAdapter.ItemViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.UsefulDocsItem, UsefulDocsAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
     inner class ItemViewHolder(private val binding: UsefulDocsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -46,11 +46,11 @@ class UsefulDocsAdapter(private val context: Context) :
         holder.bind(position)
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<UsefulDocsItem>() {
-        override fun areItemsTheSame(oldItem: UsefulDocsItem, newItem: UsefulDocsItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.UsefulDocsItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.UsefulDocsItem, newItem: com.ibsu.ibsu.domain.model.UsefulDocsItem): Boolean =
             oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: UsefulDocsItem, newItem: UsefulDocsItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.UsefulDocsItem, newItem: com.ibsu.ibsu.domain.model.UsefulDocsItem): Boolean =
             oldItem == newItem
 
     }

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.LecturersItem
+import com.ibsu.ibsu.domain.model.LecturersItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromResource
@@ -22,7 +22,7 @@ import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 
 class LecturersAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
-    ListAdapter<LecturersItem, LecturersAdapter.LecturerViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.LecturersItem, LecturersAdapter.LecturerViewHolder>(ItemDiffCallback()) {
     inner class LecturerViewHolder(private val binding: AdminStaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -99,17 +99,17 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<LecturersItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.LecturersItem>() {
         override fun areItemsTheSame(
-            oldItem: LecturersItem,
-            newItem: LecturersItem,
+            oldItem: com.ibsu.ibsu.domain.model.LecturersItem,
+            newItem: com.ibsu.ibsu.domain.model.LecturersItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: LecturersItem,
-            newItem: LecturersItem,
+            oldItem: com.ibsu.ibsu.domain.model.LecturersItem,
+            newItem: com.ibsu.ibsu.domain.model.LecturersItem,
         ): Boolean =
             oldItem == newItem
 

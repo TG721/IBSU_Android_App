@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.NewsItem
+import com.ibsu.ibsu.domain.model.NewsItem
 import com.ibsu.ibsu.databinding.NewsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromUrl
@@ -16,10 +16,10 @@ import com.ibsu.ibsu.ui.element.student_life.EntertainmentFragmentDirections
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class NewsAdapter(private val context: Context) :
-    ListAdapter<NewsItem, NewsAdapter.NewsViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.NewsItem, NewsAdapter.NewsViewHolder>(ItemDiffCallback()) {
     inner class NewsViewHolder(private val binding: NewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        var source: NewsItem? = null
+        var source: com.ibsu.ibsu.domain.model.NewsItem? = null
         fun bind() {
             binding.apply {
                 source = getItem(absoluteAdapterPosition)
@@ -63,12 +63,12 @@ class NewsAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<NewsItem>() {
-        override fun areItemsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.NewsItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.NewsItem, newItem: com.ibsu.ibsu.domain.model.NewsItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: NewsItem, newItem: NewsItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.NewsItem, newItem: com.ibsu.ibsu.domain.model.NewsItem): Boolean =
             oldItem == newItem
 
     }

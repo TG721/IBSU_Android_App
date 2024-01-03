@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.ibsu.ibsu.data.remote.model.FBFanPagesItem
+import com.ibsu.ibsu.domain.model.FBFanPagesItem
 import com.ibsu.ibsu.databinding.FacebookFanPageItemBinding
 import com.ibsu.ibsu.extensions.loadFromUrl
 
 class FanPagesAdapter(private val context: Context) :
-    ListAdapter<FBFanPagesItem, FanPagesAdapter.FBFanPageViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.FBFanPagesItem, FanPagesAdapter.FBFanPageViewHolder>(ItemDiffCallback()) {
     inner class FBFanPageViewHolder(private val binding: FacebookFanPageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -45,12 +45,12 @@ class FanPagesAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<FBFanPagesItem>() {
-        override fun areItemsTheSame(oldItem: FBFanPagesItem, newItem: FBFanPagesItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.FBFanPagesItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.FBFanPagesItem, newItem: com.ibsu.ibsu.domain.model.FBFanPagesItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: FBFanPagesItem, newItem: FBFanPagesItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.FBFanPagesItem, newItem: com.ibsu.ibsu.domain.model.FBFanPagesItem): Boolean =
             oldItem == newItem
 
     }

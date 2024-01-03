@@ -8,52 +8,52 @@
     android:background="@color/anti_line"
     tools:context=".ui.element.programs.BachelorsFragment">
 
-<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
-<!--        android:id="@+id/linearLayoutCompat"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="6dp"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
+    <!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+    <!--        android:id="@+id/linearLayoutCompat"-->
+    <!--        android:layout_width="130dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:layout_marginTop="6dp"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:drawableStart="@drawable/green_rectangle"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:text="School of Business"-->
-<!--            android:textColor="@color/line"-->
-<!--            android:textSize="8sp" />-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:drawableStart="@drawable/green_rectangle"-->
+    <!--            android:drawablePadding="10dp"-->
+    <!--            android:text="School of Business"-->
+    <!--            android:textColor="@color/line"-->
+    <!--            android:textSize="8sp" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:drawableStart="@drawable/blue_rectangle"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:text="School of Computer Science and Architecture"-->
-<!--            android:textColor="@color/line"-->
-<!--            android:textSize="8sp" />-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:drawableStart="@drawable/blue_rectangle"-->
+    <!--            android:drawablePadding="10dp"-->
+    <!--            android:text="School of Computer Science and Architecture"-->
+    <!--            android:textColor="@color/line"-->
+    <!--            android:textSize="8sp" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:drawableStart="@drawable/yellow_rectangle"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:text="School of Education, Humanities and Social Sciences"-->
-<!--            android:textColor="@color/line"-->
-<!--            android:textSize="8sp" />-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:drawableStart="@drawable/yellow_rectangle"-->
+    <!--            android:drawablePadding="10dp"-->
+    <!--            android:text="School of Education, Humanities and Social Sciences"-->
+    <!--            android:textColor="@color/line"-->
+    <!--            android:textSize="8sp" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:drawableStart="@drawable/red_rectangle"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:text="School of Law and State Governance "-->
-<!--            android:textColor="@color/line"-->
-<!--            android:textSize="8sp" />-->
-<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:drawableStart="@drawable/red_rectangle"-->
+    <!--            android:drawablePadding="10dp"-->
+    <!--            android:text="School of Law and State Governance "-->
+    <!--            android:textColor="@color/line"-->
+    <!--            android:textSize="8sp" />-->
+    <!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -83,38 +83,28 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/programRV"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_marginTop="5dp"
+        android:overScrollMode="never"
+        android:text="@string/hello_blank_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/programRV"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:text="@string/hello_blank_fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <TextView
         android:id="@+id/errorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="@string/hello_blank_fragment"
         android:textColor="@color/line"
         android:textSize="26sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/swipeRefreshLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

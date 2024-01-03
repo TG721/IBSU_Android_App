@@ -2,7 +2,7 @@ package com.ibsu.ibsu.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.CurrentWeek
+import com.ibsu.ibsu.domain.model.CurrentWeek
 import com.ibsu.ibsu.domain.usecase.GetWeekValueUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,8 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class WeekValueViewModel @Inject constructor(private val getWeekValueUseCase: GetWeekValueUseCase) : ViewModel(){
     private val _myState =
-        MutableStateFlow<ResponseState<CurrentWeek>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<CurrentWeek>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.CurrentWeek>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.CurrentWeek>> = _myState //immutable state flow
 
     fun getCurrentWeek() {
         viewModelScope.launch {

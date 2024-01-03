@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.WorkingHoursItem
+import com.ibsu.ibsu.domain.model.WorkingHoursItem
 import com.ibsu.ibsu.databinding.FragmentWorkingHoursBinding
 import com.ibsu.ibsu.ui.adapter.WorkingHoursAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -23,7 +23,7 @@ class WorkingHoursFragment :
     BaseFragment<FragmentWorkingHoursBinding>(FragmentWorkingHoursBinding::inflate) {
     private val viewModel: WorkingHoursViewModel by viewModels()
     private lateinit var rvAdapter: WorkingHoursAdapter
-    private var list = mutableListOf<WorkingHoursItem>()
+    private var list = mutableListOf<com.ibsu.ibsu.domain.model.WorkingHoursItem>()
 
     override fun setup() {
         setupRecycler()

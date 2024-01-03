@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.ExchangeUniversityItem
+import com.ibsu.ibsu.domain.model.ExchangeUniversityItem
 import com.ibsu.ibsu.databinding.ExchangeUniversityItemBinding
 import com.ibsu.ibsu.extensions.loadFromUrl
 
 class ExchangeUniversityItemAdapter(private val context: Context) :
-    ListAdapter<ExchangeUniversityItem, ExchangeUniversityItemAdapter.ViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.ExchangeUniversityItem, ExchangeUniversityItemAdapter.ViewHolder>(ItemDiffCallback()) {
     inner class ViewHolder(private val binding: ExchangeUniversityItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -45,17 +45,17 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<ExchangeUniversityItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ExchangeUniversityItem>() {
         override fun areItemsTheSame(
-            oldItem: ExchangeUniversityItem,
-            newItem: ExchangeUniversityItem,
+            oldItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,
+            newItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: ExchangeUniversityItem,
-            newItem: ExchangeUniversityItem,
+            oldItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,
+            newItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,
         ): Boolean =
             oldItem == newItem
 

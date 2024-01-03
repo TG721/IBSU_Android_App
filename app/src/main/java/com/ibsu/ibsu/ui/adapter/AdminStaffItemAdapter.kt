@@ -22,13 +22,13 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.AdministrationItem
+import com.ibsu.ibsu.domain.model.AdministrationItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class AdminStaffItemAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
-    ListAdapter<AdministrationItem, AdminStaffItemAdapter.StaffViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.AdministrationItem, AdminStaffItemAdapter.StaffViewHolder>(ItemDiffCallback()) {
     inner class StaffViewHolder(private val binding: AdminStaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -173,17 +173,17 @@ class AdminStaffItemAdapter(private val context: Context, private val emailVisib
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<AdministrationItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.AdministrationItem>() {
         override fun areItemsTheSame(
-            oldItem: AdministrationItem,
-            newItem: AdministrationItem,
+            oldItem: com.ibsu.ibsu.domain.model.AdministrationItem,
+            newItem: com.ibsu.ibsu.domain.model.AdministrationItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: AdministrationItem,
-            newItem: AdministrationItem,
+            oldItem: com.ibsu.ibsu.domain.model.AdministrationItem,
+            newItem: com.ibsu.ibsu.domain.model.AdministrationItem,
         ): Boolean =
             oldItem == newItem
 

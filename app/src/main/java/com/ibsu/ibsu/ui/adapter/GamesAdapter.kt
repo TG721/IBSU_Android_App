@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.GamesItem
+import com.ibsu.ibsu.domain.model.GamesItem
 import com.ibsu.ibsu.databinding.GameItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class GamesAdapter(private val context: Context) :
-    ListAdapter<GamesItem, GamesAdapter.GameViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.GamesItem, GamesAdapter.GameViewHolder>(ItemDiffCallback()) {
     inner class GameViewHolder(private val binding: GameItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -41,12 +41,12 @@ class GamesAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<GamesItem>() {
-        override fun areItemsTheSame(oldItem: GamesItem, newItem: GamesItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.GamesItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.GamesItem, newItem: com.ibsu.ibsu.domain.model.GamesItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: GamesItem, newItem: GamesItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.GamesItem, newItem: com.ibsu.ibsu.domain.model.GamesItem): Boolean =
             oldItem == newItem
 
     }

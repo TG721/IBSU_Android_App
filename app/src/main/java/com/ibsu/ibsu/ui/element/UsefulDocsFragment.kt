@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.UsefulDocsItem
+import com.ibsu.ibsu.domain.model.UsefulDocsItem
 import com.ibsu.ibsu.databinding.FragmentUsefulDocsBinding
 import com.ibsu.ibsu.extensions.hideBottomNavigation
 import com.ibsu.ibsu.extensions.setActionBarName
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class UsefulDocsFragment : BaseFragment<FragmentUsefulDocsBinding>(FragmentUsefulDocsBinding::inflate) {
         private val viewModel: UsefulDocsViewModel by viewModels()
         private lateinit var rvAdapter: UsefulDocsAdapter
-        private lateinit var list: ArrayList<UsefulDocsItem>
+        private lateinit var list: ArrayList<com.ibsu.ibsu.domain.model.UsefulDocsItem>
 
         override fun setup() {
             showBackButton()

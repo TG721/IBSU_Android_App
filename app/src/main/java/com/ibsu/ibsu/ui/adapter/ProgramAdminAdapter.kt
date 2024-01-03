@@ -12,13 +12,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.ProgramAdminItem
+import com.ibsu.ibsu.domain.model.ProgramAdminItem
 import com.ibsu.ibsu.databinding.ProgramAdminItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class ProgramAdminAdapter(private val context: Context) :
-    ListAdapter<ProgramAdminItem, ProgramAdminAdapter.ItemViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.ProgramAdminItem, ProgramAdminAdapter.ItemViewHolder>(ItemDiffCallback()) {
     inner class ItemViewHolder(private val binding: ProgramAdminItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -83,17 +83,17 @@ class ProgramAdminAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<ProgramAdminItem>() {
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ProgramAdminItem>() {
         override fun areItemsTheSame(
-            oldItem: ProgramAdminItem,
-            newItem: ProgramAdminItem,
+            oldItem: com.ibsu.ibsu.domain.model.ProgramAdminItem,
+            newItem: com.ibsu.ibsu.domain.model.ProgramAdminItem,
         ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: ProgramAdminItem,
-            newItem: ProgramAdminItem,
+            oldItem: com.ibsu.ibsu.domain.model.ProgramAdminItem,
+            newItem: com.ibsu.ibsu.domain.model.ProgramAdminItem,
         ): Boolean =
             oldItem == newItem
 

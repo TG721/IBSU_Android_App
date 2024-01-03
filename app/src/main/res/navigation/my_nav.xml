@@ -59,7 +59,7 @@
         tools:layout="@layout/fragment_event_description" >
         <argument
             android:name="clickedEventInfo"
-            app:argType="com.ibsu.ibsu.data.remote.model.SliderEventItem" />
+            app:argType="com.ibsu.ibsu.domain.model.SliderEventItem" />
     </fragment>
     <fragment
         android:id="@+id/exchangeProgramsFragment"
@@ -148,7 +148,7 @@
         tools:layout="@layout/fragment_single_club" >
         <argument
             android:name="club"
-            app:argType="com.ibsu.ibsu.data.remote.model.ClubsItem" />
+            app:argType="com.ibsu.ibsu.domain.model.ClubsItem" />
     </fragment>
     <fragment
         android:id="@+id/staffSelectionFragment"
@@ -246,7 +246,7 @@
             app:destination="@id/newsImageFullScreenFragment" />
         <argument
             android:name="newsItems"
-            app:argType="com.ibsu.ibsu.data.remote.model.NewsItem" />
+            app:argType="com.ibsu.ibsu.domain.model.NewsItem" />
     </fragment>
     <fragment
         android:id="@+id/newsImageFullScreenFragment"

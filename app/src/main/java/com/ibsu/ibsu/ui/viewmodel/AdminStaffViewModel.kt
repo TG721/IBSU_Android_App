@@ -3,7 +3,7 @@ package com.ibsu.ibsu.ui.viewmodel
 import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.Administration
+import com.ibsu.ibsu.domain.model.Administration
 import com.ibsu.ibsu.domain.usecase.GetSchoolAdminStaffUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +16,8 @@ import javax.inject.Inject
 class AdminStaffViewModel @Inject constructor(private val getSchoolAdminStaffUseCase: GetSchoolAdminStaffUseCase) :
     ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<Administration>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<Administration>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.Administration>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.Administration>> = _myState //immutable state flow
 
     fun getAdminStaff(schoolPathVariable: String) {
         viewModelScope.launch {

@@ -3,8 +3,8 @@ package com.ibsu.ibsu.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.Administration
-import com.ibsu.ibsu.data.remote.model.Lecturers
+import com.ibsu.ibsu.domain.model.Administration
+import com.ibsu.ibsu.domain.model.Lecturers
 import com.ibsu.ibsu.domain.usecase.GetLecturersUseCase
 import com.ibsu.ibsu.domain.usecase.GetSchoolAdminStaffUseCase
 import com.ibsu.ibsu.utils.ResponseState
@@ -18,8 +18,8 @@ import javax.inject.Inject
 class LecturersViewModel @Inject constructor(private val getLecturersUseCase: GetLecturersUseCase) :
     ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<Lecturers>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<Lecturers>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.Lecturers>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.Lecturers>> = _myState //immutable state flow
 
     fun getLecturers(schoolPathVariable: String) {
         viewModelScope.launch {

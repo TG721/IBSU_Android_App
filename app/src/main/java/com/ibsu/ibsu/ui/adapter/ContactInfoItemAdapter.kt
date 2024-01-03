@@ -12,13 +12,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.ContactInfoItem
+import com.ibsu.ibsu.domain.model.ContactInfoItem
 import com.ibsu.ibsu.databinding.ContactInfoItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class ContactInfoItemAdapter(private val context: Context) :
-    ListAdapter<ContactInfoItem, ContactInfoItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.ContactInfoItem, ContactInfoItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
     inner class ItemViewHolder(private val binding: ContactInfoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -82,14 +82,14 @@ class ContactInfoItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<ContactInfoItem>() {
-        override fun areItemsTheSame(oldItem: ContactInfoItem, newItem: ContactInfoItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ContactInfoItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.ContactInfoItem, newItem: com.ibsu.ibsu.domain.model.ContactInfoItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: ContactInfoItem,
-            newItem: ContactInfoItem,
+            oldItem: com.ibsu.ibsu.domain.model.ContactInfoItem,
+            newItem: com.ibsu.ibsu.domain.model.ContactInfoItem,
         ): Boolean =
             oldItem == newItem
 

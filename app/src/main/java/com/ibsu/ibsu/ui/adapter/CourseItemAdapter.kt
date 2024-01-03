@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.CoursesItem
+import com.ibsu.ibsu.domain.model.CoursesItem
 import com.ibsu.ibsu.databinding.CourseItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 class CourseItemAdapter(private val context: Context) :
-    ListAdapter<CoursesItem, CourseItemAdapter.RVViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.CoursesItem, CourseItemAdapter.RVViewHolder>(ItemDiffCallback()) {
     inner class RVViewHolder(private val binding: CourseItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -120,11 +120,11 @@ class CourseItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<CoursesItem>() {
-        override fun areItemsTheSame(oldItem: CoursesItem, newItem: CoursesItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.CoursesItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.CoursesItem, newItem: com.ibsu.ibsu.domain.model.CoursesItem): Boolean =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: CoursesItem, newItem: CoursesItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.CoursesItem, newItem: com.ibsu.ibsu.domain.model.CoursesItem): Boolean =
             oldItem == newItem
 
 

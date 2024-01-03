@@ -2,8 +2,11 @@ package com.ibsu.ibsu.ui.viewmodel.programs
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.Programs
-import com.ibsu.ibsu.domain.usecase.GetProgramsUseCase
+import com.ibsu.ibsu.domain.model.ProgramItem
+import com.ibsu.ibsu.domain.model.Programs
+import com.ibsu.ibsu.domain.usecase.FilterProgramsByLanguageUseCase
+import com.ibsu.ibsu.domain.usecase.GetBachelorProgramsUseCase
+import com.ibsu.ibsu.utils.ProgramLanguageFilter
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,20 +15,30 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BachelorViewModel @Inject constructor(private val getProgramsUseCase: GetProgramsUseCase) : ViewModel(){
+class BachelorViewModel @Inject constructor(
+    private val getBachelorProgramsUseCase: GetBachelorProgramsUseCase,
+    private val filterProgramsByLanguageUseCase: FilterProgramsByLanguageUseCase,
+) : ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<Programs>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<Programs>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.Programs>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.Programs>> = _myState //immutable state flow
+
 
     fun getBachelorPrograms() {
         viewModelScope.launch {
             _myState.emit(ResponseState.Loading())
-            val data = getProgramsUseCase.getPrograms()
+            val data = getBachelorProgramsUseCase.execute()
             data.collect {
                 _myState.value = it
             }
         }
 
+    }
+    fun filterProgramsByLanguage(
+        programs: List<com.ibsu.ibsu.domain.model.ProgramItem>,
+        languageFilter: ProgramLanguageFilter,
+    ): List<com.ibsu.ibsu.domain.model.ProgramItem> {
+        return filterProgramsByLanguageUseCase.execute(programs, languageFilter)
     }
 
 }

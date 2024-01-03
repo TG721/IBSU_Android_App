@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.GovernanceItem
+import com.ibsu.ibsu.domain.model.GovernanceItem
 import com.ibsu.ibsu.databinding.FragmentGoverningBoardBinding
 import com.ibsu.ibsu.ui.adapter.GovernanceAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -23,7 +23,7 @@ class GoverningBoardFragment :
     BaseFragment<FragmentGoverningBoardBinding>(FragmentGoverningBoardBinding::inflate) {
     private val viewModel: GoverningBoardViewModel by viewModels()
     private lateinit var governanceAdapter: GovernanceAdapter
-    private var governanceList = mutableListOf<GovernanceItem>()
+    private var governanceList = mutableListOf<com.ibsu.ibsu.domain.model.GovernanceItem>()
     override fun setup() {
         setupRecycler()
     }

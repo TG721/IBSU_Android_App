@@ -2,8 +2,8 @@ package com.ibsu.ibsu.ui.viewmodel.contact
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.Address
-import com.ibsu.ibsu.data.remote.model.ContactInfo
+import com.ibsu.ibsu.domain.model.Address
+import com.ibsu.ibsu.domain.model.ContactInfo
 import com.ibsu.ibsu.domain.usecase.GetAddressUseCase
 import com.ibsu.ibsu.domain.usecase.GetContactInfoUseCase
 import com.ibsu.ibsu.utils.ResponseState
@@ -20,17 +20,17 @@ class ContactViewModel @Inject constructor(
     ) :
     ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<ContactInfo>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<ContactInfo>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.ContactInfo>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.ContactInfo>> = _myState //immutable state flow
 
     private val _myState2 =
-        MutableStateFlow<ResponseState<Address>>(ResponseState.Empty())
-    val myState2: StateFlow<ResponseState<Address>> = _myState2
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.Address>>(ResponseState.Empty())
+    val myState2: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.Address>> = _myState2
 
     fun getContactInfo() {
         viewModelScope.launch {
             _myState.emit(ResponseState.Loading())
-            val data = getContactInfoUseCase.getContactInfo()
+            val data = getContactInfoUseCase.execute()
             data.collect {
                 _myState.value = it
             }

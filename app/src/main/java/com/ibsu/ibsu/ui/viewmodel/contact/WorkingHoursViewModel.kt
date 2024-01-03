@@ -2,7 +2,7 @@ package com.ibsu.ibsu.ui.viewmodel.contact
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.WorkingHours
+import com.ibsu.ibsu.domain.model.WorkingHours
 import com.ibsu.ibsu.domain.usecase.GetWorkingHoursUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,8 +15,8 @@ import javax.inject.Inject
 class WorkingHoursViewModel @Inject constructor(private val getWorkingHoursUseCase: GetWorkingHoursUseCase) :
     ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<WorkingHours>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<WorkingHours>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.WorkingHours>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.WorkingHours>> = _myState //immutable state flow
 
     fun getWorkingHours() {
         viewModelScope.launch {

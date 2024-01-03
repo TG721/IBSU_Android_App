@@ -8,13 +8,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.data.remote.model.ClubsItem
+import com.ibsu.ibsu.domain.model.ClubsItem
 import com.ibsu.ibsu.databinding.ClubItemBinding
 import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.ui.element.student_life.EntertainmentFragmentDirections
 
 class ClubsAdapter(private val context: Context) :
-    ListAdapter<ClubsItem, ClubsAdapter.ClubViewHolder>(ItemDiffCallback()) {
+    ListAdapter<com.ibsu.ibsu.domain.model.ClubsItem, ClubsAdapter.ClubViewHolder>(ItemDiffCallback()) {
     inner class ClubViewHolder(private val binding: ClubItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -44,12 +44,12 @@ class ClubsAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<ClubsItem>() {
-        override fun areItemsTheSame(oldItem: ClubsItem, newItem: ClubsItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ClubsItem>() {
+        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.ClubsItem, newItem: com.ibsu.ibsu.domain.model.ClubsItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: ClubsItem, newItem: ClubsItem): Boolean =
+        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.ClubsItem, newItem: com.ibsu.ibsu.domain.model.ClubsItem): Boolean =
             oldItem == newItem
 
     }

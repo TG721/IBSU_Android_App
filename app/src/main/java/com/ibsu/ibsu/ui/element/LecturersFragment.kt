@@ -7,7 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ibsu.ibsu.data.remote.model.LecturersItem
+import com.ibsu.ibsu.domain.model.LecturersItem
 import com.ibsu.ibsu.databinding.FragmentLectrurersBinding
 import com.ibsu.ibsu.ui.adapter.LecturersAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -22,7 +22,7 @@ class LecturersFragment() :
     BaseFragment<FragmentLectrurersBinding>(FragmentLectrurersBinding::inflate) {
     private val viewModel: LecturersViewModel by viewModels()
     private lateinit var rvAdapter: LecturersAdapter
-    private lateinit var lecturers: ArrayList<LecturersItem>
+    private lateinit var lecturers: ArrayList<com.ibsu.ibsu.domain.model.LecturersItem>
     private val sharedViewModel: SchoolViewModel by activityViewModels()
 
 
@@ -88,7 +88,7 @@ class LecturersFragment() :
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (lecturers?.size != 0) {
-                    val filteredList = ArrayList<LecturersItem>()
+                    val filteredList = ArrayList<com.ibsu.ibsu.domain.model.LecturersItem>()
                     for (item in lecturers)
                         if (item.nameEn.lowercase()
                                 .contains(newText.toString().lowercase()) || item.nameGe.contains(

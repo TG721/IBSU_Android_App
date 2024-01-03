@@ -1,25 +1,25 @@
 package com.ibsu.ibsu.data.repository
 
 import com.ibsu.ibsu.data.remote.IBSUApi
-import com.ibsu.ibsu.data.remote.model.Address
-import com.ibsu.ibsu.data.remote.model.Administration
-import com.ibsu.ibsu.data.remote.model.Clubs
-import com.ibsu.ibsu.data.remote.model.ContactInfo
-import com.ibsu.ibsu.data.remote.model.Courses
-import com.ibsu.ibsu.data.remote.model.CreditValue
-import com.ibsu.ibsu.data.remote.model.CurrentWeek
-import com.ibsu.ibsu.data.remote.model.ExchangeUniversity
-import com.ibsu.ibsu.data.remote.model.FBFanPages
-import com.ibsu.ibsu.data.remote.model.GameRoomLocation
-import com.ibsu.ibsu.data.remote.model.Games
-import com.ibsu.ibsu.data.remote.model.Governance
-import com.ibsu.ibsu.data.remote.model.Lecturers
-import com.ibsu.ibsu.data.remote.model.News
-import com.ibsu.ibsu.data.remote.model.ProgramAdmin
-import com.ibsu.ibsu.data.remote.model.Programs
-import com.ibsu.ibsu.data.remote.model.SliderEvents
-import com.ibsu.ibsu.data.remote.model.UsefulDocs
-import com.ibsu.ibsu.data.remote.model.WorkingHours
+import com.ibsu.ibsu.domain.model.Address
+import com.ibsu.ibsu.domain.model.Administration
+import com.ibsu.ibsu.domain.model.Clubs
+import com.ibsu.ibsu.domain.model.ContactInfo
+import com.ibsu.ibsu.domain.model.Courses
+import com.ibsu.ibsu.domain.model.CreditValue
+import com.ibsu.ibsu.domain.model.CurrentWeek
+import com.ibsu.ibsu.domain.model.ExchangeUniversity
+import com.ibsu.ibsu.domain.model.FBFanPages
+import com.ibsu.ibsu.domain.model.GameRoomLocation
+import com.ibsu.ibsu.domain.model.Games
+import com.ibsu.ibsu.domain.model.Governance
+import com.ibsu.ibsu.domain.model.Lecturers
+import com.ibsu.ibsu.domain.model.News
+import com.ibsu.ibsu.domain.model.ProgramAdmin
+import com.ibsu.ibsu.domain.model.Programs
+import com.ibsu.ibsu.domain.model.SliderEvents
+import com.ibsu.ibsu.domain.model.UsefulDocs
+import com.ibsu.ibsu.domain.model.WorkingHours
 import com.ibsu.ibsu.domain.repository.IBSURepository
 import com.ibsu.ibsu.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
@@ -47,86 +47,86 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
     }
 
     //retrofit
-    override suspend fun getCurrentWeek(): Flow<ResponseState<CurrentWeek>> =
+    override suspend fun getCurrentWeek(): Flow<ResponseState<com.ibsu.ibsu.domain.model.CurrentWeek>> =
         flow {
-            emit(safeApiCall<CurrentWeek> { api.getCurrentWeek() })
+            emit(safeApiCall<com.ibsu.ibsu.domain.model.CurrentWeek> { api.getCurrentWeek() })
         }
 
-    override suspend fun getSliderEvents(): Flow<ResponseState<SliderEvents>> = flow {
+    override suspend fun getSliderEvents(): Flow<ResponseState<com.ibsu.ibsu.domain.model.SliderEvents>> = flow {
         emit(safeApiCall { api.getAllEvents() })
     }
 
-    override suspend fun getPrograms(): Flow<ResponseState<Programs>> = flow {
+    override suspend fun getBachelorPrograms(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Programs>> = flow {
         emit(safeApiCall { api.getPrograms() })
     }
 
-    override suspend fun getClubs(): Flow<ResponseState<Clubs>> = flow {
+    override suspend fun getClubs(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Clubs>> = flow {
         emit(safeApiCall { api.getClubs() })
     }
 
-    override suspend fun getGames(): Flow<ResponseState<Games>> = flow {
+    override suspend fun getGames(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Games>> = flow {
         emit(safeApiCall { api.getGames() })
     }
 
-    override suspend fun getMasterPrograms(): Flow<ResponseState<Programs>> = flow {
+    override suspend fun getMasterPrograms(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Programs>> = flow {
         emit(safeApiCall { api.getMasterPrograms() })
     }
 
-    override suspend fun getFBFanPages(): Flow<ResponseState<FBFanPages>> = flow {
+    override suspend fun getFBFanPages(): Flow<ResponseState<com.ibsu.ibsu.domain.model.FBFanPages>> = flow {
         emit(safeApiCall { api.getFBFanPages() })
     }
 
-    override suspend fun getAdminStaff(schoolName: String): Flow<ResponseState<Administration>> =
+    override suspend fun getAdminStaff(schoolName: String): Flow<ResponseState<com.ibsu.ibsu.domain.model.Administration>> =
         flow {
             emit(safeApiCall { api.getAdminStaff(schoolName) })
         }
 
 
-    override suspend fun getSelfGovernance(): Flow<ResponseState<Governance>> =
+    override suspend fun getSelfGovernance(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Governance>> =
         flow {
             emit(safeApiCall { api.getSelfGovernance() })
         }
 
-    override suspend fun getSportNews(): Flow<ResponseState<News>> = flow {
+    override suspend fun getSportNews(): Flow<ResponseState<com.ibsu.ibsu.domain.model.News>> = flow {
         emit(safeApiCall { api.getSportNews() })
     }
 
-    override suspend fun getGameRoomLocation(): Flow<ResponseState<GameRoomLocation>> = flow {
+    override suspend fun getGameRoomLocation(): Flow<ResponseState<com.ibsu.ibsu.domain.model.GameRoomLocation>> = flow {
         emit(safeApiCall { api.getGameRoomLocation() })
     }
 
-    override suspend fun getLecturers(schoolName: String): Flow<ResponseState<Lecturers>> = flow {
+    override suspend fun getLecturers(schoolName: String): Flow<ResponseState<com.ibsu.ibsu.domain.model.Lecturers>> = flow {
         emit(safeApiCall { api.getLecturers(schoolName) })
     }
 
-    override suspend fun getGoverningBoard(): Flow<ResponseState<Governance>> =
+    override suspend fun getGoverningBoard(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Governance>> =
         flow {
             emit(safeApiCall { api.getGoverningBoard() })
         }
 
-    override suspend fun getWorkingHours(): Flow<ResponseState<WorkingHours>> = flow {
+    override suspend fun getWorkingHours(): Flow<ResponseState<com.ibsu.ibsu.domain.model.WorkingHours>> = flow {
         emit(safeApiCall { api.getWorkingHours() })
     }
 
-    override suspend fun getContactInfo(): Flow<ResponseState<ContactInfo>> = flow {
+    override suspend fun getContactInfo(): Flow<ResponseState<com.ibsu.ibsu.domain.model.ContactInfo>> = flow {
         emit(safeApiCall { api.getContactInfo() })
     }
 
-    override suspend fun getAddress(): Flow<ResponseState<Address>> = flow {
+    override suspend fun getAddress(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Address>> = flow {
         emit(safeApiCall { api.getAddress() })
     }
 
     override suspend fun getCourses(
         typeValue: String,
         programVar: String,
-    ): Flow<ResponseState<Courses>> = flow {
+    ): Flow<ResponseState<com.ibsu.ibsu.domain.model.Courses>> = flow {
         emit(safeApiCall { api.getCourses(typeValue, programVar) })
     }
 
     override suspend fun getCreditValue(
         typeValue: String,
         programVar: String,
-    ): Flow<ResponseState<CreditValue>> =
+    ): Flow<ResponseState<com.ibsu.ibsu.domain.model.CreditValue>> =
         flow {
             emit(safeApiCall { api.getCreditValue(typeValue, programVar) })
         }
@@ -134,30 +134,30 @@ class IBSURepositoryImpl @Inject constructor(private val api: IBSUApi) :
     override suspend fun getProgramAdministration(
         typeValue: String,
         programVar: String,
-    ): Flow<ResponseState<ProgramAdmin>> =
+    ): Flow<ResponseState<com.ibsu.ibsu.domain.model.ProgramAdmin>> =
         flow {
             emit(safeApiCall { api.getProgramAdministration(typeValue, programVar) })
         }
 
-    override suspend fun getDoctoratePrograms(): Flow<ResponseState<Programs>> = flow {
+    override suspend fun getDoctoratePrograms(): Flow<ResponseState<com.ibsu.ibsu.domain.model.Programs>> = flow {
         emit(safeApiCall { api.getDoctoratePrograms() })
     }
 
-    override suspend fun getUsefulDocs(): Flow<ResponseState<UsefulDocs>> = flow {
+    override suspend fun getUsefulDocs(): Flow<ResponseState<com.ibsu.ibsu.domain.model.UsefulDocs>> = flow {
         emit(safeApiCall { api.getUsefulDocs() })
     }
 
-    override suspend fun getExchangeUniversitiesForErasmusPlus(): Flow<ResponseState<ExchangeUniversity>> =
+    override suspend fun getExchangeUniversitiesForErasmusPlus(): Flow<ResponseState<com.ibsu.ibsu.domain.model.ExchangeUniversity>> =
         flow {
             emit(safeApiCall { api.getExchangeUniversitiesForErasmusPlus() })
         }
 
-    override suspend fun getExchangeUniversitiesForBilateral(): Flow<ResponseState<ExchangeUniversity>> =
+    override suspend fun getExchangeUniversitiesForBilateral(): Flow<ResponseState<com.ibsu.ibsu.domain.model.ExchangeUniversity>> =
         flow {
             emit(safeApiCall { api.getExchangeUniversitiesForBilateral() })
         }
 
-    override suspend fun getExchangeUniversitiesForVirtual(): Flow<ResponseState<ExchangeUniversity>> =
+    override suspend fun getExchangeUniversitiesForVirtual(): Flow<ResponseState<com.ibsu.ibsu.domain.model.ExchangeUniversity>> =
         flow {
             emit(safeApiCall { api.getExchangeUniversitiesForVirtual() })
         }

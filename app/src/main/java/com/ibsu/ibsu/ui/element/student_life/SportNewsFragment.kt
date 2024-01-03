@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.NewsItem
+import com.ibsu.ibsu.domain.model.NewsItem
 import com.ibsu.ibsu.databinding.FragmentSportNewsBinding
 import com.ibsu.ibsu.ui.adapter.NewsAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -23,7 +23,7 @@ class SportNewsFragment :
     BaseFragment<FragmentSportNewsBinding>(FragmentSportNewsBinding::inflate) {
     private val viewModel: SportNewsViewModel by viewModels()
     private lateinit var rvAdapter: NewsAdapter
-    private var list = mutableListOf<NewsItem>()
+    private var list = mutableListOf<com.ibsu.ibsu.domain.model.NewsItem>()
 
     override fun setup() {
         setupRecycler()

@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.ProgramItem
+import com.ibsu.ibsu.domain.model.ProgramItem
 import com.ibsu.ibsu.databinding.FragmentDoctorateBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
@@ -20,6 +20,7 @@ import com.ibsu.ibsu.ui.common.BaseFragment
 import com.ibsu.ibsu.ui.viewmodel.programs.DoctorateProgramsViewModel
 import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
+import com.ibsu.ibsu.utils.ProgramLanguageFilter
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -29,7 +30,7 @@ class DoctorateFragment() :
     BaseFragment<FragmentDoctorateBinding>(FragmentDoctorateBinding::inflate) {
     private val viewModel: DoctorateProgramsViewModel by viewModels()
     private lateinit var programAdapter: ProgramAdapter
-    private var programUIList = mutableListOf<ProgramItem>()
+    private var programUIList = mutableListOf<com.ibsu.ibsu.domain.model.ProgramItem>()
     private val sharedViewModel: SchoolViewModel by activityViewModels()
 
     override fun setup() {
@@ -40,6 +41,7 @@ class DoctorateFragment() :
     private fun setupDropDownMenus() {
         val sortingMethods: Array<String> = resources.getStringArray(R.array.filter_programs)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, sortingMethods)
+        binding.autoCompleteTextViewSector.setText(getString(R.string.filter_by_sector))
         binding.autoCompleteTextViewSector.setAdapter(arrayAdapter)
         binding.autoCompleteTextViewSector.showSoftInputOnFocus = false
         binding.autoCompleteTextViewSector.setDropDownBackgroundDrawable(
@@ -57,20 +59,15 @@ class DoctorateFragment() :
         binding.autoCompleteTextViewSector.setOnItemClickListener { adapterView, _, i, _ ->
             when {
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.english_programs) -> {
-                    val english_sects = programUIList.filter {
-                        it.englishSectorAvailable == true
-                    }
-                    programAdapter.submitList(english_sects)
+                    val englishPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.ENGLISH)
+                    programAdapter.submitList(englishPrograms)
                 }
 
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.georgian_programs) -> {
-                    val georgian_sects = programUIList.filter {
-                        it.georgianSectorAvailable == true
-                    }
-                    programAdapter.submitList(georgian_sects)
+                    val georgianPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.GEORGIAN)
+                    programAdapter.submitList(georgianPrograms)
                 }
-
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.all_programs) -> {
                     programAdapter.submitList(programUIList)
@@ -80,13 +77,6 @@ class DoctorateFragment() :
             }
         }
 
-        val swipeLayout = binding.swipeRefreshLayout
-        swipeLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.ibsu))
-        swipeLayout.setOnRefreshListener {
-            observePrograms()
-            swipeLayout.isRefreshing = false
-
-        }
     }
 
     private fun observePrograms() {

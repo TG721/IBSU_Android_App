@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.data.remote.model.CoursesItem
+import com.ibsu.ibsu.domain.model.CoursesItem
 import com.ibsu.ibsu.databinding.FragmentCoursesBinding
 import com.ibsu.ibsu.ui.adapter.CourseItemAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
@@ -30,7 +30,7 @@ class CoursesFragment :
     private val sharedViewModel: ProgramViewModel by activityViewModels()
 
     private lateinit var rvAdapter: CourseItemAdapter
-    private var list = mutableListOf<CoursesItem>()
+    private var list = mutableListOf<com.ibsu.ibsu.domain.model.CoursesItem>()
     private var etcFilterSelected = "Any"
     override fun setup() {
         setupRecycler()
@@ -128,7 +128,7 @@ class CoursesFragment :
                         binding.checkBox.visibility = View.VISIBLE
 //                        binding.filters.visibility = View.VISIBLE
                     }
-                    val filteredList = ArrayList<CoursesItem>()
+                    val filteredList = ArrayList<com.ibsu.ibsu.domain.model.CoursesItem>()
                     for (item in list)
                         if (item.nameEn.lowercase()
                                 .contains(newText.toString().lowercase()) || item.nameGe.contains(

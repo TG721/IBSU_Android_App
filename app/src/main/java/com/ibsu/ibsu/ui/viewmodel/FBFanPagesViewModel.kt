@@ -2,7 +2,7 @@ package com.ibsu.ibsu.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ibsu.ibsu.data.remote.model.FBFanPages
+import com.ibsu.ibsu.domain.model.FBFanPages
 import com.ibsu.ibsu.domain.usecase.GetFBFanPagesUseCase
 import com.ibsu.ibsu.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,8 +15,8 @@ import javax.inject.Inject
 class FBFanPagesViewModel @Inject constructor(private val getFBFanPagesUseCase: GetFBFanPagesUseCase) :
     ViewModel() {
     private val _myState =
-        MutableStateFlow<ResponseState<FBFanPages>>(ResponseState.Empty()) //mutable state flow
-    val myState: StateFlow<ResponseState<FBFanPages>> = _myState //immutable state flow
+        MutableStateFlow<ResponseState<com.ibsu.ibsu.domain.model.FBFanPages>>(ResponseState.Empty()) //mutable state flow
+    val myState: StateFlow<ResponseState<com.ibsu.ibsu.domain.model.FBFanPages>> = _myState //immutable state flow
 
     fun getFBFanPages() {
         viewModelScope.launch {
