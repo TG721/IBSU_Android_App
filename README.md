@@ -60,7 +60,7 @@ The app also uses WebView to load and itegrate https://sis.ibsu.edu.ge/ into the
 
 
 ### Used Additional Dependencies
-
+```gradle
     //zoom
     implementation 'com.github.MikeOrtiz:TouchImageView:1.4.1' 
     //glide
@@ -90,4 +90,5 @@ The app also uses WebView to load and itegrate https://sis.ibsu.edu.ge/ into the
     kapt "com.google.dagger:hilt-compiler:2.43.2"
     //swipe refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+```
 
