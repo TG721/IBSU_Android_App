@@ -43,7 +43,7 @@ class BachelorsFragment() :
     private fun setupDropDownMenus() {
         val sortingMethods: Array<String> = resources.getStringArray(R.array.filter_programs)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, sortingMethods)
-        binding.autoCompleteTextViewSector.setText(getString(R.string.filter_by_sector))
+        binding.autoCompleteTextViewSector.setText(getString(R.string.filter_by_language))
         binding.autoCompleteTextViewSector.setAdapter(arrayAdapter)
         binding.autoCompleteTextViewSector.showSoftInputOnFocus = false
         binding.autoCompleteTextViewSector.setDropDownBackgroundDrawable(
@@ -142,6 +142,9 @@ class BachelorsFragment() :
     override fun onResume() {
         super.onResume()
         setupDropDownMenus()
+        if(programUIList.size>0)
+        programAdapter.submitList(programUIList)
+
     }
 }
 
