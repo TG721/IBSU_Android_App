@@ -41,4 +41,16 @@ class BachelorViewModel @Inject constructor(
         return filterProgramsByLanguageUseCase.execute(programs, languageFilter)
     }
 
+    private val _selectedFilterState = MutableStateFlow<ProgramLanguageFilter>(ProgramLanguageFilter.NEITHER)
+    val selectedFilterState: StateFlow<ProgramLanguageFilter> = _selectedFilterState
+
+    fun setSelectedFilterState(filter: ProgramLanguageFilter) {
+        _selectedFilterState.value = filter
+    }
+
+    fun getSelectedFilterState(): ProgramLanguageFilter {
+        return _selectedFilterState.value
+    }
+
+
 }

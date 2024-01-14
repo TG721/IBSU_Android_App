@@ -257,8 +257,6 @@ class CoursesFragment :
     override fun onResume() {
         super.onResume()
         setupDropDownMenus()
-        if(list.size>0)
-        rvAdapter.submitList(list)
     }
 
 }

@@ -41,7 +41,6 @@ class DoctorateFragment() :
     private fun setupDropDownMenus() {
         val sortingMethods: Array<String> = resources.getStringArray(R.array.filter_programs)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, sortingMethods)
-        binding.autoCompleteTextViewSector.setText(getString(R.string.filter_by_language))
         binding.autoCompleteTextViewSector.setAdapter(arrayAdapter)
         binding.autoCompleteTextViewSector.showSoftInputOnFocus = false
         binding.autoCompleteTextViewSector.setDropDownBackgroundDrawable(
@@ -60,18 +59,22 @@ class DoctorateFragment() :
             when {
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.english_programs) -> {
                     val englishPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.ENGLISH)
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.ENGLISH)
                     programAdapter.submitList(englishPrograms)
                 }
 
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.georgian_programs) -> {
                     val georgianPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.GEORGIAN)
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.GEORGIAN)
                     programAdapter.submitList(georgianPrograms)
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.all_programs) -> {
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.NEITHER)
                     programAdapter.submitList(programUIList)
                 }
+
 
                 else -> {}
             }
@@ -106,7 +109,11 @@ class DoctorateFragment() :
 
                             }
 
-                            programAdapter.submitList(programUIList)
+                            when(viewModel.getSelectedFilterState()){
+                                ProgramLanguageFilter.ENGLISH -> {programAdapter.submitList(viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.ENGLISH))}
+                                ProgramLanguageFilter.GEORGIAN -> {programAdapter.submitList(viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.GEORGIAN))}
+                                ProgramLanguageFilter.NEITHER-> { programAdapter.submitList(programUIList)}
+                            }
 
 
                         }
@@ -140,8 +147,7 @@ class DoctorateFragment() :
     override fun onResume() {
         super.onResume()
         setupDropDownMenus()
-        if(programUIList.size>0)
-        programAdapter.submitList(programUIList)
+
     }
 
 }

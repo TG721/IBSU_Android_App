@@ -1,10 +1,9 @@
 package com.ibsu.ibsu.ui.element.programs
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
+import android.util.Log.d
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -14,13 +13,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.domain.model.ProgramItem
 import com.ibsu.ibsu.databinding.FragmentBachelorsBinding
+import com.ibsu.ibsu.domain.model.Programs
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.adapter.ProgramAdapter
 import com.ibsu.ibsu.ui.common.BaseFragment
-import com.ibsu.ibsu.ui.viewmodel.programs.BachelorViewModel
 import com.ibsu.ibsu.ui.viewmodel.SchoolViewModel
+import com.ibsu.ibsu.ui.viewmodel.programs.BachelorViewModel
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.ProgramLanguageFilter
 import com.ibsu.ibsu.utils.ResponseState
@@ -43,7 +42,6 @@ class BachelorsFragment() :
     private fun setupDropDownMenus() {
         val sortingMethods: Array<String> = resources.getStringArray(R.array.filter_programs)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, sortingMethods)
-        binding.autoCompleteTextViewSector.setText(getString(R.string.filter_by_language))
         binding.autoCompleteTextViewSector.setAdapter(arrayAdapter)
         binding.autoCompleteTextViewSector.showSoftInputOnFocus = false
         binding.autoCompleteTextViewSector.setDropDownBackgroundDrawable(
@@ -60,16 +58,19 @@ class BachelorsFragment() :
             when {
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.english_programs) -> {
                     val englishPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.ENGLISH)
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.ENGLISH)
                     programAdapter.submitList(englishPrograms)
                 }
 
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.georgian_programs) -> {
                     val georgianPrograms = viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.GEORGIAN)
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.GEORGIAN)
                     programAdapter.submitList(georgianPrograms)
                 }
 
                 (adapterView.getItemAtPosition(i)).toString() == getString(R.string.all_programs) -> {
+                    viewModel.setSelectedFilterState(ProgramLanguageFilter.NEITHER)
                     programAdapter.submitList(programUIList)
                 }
 
@@ -109,7 +110,12 @@ class BachelorsFragment() :
 
                             }
 
-                            programAdapter.submitList(programUIList)
+                            when(viewModel.getSelectedFilterState()){
+                                ProgramLanguageFilter.ENGLISH -> {programAdapter.submitList(viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.ENGLISH))}
+                                ProgramLanguageFilter.GEORGIAN -> {programAdapter.submitList(viewModel.filterProgramsByLanguage(programUIList, ProgramLanguageFilter.GEORGIAN))}
+                                ProgramLanguageFilter.NEITHER-> { programAdapter.submitList(programUIList)}
+                            }
+
 
                         }
 
@@ -142,8 +148,7 @@ class BachelorsFragment() :
     override fun onResume() {
         super.onResume()
         setupDropDownMenus()
-        if(programUIList.size>0)
-        programAdapter.submitList(programUIList)
+
 
     }
 }
