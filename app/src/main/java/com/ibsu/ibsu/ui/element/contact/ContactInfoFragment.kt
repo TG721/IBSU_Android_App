@@ -142,7 +142,7 @@ class ContactInfoFragment :
         }
     }
     private fun setupRecycler() {
-        rvAdapter = ContactInfoItemAdapter(requireContext())
+        rvAdapter = ContactInfoItemAdapter()
         val recycler = binding.rv
         val layoutManager = LinearLayoutManager(context)
         recycler.adapter = rvAdapter

@@ -17,13 +17,16 @@ import com.ibsu.ibsu.databinding.ContactInfoItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
-class ContactInfoItemAdapter(private val context: Context) :
-    ListAdapter<com.ibsu.ibsu.domain.model.ContactInfoItem, ContactInfoItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
+class ContactInfoItemAdapter :
+    ListAdapter<ContactInfoItem, ContactInfoItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
     inner class ItemViewHolder(private val binding: ContactInfoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
+
+
         fun bind() {
+            val context = binding.root.context
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 email.paintFlags = binding.email.paintFlags or Paint.UNDERLINE_TEXT_FLAG
@@ -38,38 +41,40 @@ class ContactInfoItemAdapter(private val context: Context) :
                 number.text = source.Phone
                 extra.text = source.extra
                 email.setOnClickListener {
-                    openEmail(source.Email)
+                    openEmail(source.Email, context)
                 }
                 number.setOnClickListener {
-                    openNumber(source.Phone)
+                    openNumber(source.Phone, context)
                 }
             }
 
         }
-    }
 
-    private fun openNumber(phoneNumber: String) {
-        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
-        val packageManager = context.packageManager
-        if (intent.resolveActivity(packageManager) != null) {
-            context.startActivity(intent)
-        } else {
-            Toast.makeText(context, "No phone app found.", Toast.LENGTH_SHORT).show()
+
+        private fun openNumber(phoneNumber: String, context: Context) {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            val packageManager = context.packageManager
+            if (intent.resolveActivity(packageManager) != null) {
+                context.startActivity(intent)
+            } else {
+                Toast.makeText(context, "No phone app found.", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
-    }
+        private fun openEmail(email: String, context: Context) {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            }
+            val packageManager = context.packageManager
+            if (intent.resolveActivity(packageManager) != null) {
+                context.startActivity(intent)
+            } else {
+                Toast.makeText(context, "No email app found.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-    private fun openEmail(email: String) {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-        }
-        val packageManager = context.packageManager
-        if (intent.resolveActivity(packageManager) != null) {
-            context.startActivity(intent)
-        } else {
-            Toast.makeText(context, "No email app found.", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -82,14 +87,14 @@ class ContactInfoItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ContactInfoItem>() {
-        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.ContactInfoItem, newItem: com.ibsu.ibsu.domain.model.ContactInfoItem): Boolean =
+    private class ItemDiffCallback : DiffUtil.ItemCallback<ContactInfoItem>() {
+        override fun areItemsTheSame(oldItem: ContactInfoItem, newItem: ContactInfoItem): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(
-            oldItem: com.ibsu.ibsu.domain.model.ContactInfoItem,
-            newItem: com.ibsu.ibsu.domain.model.ContactInfoItem,
+            oldItem: ContactInfoItem,
+            newItem: ContactInfoItem,
         ): Boolean =
             oldItem == newItem
 

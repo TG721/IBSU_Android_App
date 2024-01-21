@@ -1,6 +1,5 @@
 package com.ibsu.ibsu.ui.adapter
 
-import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +10,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.domain.model.CoursesItem
 import com.ibsu.ibsu.databinding.CourseItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
-class CourseItemAdapter(private val context: Context) :
-    ListAdapter<com.ibsu.ibsu.domain.model.CoursesItem, CourseItemAdapter.RVViewHolder>(ItemDiffCallback()) {
+class CourseItemAdapter :
+    ListAdapter<com.ibsu.ibsu.domain.model.CoursesItem, CourseItemAdapter.RVViewHolder>(
+        ItemDiffCallback()
+    ) {
     inner class RVViewHolder(private val binding: CourseItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -25,6 +25,7 @@ class CourseItemAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                val context = root.context
                 if (source.isCore != null) {
                     if (source.isCore) isCoreTV.text = context.getString(R.string.obligatory)
                     else isCoreTV.text = context.getString(R.string.elective)
@@ -120,11 +121,18 @@ class CourseItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.CoursesItem>() {
-        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.CoursesItem, newItem: com.ibsu.ibsu.domain.model.CoursesItem): Boolean =
+    private class ItemDiffCallback :
+        DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.CoursesItem>() {
+        override fun areItemsTheSame(
+            oldItem: com.ibsu.ibsu.domain.model.CoursesItem,
+            newItem: com.ibsu.ibsu.domain.model.CoursesItem,
+        ): Boolean =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.CoursesItem, newItem: com.ibsu.ibsu.domain.model.CoursesItem): Boolean =
+        override fun areContentsTheSame(
+            oldItem: com.ibsu.ibsu.domain.model.CoursesItem,
+            newItem: com.ibsu.ibsu.domain.model.CoursesItem,
+        ): Boolean =
             oldItem == newItem
 
 

@@ -67,7 +67,7 @@ class BilateralFragment : BaseFragment<FragmentBilateralBinding>(FragmentBilater
     }
 
     private fun setupRecycler() {
-        adapter = ExchangeUniversityItemAdapter(requireContext())
+        adapter = ExchangeUniversityItemAdapter()
         val recycler = binding.clubsRV
         val layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter

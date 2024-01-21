@@ -3,7 +3,6 @@ package com.ibsu.ibsu.ui.adapter
 import android.R.attr.value
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.domain.model.ProgramItem
 import com.ibsu.ibsu.databinding.ProgramItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.ui.element.programs.ProgramsFragmentDirections
@@ -24,8 +22,10 @@ import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.Schools
 
 
-class ProgramAdapter(private val context: Context, private val type: String) :
-    ListAdapter<com.ibsu.ibsu.domain.model.ProgramItem, ProgramAdapter.ProgramViewHolder>(ItemDiffCallback()) {
+class ProgramAdapter(private val type: String) :
+    ListAdapter<com.ibsu.ibsu.domain.model.ProgramItem, ProgramAdapter.ProgramViewHolder>(
+        ItemDiffCallback()
+    ) {
     inner class ProgramViewHolder(private val binding: ProgramItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -33,6 +33,7 @@ class ProgramAdapter(private val context: Context, private val type: String) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                val context = root.context
                 if (context.getCurrentLocale(context).language == georgianLocale)
                     programBtn.text = source.programNameGe
                 else programBtn.text = source.programNameEn
@@ -83,7 +84,11 @@ class ProgramAdapter(private val context: Context, private val type: String) :
                             context.startActivity(intent)
                         } catch (e: ActivityNotFoundException) {
                             // Handle the error, for example, show a toast message
-                            Toast.makeText(context, "No app found to open the file", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "No app found to open the file",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                     } else {
@@ -109,12 +114,19 @@ class ProgramAdapter(private val context: Context, private val type: String) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ProgramItem>() {
-        override fun areItemsTheSame(oldItem: com.ibsu.ibsu.domain.model.ProgramItem, newItem: com.ibsu.ibsu.domain.model.ProgramItem): Boolean =
+    private class ItemDiffCallback :
+        DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ProgramItem>() {
+        override fun areItemsTheSame(
+            oldItem: com.ibsu.ibsu.domain.model.ProgramItem,
+            newItem: com.ibsu.ibsu.domain.model.ProgramItem,
+        ): Boolean =
             oldItem.id == newItem.id
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: com.ibsu.ibsu.domain.model.ProgramItem, newItem: com.ibsu.ibsu.domain.model.ProgramItem): Boolean =
+        override fun areContentsTheSame(
+            oldItem: com.ibsu.ibsu.domain.model.ProgramItem,
+            newItem: com.ibsu.ibsu.domain.model.ProgramItem,
+        ): Boolean =
             oldItem == newItem
 
     }

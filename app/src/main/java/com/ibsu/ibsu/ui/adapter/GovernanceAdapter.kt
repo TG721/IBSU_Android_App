@@ -1,7 +1,6 @@
 package com.ibsu.ibsu.ui.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +11,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.domain.model.GovernanceItem
 import com.ibsu.ibsu.databinding.AdminStaffPortraitItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
-class GovernanceAdapter(private val context: Context) :
-    ListAdapter<com.ibsu.ibsu.domain.model.GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(ItemDiffCallback()) {
+class GovernanceAdapter :
+    ListAdapter<com.ibsu.ibsu.domain.model.GovernanceItem, GovernanceAdapter.StaffPortraitItemHolder>(
+        ItemDiffCallback()
+    ) {
     inner class StaffPortraitItemHolder(private val binding: AdminStaffPortraitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var alertDialog: AlertDialog? = null
 
 
-        fun bind(position: Int) {
+        fun bind() {
+            val context = binding.root.context
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
 
@@ -95,10 +96,11 @@ class GovernanceAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: StaffPortraitItemHolder, position: Int) {
-        holder.bind(position)
+        holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.GovernanceItem>() {
+    private class ItemDiffCallback :
+        DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.GovernanceItem>() {
         override fun areItemsTheSame(
             oldItem: com.ibsu.ibsu.domain.model.GovernanceItem,
             newItem: com.ibsu.ibsu.domain.model.GovernanceItem,

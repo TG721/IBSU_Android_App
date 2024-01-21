@@ -69,7 +69,7 @@ class ErasmusPlusFragment : BaseFragment<FragmentErasmusPlusBinding>(FragmentEra
     }
 
     private fun setupRecycler() {
-        adapter = ExchangeUniversityItemAdapter(requireContext())
+        adapter = ExchangeUniversityItemAdapter()
         val recycler = binding.clubsRV
         val layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter

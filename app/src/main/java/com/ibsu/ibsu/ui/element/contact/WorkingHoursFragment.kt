@@ -74,7 +74,7 @@ class WorkingHoursFragment :
     }
 
     private fun setupRecycler() {
-        rvAdapter = WorkingHoursAdapter(requireContext())
+        rvAdapter = WorkingHoursAdapter()
         val recycler = binding.recyclerView
         val layoutManager = LinearLayoutManager(context)
 

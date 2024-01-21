@@ -94,7 +94,7 @@ class CoursesFragment :
     }
 
     private fun setupRecycler() {
-        rvAdapter = CourseItemAdapter(requireContext())
+        rvAdapter = CourseItemAdapter()
         val recycler = binding.rv
         val layoutManager = LinearLayoutManager(context)
 

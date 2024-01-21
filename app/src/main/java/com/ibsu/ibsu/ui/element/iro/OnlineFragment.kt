@@ -67,7 +67,7 @@ class OnlineFragment : BaseFragment<FragmentOnlineBinding>(FragmentOnlineBinding
     }
 
     private fun setupRecycler() {
-        adapter = ExchangeUniversityItemAdapter(requireContext())
+        adapter = ExchangeUniversityItemAdapter()
         val recycler = binding.clubsRV
         val layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter

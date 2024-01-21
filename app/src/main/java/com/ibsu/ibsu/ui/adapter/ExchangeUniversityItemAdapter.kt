@@ -1,19 +1,19 @@
 package com.ibsu.ibsu.ui.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibsu.ibsu.domain.model.ExchangeUniversityItem
 import com.ibsu.ibsu.databinding.ExchangeUniversityItemBinding
 import com.ibsu.ibsu.extensions.loadFromUrl
 
-class ExchangeUniversityItemAdapter(private val context: Context) :
-    ListAdapter<com.ibsu.ibsu.domain.model.ExchangeUniversityItem, ExchangeUniversityItemAdapter.ViewHolder>(ItemDiffCallback()) {
+class ExchangeUniversityItemAdapter :
+    ListAdapter<com.ibsu.ibsu.domain.model.ExchangeUniversityItem, ExchangeUniversityItemAdapter.ViewHolder>(
+        ItemDiffCallback()
+    ) {
     inner class ViewHolder(private val binding: ExchangeUniversityItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -45,7 +45,8 @@ class ExchangeUniversityItemAdapter(private val context: Context) :
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ExchangeUniversityItem>() {
+    private class ItemDiffCallback :
+        DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.ExchangeUniversityItem>() {
         override fun areItemsTheSame(
             oldItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,
             newItem: com.ibsu.ibsu.domain.model.ExchangeUniversityItem,

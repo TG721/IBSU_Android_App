@@ -13,15 +13,15 @@ import com.ibsu.ibsu.databinding.UsefulDocsItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
-class UsefulDocsAdapter(private val context: Context) :
+class UsefulDocsAdapter() :
     ListAdapter<com.ibsu.ibsu.domain.model.UsefulDocsItem, UsefulDocsAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
     inner class ItemViewHolder(private val binding: UsefulDocsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(position: Int) {
-
+        fun bind() {
+            val context = binding.root.context
             val source = getItem(absoluteAdapterPosition)
             if (context.getCurrentLocale(context).language == georgianLocale)
                 binding.textView.text = source.nameGe
@@ -43,7 +43,7 @@ class UsefulDocsAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(position)
+        holder.bind()
     }
 
     private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.UsefulDocsItem>() {

@@ -128,7 +128,7 @@ class BachelorsFragment() :
 
 
     private fun setupRecycler() {
-        programAdapter = ProgramAdapter(requireContext(), "bachelor")
+        programAdapter = ProgramAdapter("bachelor")
         val recycler = binding.programRV
         var spanCount = 2
         if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) spanCount = 1
@@ -148,8 +148,23 @@ class BachelorsFragment() :
     override fun onResume() {
         super.onResume()
         setupDropDownMenus()
+        d("teng", "onResume called")
 
+    }
 
+    override fun onStart() {
+        super.onStart()
+        d("teng","onStart called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        d("teng","onStop called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        d("teng","onPause called")
     }
 }
 

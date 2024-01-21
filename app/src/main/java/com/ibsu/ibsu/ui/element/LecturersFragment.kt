@@ -31,7 +31,7 @@ class LecturersFragment() :
     }
 
     private fun setupRecycler() {
-        rvAdapter = LecturersAdapter(requireContext(), sharedViewModel.getEmailVisibility())
+        rvAdapter = LecturersAdapter(sharedViewModel.getEmailVisibility())
         val recycler = binding.itemsRV
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

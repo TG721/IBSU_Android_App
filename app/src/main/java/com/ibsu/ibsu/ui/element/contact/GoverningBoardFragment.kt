@@ -72,7 +72,7 @@ class GoverningBoardFragment :
     }
 
     private fun setupRecycler() {
-        governanceAdapter = GovernanceAdapter(requireContext())
+        governanceAdapter = GovernanceAdapter()
         val recycler = binding.governanceRV
         var spanCount = 2
 

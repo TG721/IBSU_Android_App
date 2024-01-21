@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ibsu.ibsu.R
-import com.ibsu.ibsu.domain.model.LecturersItem
 import com.ibsu.ibsu.databinding.AdminStaffItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.extensions.loadFromResource
@@ -21,13 +20,16 @@ import com.ibsu.ibsu.extensions.loadFromUrl
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
 
-class LecturersAdapter(private val context: Context, private val emailVisibility: Boolean = false) :
-    ListAdapter<com.ibsu.ibsu.domain.model.LecturersItem, LecturersAdapter.LecturerViewHolder>(ItemDiffCallback()) {
+class LecturersAdapter(private val emailVisibility: Boolean = false) :
+    ListAdapter<com.ibsu.ibsu.domain.model.LecturersItem, LecturersAdapter.LecturerViewHolder>(
+        ItemDiffCallback()
+    ) {
     inner class LecturerViewHolder(private val binding: AdminStaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
         fun bind() {
+            val context = binding.root.context
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 if (emailVisibility) {
@@ -36,7 +38,7 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
                 }
 
                 imageViewMail.setOnClickListener {
-                    openEmail(source.email!!)
+                    openEmail(source.email!!, context)
                 }
 
                 if (source.pictureURL != null) {
@@ -65,7 +67,7 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
             }
         }
 
-        private fun openEmail(email: String) {
+        private fun openEmail(email: String, context: Context) {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
                 putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
@@ -99,7 +101,8 @@ class LecturersAdapter(private val context: Context, private val emailVisibility
         holder.bind()
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.LecturersItem>() {
+    private class ItemDiffCallback :
+        DiffUtil.ItemCallback<com.ibsu.ibsu.domain.model.LecturersItem>() {
         override fun areItemsTheSame(
             oldItem: com.ibsu.ibsu.domain.model.LecturersItem,
             newItem: com.ibsu.ibsu.domain.model.LecturersItem,

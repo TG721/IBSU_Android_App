@@ -88,7 +88,7 @@ class GamesFragment : BaseFragment<FragmentGamesBinding>(FragmentGamesBinding::i
     }
 
     private fun setupRecycler() {
-        gamesAdapter = GamesAdapter(requireContext())
+        gamesAdapter = GamesAdapter()
         val recycler = binding.gamesRV
         val layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

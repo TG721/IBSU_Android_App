@@ -79,7 +79,7 @@ class SportNewsFragment :
     }
 
     private fun setupRecycler() {
-        rvAdapter = NewsAdapter(requireContext())
+        rvAdapter = NewsAdapter()
         val recycler = binding.rv
         val layoutManager = LinearLayoutManager(context)
 

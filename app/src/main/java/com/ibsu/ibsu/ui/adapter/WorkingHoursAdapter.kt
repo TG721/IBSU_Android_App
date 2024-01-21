@@ -12,7 +12,7 @@ import com.ibsu.ibsu.databinding.WorkingHoursItemBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 
-class WorkingHoursAdapter(private val context: Context) :
+class WorkingHoursAdapter :
     ListAdapter<com.ibsu.ibsu.domain.model.WorkingHoursItem, WorkingHoursAdapter.ItemViewHolder>(ItemDiffCallback()) {
     inner class ItemViewHolder(private val binding: WorkingHoursItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,6 +21,7 @@ class WorkingHoursAdapter(private val context: Context) :
         fun bind() {
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
+                val context = root.context
                 if (context.getCurrentLocale(context).language == georgianLocale) {
                     statement.text = source.statementGe
                     workingHours.text = source.hoursGe

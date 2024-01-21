@@ -71,7 +71,7 @@ class SelfGovernanceFragment :
     }
 
     private fun setupRecycler() {
-        governanceAdapter = GovernanceAdapter(requireContext())
+        governanceAdapter = GovernanceAdapter()
         val recycler = binding.selfGovernanceRV
         val spanCount = 2
 //        if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) spanCount = 1

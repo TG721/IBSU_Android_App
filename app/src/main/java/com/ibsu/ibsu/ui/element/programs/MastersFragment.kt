@@ -126,7 +126,7 @@ class MastersFragment() : BaseFragment<FragmentMastersBinding>(
     }
 
     private fun setupRecycler() {
-        programAdapter = ProgramAdapter(requireContext(), "masters")
+        programAdapter = ProgramAdapter( "masters")
         val recycler = binding.programRV
         var spanCount  = 2
         if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) spanCount = 1

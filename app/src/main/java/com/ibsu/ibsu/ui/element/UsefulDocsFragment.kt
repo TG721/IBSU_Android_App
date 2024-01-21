@@ -34,7 +34,7 @@ class UsefulDocsFragment : BaseFragment<FragmentUsefulDocsBinding>(FragmentUsefu
         }
 
         private fun setupRecycler() {
-            rvAdapter = UsefulDocsAdapter(requireContext())
+            rvAdapter = UsefulDocsAdapter()
             val recycler = binding.rv
             val layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

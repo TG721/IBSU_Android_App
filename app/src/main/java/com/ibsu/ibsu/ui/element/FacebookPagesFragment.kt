@@ -59,7 +59,7 @@ class FacebookPagesFragment :
     }
 
     private fun setupRecycler() {
-        fanPagesAdapter = FanPagesAdapter(requireContext())
+        fanPagesAdapter = FanPagesAdapter()
         val recycler = binding.fanPagesRV
         val layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
