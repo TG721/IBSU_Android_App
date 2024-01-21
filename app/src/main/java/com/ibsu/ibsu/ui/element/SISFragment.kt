@@ -25,10 +25,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ibsu.ibsu.R
 import com.ibsu.ibsu.databinding.FragmentSISBinding
 import com.ibsu.ibsu.extensions.getCurrentLocale
+import com.ibsu.ibsu.ui.viewmodel.SettingsViewModel
 import com.ibsu.ibsu.utils.JavaScriptInterfaceForSIS
 import com.ibsu.ibsu.utils.LanguagesLocale.georgianLocale
 import com.ibsu.ibsu.utils.OnDownloadCompleteReceiver
@@ -41,6 +43,7 @@ class SISFragment : Fragment() {
 
     private var isFirstLoad = true
     private var binding: FragmentSISBinding? = null
+    private val settingsPrefsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,8 +101,6 @@ class SISFragment : Fragment() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                val appSettingPrefs: SharedPreferences =
-                    requireActivity().getSharedPreferences("appSettingPrefs", Context.MODE_PRIVATE)
                 if (isFirstLoad) {
                     if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) {
                         view?.evaluateJavascript(
@@ -154,7 +155,7 @@ class SISFragment : Fragment() {
                 //setup dark mode
 
 //                d("snnnnnnn", appSettingPrefs.getInt("darkModeVal", 2).toString())
-                if (appSettingPrefs.getInt("darkModeVal", 2) == 0) {
+                if (settingsPrefsViewModel.getDarkModeSetting() == 0) {
 //                    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
 //
 //                    } else {
