@@ -39,7 +39,7 @@ class MasterAdmissionFragment : Fragment() {
 
     private fun setupWebView() {
         var webURL: String
-        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale)
+        if (requireContext().getCurrentLocale().language == georgianLocale)
             webURL = "https://ibsu.edu.ge/ge/masters/#1676283131963-b3849189-54ad"
         else webURL = "https://ibsu.edu.ge/en/masters/#1676283131963-b3849189-54ad"
         val webView = binding?.webView

@@ -22,7 +22,7 @@ class NewsDescriptionFragment : BaseFragment<FragmentNewsDescriptionBinding>(
     private val args by navArgs<NewsDescriptionFragmentArgs>()
 
     override fun setup() {
-        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) {
+        if (requireContext().getCurrentLocale().language == georgianLocale) {
             binding.descriptionTV.text = args.newsItems.descriptionGe
             binding.headlineTV.text = args.newsItems.headlineGe
             binding.dateTV.text = args.newsItems.dateGe

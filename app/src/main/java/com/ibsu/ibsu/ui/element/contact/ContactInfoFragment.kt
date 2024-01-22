@@ -56,7 +56,7 @@ class ContactInfoFragment :
 
                         is ResponseState.Success -> {
                             binding.addressTV.visibility = View.VISIBLE
-                            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
+                            if(requireContext().getCurrentLocale().language==georgianLocale)
                             binding.addressTV.text = it.items.addressGe
                             else binding.addressTV.text = it.items.addressEn
 

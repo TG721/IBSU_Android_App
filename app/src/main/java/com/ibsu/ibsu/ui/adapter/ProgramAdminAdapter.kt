@@ -28,7 +28,7 @@ class ProgramAdminAdapter(private val context: Context) :
             binding.apply {
                 email.paintFlags = binding.email.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 number.paintFlags = binding.number.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     name.text = source.nameGe
                     position.text = source.positionGe
                 } else {

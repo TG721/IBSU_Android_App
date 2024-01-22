@@ -38,7 +38,7 @@ class EventDescriptionFragment :
         binding.apply {
             imageView.loadFromUrl(args.clickedEventInfo.pictureURL, progressBar)
             var receivedText: String? = null
-            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale) {
+            if(requireContext().getCurrentLocale().language==georgianLocale) {
                  receivedText = args.clickedEventInfo.descriptionGe
             } else
              receivedText = args.clickedEventInfo.descriptionEn

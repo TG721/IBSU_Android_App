@@ -75,11 +75,11 @@ class SingleClubFragment :
     }
 
     private fun setupInfo() {
-        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale)
+        if (requireContext().getCurrentLocale().language == georgianLocale)
             binding.clubName.text = args.club.clubNameGe
         else binding.clubName.text = args.club.clubNameEn
         if (args.club.descriptionEn != null) {
-            if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale)
+            if (requireContext().getCurrentLocale().language == georgianLocale)
                 binding.clubdescription.text = args.club.descriptionGe
             else binding.clubdescription.text = args.club.descriptionEn
             binding.clubDescriptionTitle.visibility = View.VISIBLE
@@ -91,7 +91,7 @@ class SingleClubFragment :
             binding.vicePresidentEmail.visibility = View.VISIBLE
         } else binding.vicePresidentEmail.text = ""
         if (args.club.vicePresidentNameEn != null) {
-            if (requireContext().getCurrentLocale(requireContext()).language == "ka")
+            if (requireContext().getCurrentLocale().language == "ka")
                 binding.vicePresidentName.text = "Vice President - " + args.club.vicePresidentNameGe
             else binding.vicePresidentName.text =
                 "Vice President - " + args.club.vicePresidentNameEn
@@ -106,7 +106,7 @@ class SingleClubFragment :
         else binding.imageViewFacebook.visibility = View.GONE
 
         var presidentName = ""
-        if (requireContext().getCurrentLocale(requireContext()).language == "ka") presidentName =
+        if (requireContext().getCurrentLocale().language == "ka") presidentName =
             args.club.presidentNameGe
         else presidentName = args.club.presidentNameEn
         binding.presidentName.text = getString(R.string.president) + presidentName

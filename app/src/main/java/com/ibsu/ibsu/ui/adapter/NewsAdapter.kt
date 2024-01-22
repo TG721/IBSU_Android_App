@@ -23,7 +23,7 @@ class NewsAdapter :
             binding.apply {
                 source = getItem(absoluteAdapterPosition)
 
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     newsTitleTV.text = source?.headlineGe
                     dateTV.text = source?.dateGe
                 } else {

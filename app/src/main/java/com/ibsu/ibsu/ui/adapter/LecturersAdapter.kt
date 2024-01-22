@@ -48,7 +48,7 @@ class LecturersAdapter(private val emailVisibility: Boolean = false) :
                     binding.progressBar.visibility = View.GONE
                 }
                 adminStaffNameTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     adminStaffNameTV.text = source.nameGe
                     //position is name but variable represents status like M.A, Doctor
                     adminStaffPositionTV.text = source.statusGe

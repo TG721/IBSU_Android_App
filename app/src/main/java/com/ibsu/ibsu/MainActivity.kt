@@ -51,10 +51,10 @@ class MainActivity : AppCompatActivity() {
         val selectedLanguage = when (settingsPrefsViewModel.getLanguageSetting()) {
             0 -> englishLocale
             1 -> georgianLocale
-            else -> getCurrentLocale(this).language
+            else -> getCurrentLocale().language
         }
 
-        val currentLanguage = getCurrentLocale(this).language
+        val currentLanguage = getCurrentLocale().language
         if (currentLanguage != selectedLanguage) {
             LocaleHelper.setLocale(this@MainActivity, selectedLanguage)
             recreate() // Recreate the activity to apply the new language

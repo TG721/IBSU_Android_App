@@ -33,7 +33,7 @@ class ContactInfoItemAdapter :
                 number.paintFlags = binding.number.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 if(source.nameEn!=null) {
                     statement.visibility = View.VISIBLE
-                    if (context.getCurrentLocale(context).language == georgianLocale)
+                    if (context.getCurrentLocale().language == georgianLocale)
                         statement.text = source.nameGe
                     else statement.text = source.nameEn
                 } else { statement.visibility = View.GONE }

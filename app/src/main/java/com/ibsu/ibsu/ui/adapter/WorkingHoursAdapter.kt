@@ -22,7 +22,7 @@ class WorkingHoursAdapter :
             val source = getItem(absoluteAdapterPosition)
             binding.apply {
                 val context = root.context
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     statement.text = source.statementGe
                     workingHours.text = source.hoursGe
                 } else {

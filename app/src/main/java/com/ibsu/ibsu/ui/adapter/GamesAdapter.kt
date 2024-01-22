@@ -23,7 +23,7 @@ class GamesAdapter :
             binding.apply {
                 imageBtn.loadFromUrl(source.pictureURL, size = 800)
             }
-            if (context.getCurrentLocale(context).language == georgianLocale)
+            if (context.getCurrentLocale().language == georgianLocale)
                 binding.titleTV.text = source.nameGe
             else binding.titleTV.text = source.nameEn
 //            binding.roomTV.text = source.location

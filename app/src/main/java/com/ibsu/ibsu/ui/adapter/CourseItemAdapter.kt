@@ -33,7 +33,7 @@ class CourseItemAdapter :
 
 
                 var finalStringValue = ""
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     courseName.text = source.nameGe
                     if (source.prerequisitesGe != null)
                         source.prerequisitesGe.forEach {

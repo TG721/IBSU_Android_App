@@ -102,7 +102,7 @@ class SISFragment : Fragment() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 if (isFirstLoad) {
-                    if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) {
+                    if (requireContext().getCurrentLocale().language == georgianLocale) {
                         view?.evaluateJavascript(
                             """
     function changeToKA() {

@@ -43,7 +43,7 @@ class CreditValueFragment() : BaseFragment<FragmentCreditValueBinding>(FragmentC
 
                         is ResponseState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            if(requireContext().getCurrentLocale(requireContext()).language==georgianLocale)
+                            if(requireContext().getCurrentLocale().language==georgianLocale)
                             binding.result.text = it.items.valueGe
                             else binding.result.text = it.items.valueEn
 

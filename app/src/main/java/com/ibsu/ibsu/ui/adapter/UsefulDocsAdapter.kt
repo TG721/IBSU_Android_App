@@ -23,7 +23,7 @@ class UsefulDocsAdapter() :
         fun bind() {
             val context = binding.root.context
             val source = getItem(absoluteAdapterPosition)
-            if (context.getCurrentLocale(context).language == georgianLocale)
+            if (context.getCurrentLocale().language == georgianLocale)
                 binding.textView.text = source.nameGe
             else binding.textView.text = source.nameEn
 

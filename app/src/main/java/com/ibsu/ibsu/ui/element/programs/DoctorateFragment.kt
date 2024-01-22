@@ -129,7 +129,7 @@ class DoctorateFragment() :
         programAdapter = ProgramAdapter( "doctorate")
         val recycler = binding.programRV
         var spanCount = 2
-        if (requireContext().getCurrentLocale(requireContext()).language == georgianLocale) spanCount =
+        if (requireContext().getCurrentLocale().language == georgianLocale) spanCount =
             1
         val layoutManager =
             GridLayoutManager(context, spanCount, LinearLayoutManager.VERTICAL, false)

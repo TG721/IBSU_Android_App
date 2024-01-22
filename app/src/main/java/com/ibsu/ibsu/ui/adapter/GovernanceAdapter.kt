@@ -36,7 +36,7 @@ class GovernanceAdapter :
                     .inflate(R.layout.custom_dialog_layout, null)
                 val descriptionTextView =
                     dialogView.findViewById<TextView>(R.id.descriptionTextView)
-                if (context.getCurrentLocale(context).language == georgianLocale) {
+                if (context.getCurrentLocale().language == georgianLocale) {
                     adminStaffNameTV.text = source.NameGe
                     adminStaffPositionTV.text = source.governingPositionGe
                     moreInfoTV.text = source.academicPositionGe

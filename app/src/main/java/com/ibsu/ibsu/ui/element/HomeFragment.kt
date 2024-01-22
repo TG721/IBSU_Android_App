@@ -71,7 +71,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         }
 
                         is ResponseState.Success -> {
-                            weekValue = if(requireContext().getCurrentLocale(requireContext()).language== LanguagesLocale.georgianLocale)
+                            weekValue = if(requireContext().getCurrentLocale().language== LanguagesLocale.georgianLocale)
                                 it.items.weekValueGe
                             else it.items.weekValueEn
 

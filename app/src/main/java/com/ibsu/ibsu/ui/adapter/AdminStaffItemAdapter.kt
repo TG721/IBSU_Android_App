@@ -105,11 +105,11 @@ class AdminStaffItemAdapter(private val context: Context, private val emailVisib
                         .into(imageView)
                 }
                 adminStaffNameTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                if (context.getCurrentLocale(context).language == georgianLocale)
+                if (context.getCurrentLocale().language == georgianLocale)
                     adminStaffNameTV.text = source.nameGe
                 else adminStaffNameTV.text = source.nameEn
                 var positionValue: String
-                if (context.getCurrentLocale(context).language == georgianLocale)
+                if (context.getCurrentLocale().language == georgianLocale)
                     positionValue = source.positionGe
                 else positionValue = source.positionEn
                 if (positionValue.length > 20) {

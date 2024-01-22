@@ -17,7 +17,7 @@ object LocaleHelper {
     }
 
     private fun persist(context: Context, language: String) {
-        val preferences = context.getSharedPreferences("LocaleHelperPrefs", Context.MODE_PRIVATE)
+        val preferences =  context.getSharedPreferences("LocaleHelperPrefs", Context.MODE_PRIVATE)
         val editor = preferences.edit()
         editor.putString(SELECTED_LANGUAGE, language)
         editor.apply()
