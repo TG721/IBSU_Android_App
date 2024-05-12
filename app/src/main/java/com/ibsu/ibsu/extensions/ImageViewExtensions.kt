@@ -1,6 +1,8 @@
 package com.ibsu.ibsu.extensions
 
 import android.graphics.drawable.Drawable
+import android.util.Log
+import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -12,7 +14,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 
-fun ImageView.loadFromUrl(url: String?, progressBar: ProgressBar? = null, size: Int? = null) {
+fun ImageView.loadFromUrl(url: String?, progressBar: ProgressBar? = null, size: Int? = null, onSuccess: () -> Unit = {}, ){
     val glideRequest = Glide.with(this).load(url)
 
     // Apply override only if size is specified
@@ -30,7 +32,11 @@ fun ImageView.loadFromUrl(url: String?, progressBar: ProgressBar? = null, size: 
             ): Boolean {
                 // Hide the progress bar if image loading fails
                 progressBar?.visibility = View.GONE
+//                if (e != null) {
+//                    Log.e("Glide", "Loading failed", e);
+//                }
                 return false
+
             }
 
             override fun onResourceReady(
@@ -41,6 +47,7 @@ fun ImageView.loadFromUrl(url: String?, progressBar: ProgressBar? = null, size: 
                 isFirstResource: Boolean,
             ): Boolean {
                 progressBar?.visibility = View.GONE
+                onSuccess()
                 return false
             }
         })

@@ -20,15 +20,16 @@ class NewsImagesAdapter :
         fun bind(position: Int) {
 
             val source = getItem(absoluteAdapterPosition)
-            binding.imageView.loadFromUrl(source, binding.progressBar)
+            binding.imageView.loadFromUrl(source, binding.progressBar, onSuccess = {
+                binding.imageView.setOnClickListener {
+                    val action =
+                        NewsDescriptionFragmentDirections.actionNewsDescriptionFragmentToNewsImageFullScreenFragment(
+                            position, currentList.toTypedArray()
+                        )
+                    binding.root.findNavController().navigate(action)
+                }
+            })
 
-            binding.imageView.setOnClickListener {
-                val action =
-                    NewsDescriptionFragmentDirections.actionNewsDescriptionFragmentToNewsImageFullScreenFragment(
-                        position, currentList.toTypedArray()
-                    )
-                binding.root.findNavController().navigate(action)
-            }
         }
     }
 
